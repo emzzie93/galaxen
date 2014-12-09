@@ -37,7 +37,7 @@ bool loadMedia()
 {
     bool success = true;
 
-    Background = SDL_LoadBMP("press.bmp");
+    Background = SDL_LoadBMP("background.bmp");
 
     if(Background == NULL)
     {
