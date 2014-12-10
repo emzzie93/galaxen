@@ -21,8 +21,8 @@ theShip myShip;
 	}
 
 ship1 = SDL_CreateTextureFromSurface(World.GameRender, Ship);
-SDL_SetTextureAlphaMod(ship1, 125);
-SDL_SetTextureBlendMode(ship1, SDL_BLENDMODE_ADD);
+//SDL_SetTextureAlphaMod(ship1, 125);
+//SDL_SetTextureBlendMode(ship1, SDL_BLENDMODE_ADD);
 //Our event structure
     bool quit = false;
     SDL_Event Event;
