@@ -28,3 +28,8 @@
 *.app
 *.layout
 galaxen.depend
+*.depend
+galaxen.depend
+*.depend
+
+*.cbp

@@ -5,6 +5,7 @@
 
 using namespace std;
 SDL_Texture* ship1 = nullptr;
+SDL_Texture* stone1 = nullptr;
 
 int main(int, char **)
 {
@@ -13,6 +14,15 @@ GameSetup World;
 World.setup();
 World.LoadMedia();
 theShip myShip;
+theStone myStone;
+
+Stone = SDL_LoadBMP("stone.bmp");
+ if(Stone == NULL)
+    {
+        std::cout << "Error in loading Stone." << SDL_GetError() << std::endl;
+		SDL_Quit();
+	}
+ stone1 = SDL_CreateTextureFromSurface(World.GameRender, Stone);
  Ship = SDL_LoadBMP("smallship.bmp");
 	if (Ship == NULL)
 	{
@@ -21,6 +31,14 @@ theShip myShip;
 	}
 
 ship1 = SDL_CreateTextureFromSurface(World.GameRender, Ship);
+
+void render1(SDL_Surface* texture,SDL_Rect* dest)
+{
+    SDL_RenderCopy(World.GameRender, texture, NULL, dest);
+    SDL_RenderPresent(World.GameRender);
+}
+
+
 SDL_SetTextureAlphaMod(ship1, 125);
 SDL_SetTextureBlendMode(ship1, SDL_BLENDMODE_ADD);
 //Our event structure
@@ -30,10 +48,16 @@ SDL_SetTextureBlendMode(ship1, SDL_BLENDMODE_ADD);
     {
     //render the background
     World.render();
-    SDL_RenderCopy(World.GameRender, ship1, NULL, &myShip.posShip);
-    SDL_RenderPresent(World.GameRender);
-    //myShip.show_ship(World.background,Ship);
-    myShip.ship_movement();
+    render(ship1, &myShip.posShip);
+    for (int i=0;i<20;i++)
+    {
+        if(arrayofStones[i].isActive == true)
+        {
+            render(stone1,&arrayofStones[i].posStone);
+        }
+    }
+        myShip.ship_movement();
+        myStone.stone_movement();
         while (SDL_PollEvent(&Event))
         {
             if (Event.type == SDL_QUIT)

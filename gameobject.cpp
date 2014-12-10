@@ -1,9 +1,11 @@
 #include "gameobject.h"
+#include <random>
 
+theStone arrayofStones[20];
 
+SDL_Surface* Stone = NULL;
 
-
-    SDL_Surface* Ship = NULL;
+SDL_Surface* Ship = NULL;
 
 const Uint8* keystate = SDL_GetKeyboardState(NULL);
 
@@ -40,10 +42,60 @@ if ((posShip.y + 30) > 480)
 
 }
 
-void theShip::show_ship(SDL_Surface* bakgrund,SDL_Surface* ship)
+theStone::theStone()
 {
-    SDL_BlitSurface(ship,NULL,bakgrund,&posShip);
-    SDL_SetColorKey(ship,SDL_TRUE,SDL_MapRGB(ship->format,255,255,255));
+    posStone.x;
+    posStone.y;
+    posStone.w = 30;
+    posStone.h = 30;
+}
+
+void theStone::stone_movement()
+{
+    for(int i=0; i<20;i++)
+    {
+        if(arrayofStones[i].isActive == true)
+        {
+            if(arrayofStones[i].y > 480)
+            {
+                arrayofStones[i].isActive = false;
+            }else
+            {
+                arrayofStones[i].y += 2;
+            }
+        }
+    }
+    //check collision
+
+    for (int i=0;i<20;i++)
+    {
+        posStone.y = arrayofStones[i].y;
+    }
+}
+
+void theStone::add_stone()
+{
+    if((rand % 100) == 55)
+    {
+        for (int i=0; i<20;i++)
+        {
+            if(arrayofStones[i].isActive == false)
+            {
+                arrayofStones[i].x = rand() % 640;
+                arrayofStones[i].y = 0;
+                arrayofStones[i].isActive = true;
+                break;
+            }
+        }
+    }
+}
+
+void theStone::init_stone()
+{
+    for(int i=0;i<20;i++)
+    {
+        arrayofStones[i].isActive == false;
+    }
 }
 
 
