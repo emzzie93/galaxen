@@ -27,4 +27,6 @@
 *.out
 *.app
 *.layout
-galaxen.depend
+*.depend
+*.cbp
+*.cbp
