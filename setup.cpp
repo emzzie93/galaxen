@@ -30,8 +30,11 @@ void GameSetup::setup(){
         SDL_Quit();
       //  return 1;
     }
+};
 
     //load the background.
+void GameSetup::LoadMedia(){
+
     //SDL_Surface *
     background = SDL_LoadBMP("background_converted.bmp");
     if (background== nullptr)
@@ -45,19 +48,17 @@ void GameSetup::setup(){
 
     //create a texture from the surface
     //SDL_Texture *
-    GameSetup::tex = SDL_CreateTextureFromSurface(GameSetup::GameRender, GameSetup::background);
-    SDL_FreeSurface(GameSetup::background);
+    tex = SDL_CreateTextureFromSurface(GameRender, background);
+    SDL_FreeSurface(background);
     if (tex == nullptr)
     {
-        SDL_DestroyRenderer(GameSetup::GameRender);
-        SDL_DestroyWindow(GameSetup::GameWindow);
+        SDL_DestroyRenderer(GameRender);
+        SDL_DestroyWindow(GameWindow);
         std::cout << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
        // return 1;
     }
-
-
-};
+}
 
 
 

@@ -21,6 +21,7 @@ public:
     void setup();
     void close();
     void render();
+    void LoadMedia();
 };
 
 #endif
