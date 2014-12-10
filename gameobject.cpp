@@ -1,27 +1,16 @@
 #include "gameobject.h"
-#include <SDL.h>
 
-//Window rendering to
-SDL_Window* gWindow = NULL;
 
-SDL_Surface* gScreenSurface = NULL;
 
-SDL_Surface* Background = NULL;
 
-SDL_Surface* Ship = NULL;
-
-SDL_Event Event;
-
-////Surface contained by window
-
-SDL_Rect posShip;
+    SDL_Surface* Ship = NULL;
 
 const Uint8* keystate = SDL_GetKeyboardState(NULL);
 
 theShip::theShip()
 {
     posShip.x = 180;
-    posShip.y = SCREEN_HEIGHT;
+    posShip.y = 480;
     posShip.w = 20;
     posShip.h = 30;
 }
@@ -30,27 +19,31 @@ void theShip :: ship_movement()
 {
 if(keystate[SDL_SCANCODE_LEFT])
     {
-        posShip.x -= 2;
+        posShip.x -= 5;
     }
 if(keystate[SDL_SCANCODE_RIGHT])
     {
-        posShip.x += 2;
+        posShip.x += 5;
     }
-if ((posShip.x + SPRITE_WIDTH) > SCREEN_WIDTH)
+if ((posShip.x + 30) > 640)
     {
-        posShip.x = (SCREEN_WIDTH - SPRITE_WIDTH);
+        posShip.x = (640 - 30);
     }
-if ((posShip.y + SPRITE_HEIGHT) > SCREEN_HEIGHT)
+if((posShip.x - 10) < 0)
+{
+    posShip.x = 10;
+}
+if ((posShip.y + 30) > 480)
     {
-        posShip.y = (SCREEN_HEIGHT - SPRITE_HEIGHT);
+        posShip.y = (480 - 30);
     }
 
 }
 
-void theShip::show_ship()
+void theShip::show_ship(SDL_Surface* bakgrund,SDL_Surface* ship)
 {
-    SDL_BlitSurface(Ship,NULL,gScreenSurface,&posShip);
-    SDL_SetColorKey(Ship,SDL_TRUE,SDL_MapRGB(Ship->format,255,255,255));
+    SDL_BlitSurface(ship,NULL,bakgrund,&posShip);
+    SDL_SetColorKey(ship,SDL_TRUE,SDL_MapRGB(ship->format,255,255,255));
 }
 
 

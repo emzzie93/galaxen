@@ -8,8 +8,6 @@ class GameSetup
 {
 
 public:
-    int SCREEN_WIDTH = 640;
-    int SCREEN_HEIGHT = 480;
 
     SDL_Window *GameWindow = nullptr;
     SDL_Renderer *GameRender  = nullptr;

@@ -1,7 +1,4 @@
 #include "setup.h"
-#include <iostream>
-#include <string>
-#include <SDL.h>
 
 void GameSetup::setup(){
  //initializing SDL
@@ -12,7 +9,7 @@ void GameSetup::setup(){
     }
     //create a window and make sure it is correctly started
     //SDL_Window *
-    GameWindow = SDL_CreateWindow("Astroids!", 100, 100, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    GameWindow = SDL_CreateWindow("Astroids!", 100, 100, 640, 480, SDL_WINDOW_SHOWN);
     if (GameWindow == nullptr)
     {
         std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
@@ -22,7 +19,7 @@ void GameSetup::setup(){
 
     // Create a render to draw the window on, and make sure that it works.
     //SDL_Renderer *
-    GameSetup::GameRender = SDL_CreateRenderer(GameWindow, -1, SDL_RENDERER_ACCELERATED| SDL_RENDERER_PRESENTVSYNC);
+    GameSetup::GameRender = SDL_CreateRenderer(GameWindow, -1, SDL_RENDERER_ACCELERATED);//| SDL_RENDERER_PRESENTVSYNC);
     if (GameRender == nullptr)
     {
         SDL_DestroyWindow(GameWindow);
@@ -30,7 +27,7 @@ void GameSetup::setup(){
         SDL_Quit();
       //  return 1;
     }
-};
+}
 
     //load the background.
 void GameSetup::LoadMedia(){
@@ -67,12 +64,12 @@ void GameSetup::close(){
     SDL_DestroyRenderer(GameSetup::GameRender);
     SDL_DestroyWindow(GameSetup::GameWindow);
     SDL_Quit();
-};
+}
 
 void GameSetup::render() {
 
     SDL_RenderClear(GameSetup::GameRender);
     SDL_RenderCopy(GameSetup::GameRender, GameSetup::tex, NULL, NULL);
     SDL_RenderPresent(GameSetup::GameRender);
-    };
+    }
 

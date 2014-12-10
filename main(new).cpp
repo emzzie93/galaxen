@@ -1,41 +1,52 @@
 #include <iostream>
 #include <string>
 #include <SDL.h>
-#include "setup.h"
+#include "gameobject.h"
 
 using namespace std;
+SDL_Texture* ship1 = nullptr;
 
-int main(int argc, char **argv)
+int main(int, char **)
 {
 
-GameSetup Astroids;
-Astroids.setup();
-Astroids.LoadMedia();
+GameSetup World;
+World.setup();
+World.LoadMedia();
+theShip myShip;
+ Ship = SDL_LoadBMP("smallship.bmp");
+	if (Ship == NULL)
+	{
+        std::cout << "Error in loading player." << SDL_GetError() << std::endl;
+		SDL_Quit();
+	}
 
+ship1 = SDL_CreateTextureFromSurface(World.GameRender, Ship);
+SDL_SetTextureAlphaMod(ship1, 125);
+SDL_SetTextureBlendMode(ship1, SDL_BLENDMODE_ADD);
 //Our event structure
-    SDL_Event e;
     bool quit = false;
+    SDL_Event Event;
     while (!quit)
     {
-        while (SDL_PollEvent(&e))
-        {
-            if (e.type == SDL_QUIT)
-            {
-                quit = true;
-            }
-            if (e.type == SDL_KEYDOWN)
-            {
-                quit = true;
-            }
-            if (e.type == SDL_MOUSEBUTTONDOWN)
-            {
-                quit = true;
-            }
-        }
     //render the background
-   Astroids.render();
+    World.render();
+    SDL_RenderCopy(World.GameRender, ship1, NULL, &myShip.posShip);
+    SDL_RenderPresent(World.GameRender);
+    //myShip.show_ship(World.background,Ship);
+    myShip.ship_movement();
+        while (SDL_PollEvent(&Event))
+        {
+            if (Event.type == SDL_QUIT)
+            {
+                quit = true;
+            }
+
+        }
+        SDL_Delay(20);
+    //SDL_UpdateWindowSurface(World.GameWindow);
+
     }
-Astroids.close();
+World.close();
 
     return 0;
 }

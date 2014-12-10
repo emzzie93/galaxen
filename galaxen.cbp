@@ -52,7 +52,9 @@
 		</Linker>
 		<Unit filename="gameobject.cpp" />
 		<Unit filename="gameobject.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="main(new).cpp" />
+		<Unit filename="setup.cpp" />
+		<Unit filename="setup.h" />
 		<Unit filename="world.cpp" />
 		<Extensions>
 			<code_completion />
