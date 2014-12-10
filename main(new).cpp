@@ -1,12 +1,13 @@
 #include <iostream>
 #include <string>
 #include <SDL.h>
+#include "setup.h"
 
 using namespace std;
 
 int main(int argc, char **argv)
 {
-
+/*
     //initializing SDL
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
@@ -55,7 +56,9 @@ int main(int argc, char **argv)
         SDL_Quit();
         return 1;
     }
+*/
 
+GameSetup GameInit;
 
 //Our event structure
     SDL_Event e;
