@@ -20,7 +20,7 @@ const Uint8* keystate = SDL_GetKeyboardState(NULL);
 
 theShip::theShip()
 {
-    posShip.x = 170;
+    posShip.x = 180;
     posShip.y = SCREEN_HEIGHT;
     posShip.w = 20;
     posShip.h = 30;
@@ -35,14 +35,6 @@ if(keystate[SDL_SCANCODE_LEFT])
 if(keystate[SDL_SCANCODE_RIGHT])
     {
         posShip.x += 2;
-    }
-if(keystate[SDL_SCANCODE_UP])
-    {
-        posShip.y -= 2;
-    }
-if(keystate[SDL_SCANCODE_DOWN])
-    {
-        posShip.y += 2;
     }
 if ((posShip.x + SPRITE_WIDTH) > SCREEN_WIDTH)
     {

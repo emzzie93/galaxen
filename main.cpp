@@ -37,7 +37,7 @@ bool loadMedia()
 {
     bool success = true;
 
-    Background = SDL_LoadBMP("background.bmp");
+    Background = SDL_LoadBMP("background_converted.bmp");
 
     if(Background == NULL)
     {
@@ -90,6 +90,7 @@ int main(int argc, char* args[])
     {
     SDL_BlitSurface(Background, NULL, gScreenSurface, NULL);
     myShip.show_ship();
+    myShip.ship_movement();
             while(SDL_PollEvent(&Event) != 0)
             {
                 if (Event.type == SDL_QUIT)
