@@ -6,13 +6,10 @@
 #include "gameobject.h"
 
 using namespace std;
-SDL_Texture* ship1 = nullptr;
-SDL_Texture* stone1 = nullptr;
-SDL_Texture* heart1 = nullptr;
-SDL_Texture* star1 = nullptr;
-SDL_Texture* bullet1 = nullptr;
+
 
 GameSetup World;
+ObjectSetup Objects;
 
 void render1(SDL_Texture* texture,SDL_Rect* type)
 {
@@ -36,51 +33,7 @@ myHeart.init_heart();
 myStar.init_star();
 myBullet.init_bullet();
 
-Star = IMG_Load("star.png");
-	if (Star == NULL)
-	{
-        std::cout << "Error in loading Star." << SDL_GetError() << std::endl;
-		SDL_Quit();
-	}
-star1 = SDL_CreateTextureFromSurface(World.GameRender, Star);
-SDL_FreeSurface(Star);
-
- Heart = IMG_Load("heart.png");
-	if (Heart == NULL)
-	{
-        std::cout << "Error in loading player." << SDL_GetError() << std::endl;
-		SDL_Quit();
-	}
-heart1 = SDL_CreateTextureFromSurface(World.GameRender, Heart);
-SDL_FreeSurface(Heart);
-
- Ship = IMG_Load("fighter.png");
-	if (Ship == NULL)
-	{
-        std::cout << "Error in loading player." << SDL_GetError() << std::endl;
-		SDL_Quit();
-	}
-ship1 = SDL_CreateTextureFromSurface(World.GameRender, Ship);
-SDL_FreeSurface(Ship);
-
-Stone = IMG_Load("stone.png");
-	if (Ship == NULL)
-	{
-        std::cout << "Error in loading player." << SDL_GetError() << std::endl;
-		SDL_Quit();
-	}
-stone1 = SDL_CreateTextureFromSurface(World.GameRender, Stone);
-SDL_FreeSurface(Stone);
-
-Bullet = IMG_Load("bullet.png");
-	if (Bullet == NULL)
-	{
-        std::cout << "Error in loading player." << SDL_GetError() << std::endl;
-		SDL_Quit();
-	}
-bullet1 = SDL_CreateTextureFromSurface(World.GameRender, Bullet);
-SDL_FreeSurface(Bullet);
-
+Objects.CreateObjects(World);
 
     //Our event structure
     bool quit = false;
@@ -95,14 +48,14 @@ SDL_FreeSurface(Bullet);
     myHeart.heart_movement();
     if(myHeart.isActive==true)
     {
-    render1(heart1,&myHeart.posHeart);
+    render1(Objects.heart1,&myHeart.posHeart);
     }
 
     myStar.add_star();
     myStar.star_movement();
     if(myStar.isActive==true)
     {
-    render1(star1,&myStar.posStar);
+    render1(Objects.star1,&myStar.posStar);
     }
 
 
@@ -112,7 +65,7 @@ SDL_FreeSurface(Bullet);
     {
         myStone.getStone(i);
         myShip.collisionWstone(&myStone);
-        render1(stone1,&myStone.posStone);
+        render1(Objects.stone1,&myStone.posStone);
     }
 
 
@@ -121,12 +74,12 @@ SDL_FreeSurface(Bullet);
     {
         myBullet.getBullet(i);
         myStone.collision(myBullet);
-        render1(bullet1,&myBullet.posBullet);
+        render1(Objects.bullet1,&myBullet.posBullet);
     }
 
     myShip.ship_movement();//flyttar ship
 
-    render1(ship1,&myShip.posShip);//Ritar ut ship
+    render1(Objects.ship1,&myShip.posShip);//Ritar ut ship
 
     while (SDL_PollEvent(&Event))
         {

@@ -1,12 +1,14 @@
 #include <random>
 #include "gameobject.h"
+#include "ObjectSetup.h"
+
 theStone arrayofStones[20];
 theBullet arrayofBullet[20];
-SDL_Surface* Stone = NULL;
-SDL_Surface* Ship = NULL;
-SDL_Surface* Heart = NULL;
-SDL_Surface* Star = NULL;
-SDL_Surface* Bullet = NULL;
+//SDL_Surface* Stone = NULL;
+//SDL_Surface* Ship = NULL;
+//SDL_Surface* Heart = NULL;
+//SDL_Surface* Star = NULL;
+//SDL_Surface* Bullet = NULL;
 
 const Uint8* keystate = SDL_GetKeyboardState(NULL);
 

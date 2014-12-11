@@ -2,12 +2,13 @@
 #define _GAMEOBJECT_H_
 #include <SDL.h>
 #include "setup.h"
+#include "ObjectSetup.h"
 
-extern SDL_Surface* Ship;
-extern SDL_Surface* Stone;
-extern SDL_Surface* Heart;
-extern SDL_Surface* Star;
-extern SDL_Surface* Bullet;
+//extern SDL_Surface* Ship;
+//extern SDL_Surface* Stone;
+//extern SDL_Surface* Heart;
+//extern SDL_Surface* Star;
+//extern SDL_Surface* Bullet;
 
 
 

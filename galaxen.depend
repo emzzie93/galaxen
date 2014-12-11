@@ -1,11 +1,13 @@
 # depslib dependency file v1.0
-1418317024 source:c:\users\emma\desktop\galaxen\gameobject.cpp
+1418332774 source:c:\users\emma\desktop\galaxen\gameobject.cpp
 	<random>
 	"gameobject.h"
+	"ObjectSetup.h"
 
-1418316964 c:\users\emma\desktop\galaxen\gameobject.h
+1418332774 c:\users\emma\desktop\galaxen\gameobject.h
 	<SDL.h>
 	"setup.h"
+	"ObjectSetup.h"
 
 1394937196 c:\users\emma\desktop\skriv\universitetet\ht2014\c++\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -694,7 +696,7 @@
 1418216720 source:c:\users\hugo\desktop\galaxen\setup.cpp
 	"setup.h"
 
-1418295966 c:\users\emma\desktop\galaxen\setup.h
+1418333295 c:\users\emma\desktop\galaxen\setup.h
 	<iostream>
 	<string>
 	<SDL.h>
@@ -702,10 +704,17 @@
 1418301171 source:c:\users\emma\desktop\galaxen\setup.cpp
 	"setup.h"
 
-1418313415 source:c:\users\emma\desktop\galaxen\main(new).cpp
+1418333402 source:c:\users\emma\desktop\galaxen\main(new).cpp
 	<iostream>
 	<string>
 	<SDL.h>
 	<SDL_image.h>
 	"gameobject.h"
+
+1418333561 c:\users\emma\desktop\galaxen\objectsetup.h
+	<iostream>
+	<string>
+	<SDL.h>
+	<SDL_image.h>
+	"setup.h"
 
