@@ -53,28 +53,16 @@ SDL_SetTextureBlendMode(ship1, SDL_BLENDMODE_ADD);
     while (!quit)
     {
     //render the background
-    World.render();
-    myStone.add_stone();
-    render1(ship1,&myShip.posShip);
-    for (int i = 0;i<20;i++)
+    World.render();//ritar ut bakgrund
+    myStone.add_stone();//lägger till stenar
+    myShip.ship_movement();//flyttar ship
+    render1(ship1,&myShip.posShip);//Ritar ut ship
+    myStone.stone_movement();//flyttar stone
+    for (int i = 0;i<20;i++)//ritar ut stone
     {
         myStone.loop(i);
         render1(stone1,&myStone.posStone);
     }
-    //render1(stone1,&myStone.posStone);
-//    for(int i=0;i<20;i++)
-//    {
-//        render1(stone1, &arrayofStones[i].posStone);
-//    }
-   // SDL_RenderCopy(World.GameRender, ship1, NULL, &myShip.posShip);
-    //SDL_RenderPresent(World.GameRender);
-    //myShip.show_ship(World.background,Ship);
-    myShip.ship_movement();
-    myStone.stone_movement();
-//    for(int i=0;i<20;i++)
-//    {
-//        arrayofStones[i].stone_movement();
-//    }
 
     while (SDL_PollEvent(&Event))
         {

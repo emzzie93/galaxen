@@ -1,5 +1,5 @@
-#ifndef SETUP_H
-#define SETUP_H
+#ifndef _SETUP_H_
+#define _SETUP_H_
 #include <iostream>
 #include <string>
 #include <SDL.h>

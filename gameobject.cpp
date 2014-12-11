@@ -50,7 +50,7 @@ void theStone::stone_movement()
     {
         if(arrayofStones[i].isActive == true)
         {
-            if(arrayofStones[i].y > 480)
+            if(arrayofStones[i].y > 450)
             {
                 arrayofStones[i].isActive = false;
             }else
@@ -61,21 +61,21 @@ void theStone::stone_movement()
     }
     //check collision
 
-    for (int i=0;i<20;i++)
-    {
-        posStone.y = arrayofStones[i].y;
-    }
+//    for (int i=0;i<20;i++)
+//    {
+//        posStone.y = arrayofStones[i].y;
+//    }
 }
 
 void theStone::add_stone()
 {
-    if(rand() % 30 == 5)
+    if(rand() % 50 == 5)
     {
         for (int i=0; i<20;i++)
         {
             if(arrayofStones[i].isActive == false)
             {
-                arrayofStones[i].x = rand() % 640;
+                arrayofStones[i].x = rand() % 630;
                 arrayofStones[i].y = 0;
                 arrayofStones[i].isActive = true;
                 break;
@@ -94,8 +94,12 @@ void theStone::init_stone()
 
 SDL_Rect theStone::loop(int i)
 {
+    if(arrayofStones[i].isActive == true)
+    {
     posStone.y = arrayofStones[i].y;
     posStone.x = arrayofStones[i].x;
+    }
     return posStone;
+
 }
 
