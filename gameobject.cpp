@@ -1,10 +1,7 @@
-#include "gameobject.h"
 #include <random>
-
+#include "gameobject.h"
 theStone arrayofStones[20];
-
 SDL_Surface* Stone = NULL;
-
 SDL_Surface* Ship = NULL;
 
 const Uint8* keystate = SDL_GetKeyboardState(NULL);
@@ -39,13 +36,10 @@ if ((posShip.y + 30) > 480)
     {
         posShip.y = (480 - 30);
     }
-
 }
 
 theStone::theStone()
 {
-    posStone.x;
-    posStone.y;
     posStone.w = 30;
     posStone.h = 30;
 }
@@ -75,7 +69,7 @@ void theStone::stone_movement()
 
 void theStone::add_stone()
 {
-    if((rand % 100) == 55)
+    if(rand() % 30 == 5)
     {
         for (int i=0; i<20;i++)
         {
@@ -94,8 +88,14 @@ void theStone::init_stone()
 {
     for(int i=0;i<20;i++)
     {
-        arrayofStones[i].isActive == false;
+        arrayofStones[i].isActive = false;
     }
 }
 
+SDL_Rect theStone::loop(int i)
+{
+    posStone.y = arrayofStones[i].y;
+    posStone.x = arrayofStones[i].x;
+    return posStone;
+}
 
