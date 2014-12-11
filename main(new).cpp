@@ -148,19 +148,10 @@ SDL_FreeSurface(Bullet);
                 /* Check the SDLKey values and move change the coords */
             switch( Event.key.keysym.sym ){
                     case SDLK_SPACE:
-                        myBullet.add_bullet();
+                        myBullet.add_bullet(myShip.posShip.x,myShip.posShip.y);
                         break;
             }
             }
-//            if (Event.type == SDL_QUIT)
-//            {
-//                quit = true;
-//            }
-//            if(SDLK_SPACE)
-//            {
-//                myBullet.add_bullet();
-//            }
-
         }
     SDL_Delay(20);
 

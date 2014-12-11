@@ -214,14 +214,14 @@ void theBullet::bullet_movement()
 //    }
 }
 
-void theBullet::add_bullet()
+void theBullet::add_bullet(int x,int y)
 {
 for (int i=0; i<20 ;i++)
         {
             if(arrayofBullet[i].isActive == false)
             {
-                arrayofBullet[i].x = theShip::posShip.x;
-                arrayofBullet[i].y = 480;
+                arrayofBullet[i].x = x+9;
+                arrayofBullet[i].y = y;
                 arrayofBullet[i].isActive = true;
                 break;
             }
