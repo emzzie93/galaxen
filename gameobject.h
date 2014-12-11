@@ -28,13 +28,12 @@ class theStone
 public:
     theStone();
     SDL_Rect posStone;
-    SDL_Rect loop(int i);
+    void loop(int i);
     void stone_movement();
     void add_stone();
     void init_stone();
     bool isActive;
 
-    private:
     int x;
     int y;
 };
@@ -85,8 +84,9 @@ public:
     void add_bullet(int x,int y);
 >>>>>>> origin/master
     void init_bullet();
-    SDL_Rect loop(int i);
+    void loop(int i);
     bool isActive;
+    void collision(theStone* mystone);
 
     private:
     int x;

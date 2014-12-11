@@ -52,6 +52,7 @@ theBullet myBullet;
 myStone.init_stone();
 myHeart.init_heart();
 myStar.init_star();
+myBullet.init_bullet();
 
 Star = IMG_Load("star.png");
 	if (Star == NULL)
@@ -123,18 +124,32 @@ SDL_FreeSurface(Bullet);
     }
 
     myBullet.bullet_movement();
-     for (int i = 0;i<20;i++)//ritar ut stone
+     for (int i = 0;i<20;i++)//ritar ut bullet
     {
         myBullet.loop(i);
+
         render1(bullet1,&myBullet.posBullet);
     }
-
-    myStone.stone_movement();//flyttar stone
-    for (int i = 0;i<20;i++)//ritar ut stone
+    myStone.stone_movement();
+    for (int i = 0;i<20;i++)
     {
         myStone.loop(i);
+        myBullet.collision(&myStone);
         render1(stone1,&myStone.posStone);
     }
+
+
+        //myStone.loop(i);
+
+
+
+    myStone.stone_movement();//flyttar stone
+//    for (int i = 0;i<20;i++)//ritar ut stone
+//    {
+//        myStone.loop(i);
+//
+//
+//    }
 
     while (SDL_PollEvent(&Event))
         {
