@@ -82,7 +82,7 @@ public:
     void init_bullet();
     void loop(int i);
     bool isActive;
-    void collision(theStone* mystone);
+    void collision(theStone mystone);
 
     private:
     int x;

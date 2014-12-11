@@ -110,46 +110,42 @@ SDL_FreeSurface(Bullet);
     {
     //render the background
     World.render();//ritar ut bakgrund
+
     myHeart.add_heart();
-    myStone.add_stone();//lägger till stenar
-    myStar.add_star();
-    myStar.star_movement();
-    render1(star1,&myStar.posStar);
-    myShip.ship_movement();//flyttar ship
-    render1(ship1,&myShip.posShip);//Ritar ut ship
     myHeart.heart_movement();
-     if(myHeart.isActive==true)
+    if(myHeart.isActive==true)
     {
     render1(heart1,&myHeart.posHeart);
     }
 
+    myStar.add_star();
+    myStar.star_movement();
+    if(myStar.isActive==true)
+    {
+    render1(star1,&myStar.posStar);
+    }
+
+
+    myStone.add_stone();//lägger till stenar
+    myStone.stone_movement();
+    for (int i = 0;i<20;i++)
+    {
+        myStone.loop(i);
+        //myBullet.collision(myStone.loop1(i));
+        render1(stone1,&myStone.posStone);
+    }
+
+
     myBullet.bullet_movement();
-     for (int i = 0;i<20;i++)//ritar ut bullet
+    for (int i = 0;i<20;i++)//ritar ut bullet
     {
         myBullet.loop(i);
 
         render1(bullet1,&myBullet.posBullet);
     }
-    myStone.stone_movement();
-    for (int i = 0;i<20;i++)
-    {
-        myStone.loop(i);
-        myBullet.collision(&myStone);
-        render1(stone1,&myStone.posStone);
-    }
 
-
-        //myStone.loop(i);
-
-
-
-    myStone.stone_movement();//flyttar stone
-//    for (int i = 0;i<20;i++)//ritar ut stone
-//    {
-//        myStone.loop(i);
-//
-//
-//    }
+    myShip.ship_movement();//flyttar ship
+    render1(ship1,&myShip.posShip);//Ritar ut ship
 
     while (SDL_PollEvent(&Event))
         {
@@ -177,7 +173,7 @@ SDL_FreeSurface(Bullet);
 
 World.close();
 
-    return 0;
+return 0;
 }
 
 

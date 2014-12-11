@@ -247,18 +247,19 @@ void theBullet::loop(int i)
     posBullet.x = arrayofBullet[i].x;
     }
 
+
 }
 
-void theBullet::collision(theStone* mystone)
+void theBullet::collision(theStone mystone)
 {
     for(int i =0;i<20;i++)
     {
-        if(mystone->posStone.x<arrayofBullet[i].x && arrayofBullet[i].x<(mystone->posStone.x+25) &&
-           mystone->posStone.y<arrayofBullet[i].y && arrayofBullet[i].y<(mystone->posStone.y+25))
+        if(mystone.posStone.x<arrayofBullet[i].x && arrayofBullet[i].x<(mystone.posStone.x+25) &&
+           mystone.posStone.y<arrayofBullet[i].y && arrayofBullet[i].y<(mystone.posStone.y+25))
         {
             arrayofBullet[i].isActive = false;
-                mystone->posStone.y = 0;
-            mystone->isActive = false;
+                mystone.posStone.y = 0;
+            mystone.isActive = false;
 
             //std::cout << mystone.posStone.x << std::endl;
         }
