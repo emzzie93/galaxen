@@ -61,7 +61,8 @@ void theStone::stone_movement()
             if(arrayofStones[i].y > 480)
             {
                 arrayofStones[i].isActive = false;
-            }else
+            }
+            else
             {
                 arrayofStones[i].y += 2;
             }
@@ -77,7 +78,7 @@ void theStone::stone_movement()
 
 void theStone::add_stone()
 {
-    if(rand() % 50 == 5)
+    if(rand() % 45 == 5)
     {
         for (int i=0; i<20;i++)
         {
@@ -100,14 +101,13 @@ void theStone::init_stone()
     }
 }
 
-SDL_Rect theStone::loop(int i)
+void theStone::loop(int i)
 {
     if(arrayofStones[i].isActive == true)
     {
     posStone.y = arrayofStones[i].y;
     posStone.x = arrayofStones[i].x;
     }
-    return posStone;
 
 }
 
@@ -236,13 +236,40 @@ void theBullet::init_bullet()
     }
 }
 
-SDL_Rect theBullet::loop(int i)
+void theBullet::loop(int i)
 {
     if(arrayofBullet[i].isActive == true)
     {
     posBullet.y = arrayofBullet[i].y;
     posBullet.x = arrayofBullet[i].x;
     }
-    return posBullet;
 
+}
+
+void theBullet::collision(theStone* mystone)
+{
+    for(int i =0;i<20;i++)
+    {
+        if(mystone->posStone.x<arrayofBullet[i].x && arrayofBullet[i].x<(mystone->posStone.x+25) &&
+           mystone->posStone.y<arrayofBullet[i].y && arrayofBullet[i].y<(mystone->posStone.y+25))
+        {
+            arrayofBullet[i].isActive = false;
+                mystone->posStone.y = 0;
+            mystone->isActive = false;
+
+            //std::cout << mystone.posStone.x << std::endl;
+        }
+    }
+//        for(int j=0;j<20;i++)
+//        {
+////            if((arrayofStones[j].x<arrayofBullet[i].x &&
+////                arrayofBullet[i].x<(arrayofStones[j].x+20)) &&
+////               (arrayofStones[j].y<arrayofBullet[i].y &&
+////                arrayofBullet[i].y<arrayofStones[j].y+20))
+////            {
+////                arrayofStones[j].isActive = false;
+////                arrayofBullet[i].isActive = false;
+////            }
+//        }
+//    }
 }
