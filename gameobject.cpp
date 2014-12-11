@@ -214,23 +214,17 @@ void theBullet::bullet_movement()
 //    }
 }
 
-<<<<<<< HEAD
-void theBullet::add_bullet(int x_position)
-=======
+
 void theBullet::add_bullet(int x,int y)
->>>>>>> origin/master
+
 {
 for (int i=0; i<20 ;i++)
         {
             if(arrayofBullet[i].isActive == false)
             {
-<<<<<<< HEAD
-                arrayofBullet[i].x = x_position;
-                arrayofBullet[i].y = 480;
-=======
+
                 arrayofBullet[i].x = x+9;
                 arrayofBullet[i].y = y;
->>>>>>> origin/master
                 arrayofBullet[i].isActive = true;
                 break;
             }

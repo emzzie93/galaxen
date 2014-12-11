@@ -78,11 +78,7 @@ public:
     theBullet();
     SDL_Rect posBullet;
     void bullet_movement();
-<<<<<<< HEAD
-    void add_bullet(int x_position);
-=======
     void add_bullet(int x,int y);
->>>>>>> origin/master
     void init_bullet();
     void loop(int i);
     bool isActive;
