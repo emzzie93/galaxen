@@ -7,12 +7,16 @@ extern SDL_Surface* Ship;
 extern SDL_Surface* Stone;
 extern SDL_Surface* Heart;
 extern SDL_Surface* Star;
+extern SDL_Surface* Bullet;
+
+
 
 class theShip
 {
 public:
     SDL_Rect posShip;
     theShip();
+
     void ship_movement();
 
 private:
@@ -26,11 +30,12 @@ class theStone
 public:
     theStone();
     SDL_Rect posStone;
+    SDL_Rect loop(int i);
     void stone_movement();
     void add_stone();
     void init_stone();
     bool isActive;
-    SDL_Rect loop(int i);
+
 
     private:
     int x;
@@ -56,12 +61,30 @@ public:
 class theStar
 {
 public:
+
     theStar();
     SDL_Rect posStar;
     void star_movement();
     void add_star();
     void init_star();
     bool isActive;
+
+    private:
+    int x;
+    int y;
+};
+
+class theBullet
+{
+public:
+
+    theBullet();
+    SDL_Rect posBullet;
+    void bullet_movement();
+    void add_bullet();
+    void init_bullet();
+    bool isActive;
+    SDL_Rect loop(int i);
 
     private:
     int x;

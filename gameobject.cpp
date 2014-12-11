@@ -1,12 +1,16 @@
 #include <random>
 #include "gameobject.h"
 theStone arrayofStones[20];
+theBullet arrayofBullet[20];
 SDL_Surface* Stone = NULL;
 SDL_Surface* Ship = NULL;
 SDL_Surface* Heart = NULL;
 SDL_Surface* Star = NULL;
+SDL_Surface* Bullet = NULL;
 
 const Uint8* keystate = SDL_GetKeyboardState(NULL);
+
+//---------------------Ship-klassen----------------------//
 
 theShip::theShip()
 {
@@ -39,6 +43,8 @@ if ((posShip.y + 30) > 480)
         posShip.y = (480 - 30);
     }
 }
+
+//---------------------Stone-klassen----------------------//
 
 theStone::theStone()
 {
@@ -105,6 +111,8 @@ SDL_Rect theStone::loop(int i)
 
 }
 
+//---------------------Heart-klassen----------------------//
+
 theHeart::theHeart()
 {
     posHeart.y = 0;
@@ -120,7 +128,6 @@ void theHeart::heart_movement()
         posHeart.y += 2;
     }
 }
-
 
 void theHeart::add_heart()
 {
@@ -140,6 +147,8 @@ void theHeart::init_heart()
     this->isActive = false;
 }
 
+//---------------------Star-klassen----------------------//
+
 theStar::theStar()
 {
     posStar.y = 0;
@@ -155,7 +164,6 @@ void theStar::star_movement()
         posStar.y += 2;
     }
 }
-
 
 void theStar::add_star()
 {
@@ -175,3 +183,66 @@ void theStar::init_star()
     this->isActive = false;
 }
 
+//---------------------Bullet-klassen----------------------//
+
+theBullet::theBullet()
+{
+    posBullet.w = 2;
+    posBullet.h = 2;
+}
+
+void theBullet::bullet_movement()
+{
+    for(int i=0; i<20;i++)
+    {
+        if(arrayofBullet[i].isActive == true)
+        {
+            if(arrayofBullet[i].y < 0)
+            {
+                arrayofBullet[i].isActive = false;
+            }else
+            {
+                arrayofBullet[i].y -= 2;
+            }
+        }
+    }
+    //check collision
+
+//    for (int i=0;i<20;i++)
+//    {
+//        posStone.y = arrayofStones[i].y;
+//    }
+}
+
+void theBullet::add_bullet()
+{
+for (int i=0; i<20 ;i++)
+        {
+            if(arrayofBullet[i].isActive == false)
+            {
+                arrayofBullet[i].x = theShip::posShip.x;
+                arrayofBullet[i].y = 480;
+                arrayofBullet[i].isActive = true;
+                break;
+            }
+        }
+}
+
+void theBullet::init_bullet()
+{
+    for(int i=0;i<20;i++)
+    {
+        arrayofBullet[i].isActive = false;
+    }
+}
+
+SDL_Rect theBullet::loop(int i)
+{
+    if(arrayofBullet[i].isActive == true)
+    {
+    posBullet.y = arrayofBullet[i].y;
+    posBullet.x = arrayofBullet[i].x;
+    }
+    return posBullet;
+
+}

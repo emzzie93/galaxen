@@ -29,7 +29,7 @@ void GameSetup::setup(){
     }
 }
 
-    //load the background.
+//load the background.
 void GameSetup::LoadMedia(){
 
     //SDL_Surface *
@@ -57,8 +57,6 @@ void GameSetup::LoadMedia(){
     }
 }
 
-
-
 void GameSetup::close(){
     SDL_DestroyTexture(GameSetup::tex);
     SDL_DestroyRenderer(GameSetup::GameRender);
@@ -72,4 +70,3 @@ void GameSetup::render() {
     SDL_RenderCopy(GameSetup::GameRender, GameSetup::tex, NULL, NULL);
     SDL_RenderPresent(GameSetup::GameRender);
     }
-
