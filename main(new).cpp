@@ -68,6 +68,12 @@ Objects.CreateObjects(World);
         render1(Objects.stone1,&myStone.posStone);
     }
 
+     for (int i = 0;i<20;i++)
+    {
+        myStone.getStone(i);
+        myShip.collisionWstone(&myStone);
+    }
+
 
     myBullet.bullet_movement();
     for (int i = 0;i<20;i++)//ritar ut bullet

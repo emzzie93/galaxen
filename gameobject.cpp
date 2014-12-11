@@ -84,11 +84,11 @@ void theShip :: collision(theHeart* heart, theStar* star)
 }
 void theShip :: collisionWstone(theStone* stone)
 {
-    if((this->posShip.x<=(stone->posStone.x+40) && (this->posShip.x + 40) >= stone->posStone.x) && stone->posStone.y>=this->posShip.y)
+    if((this->posShip.x<=(stone->posStone.x+40) && (this->posShip.x + 40) >= stone->posStone.x) && stone->posStone.y == this->posShip.y)
         {
-            stone->isActive = false;
             stone->posStone.x = 0;
             stone->posStone.y = 0;
+            stone->isActive = false;
             this->delete_life();
             std ::cout<<"liv: "<<this->life<< std::endl;
         }
@@ -228,7 +228,7 @@ void theStar::star_movement()
     {
         posStar.y += 2;
     }
-    if((this->posStar.y) = 470)
+    if(this->posStar.y > 450)
     {
         this->isActive = false;
     }
