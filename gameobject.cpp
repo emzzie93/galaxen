@@ -18,6 +18,18 @@ theShip::theShip()
     posShip.y = 400;
     posShip.w = 80;
     posShip.h = 90;
+    life = 3;
+    point = 0;
+}
+
+void theShip :: add_life()
+{
+    this->life++;
+}
+
+void theShip :: add_point(int i)
+{
+    this->point = this->point + i;
 }
 
 void theShip :: ship_movement()
@@ -30,19 +42,39 @@ if(keystate[SDL_SCANCODE_RIGHT])
     {
         posShip.x += 5;
     }
-if ((posShip.x + 30) > 640)
+if ((posShip.x + 10) > 640)
     {
         posShip.x = (640 - 30);
     }
 if((posShip.x - 10) < 0)
 {
-    posShip.x = 10;
+        posShip.x = 10;
 }
 if ((posShip.y + 30) > 480)
     {
         posShip.y = (480 - 30);
     }
 }
+
+void theShip :: collision(theHeart heart, theStar star)
+{
+    if((this->posShip.x<=(heart.posHeart.x+40) && (this->posShip.x + 40) >= heart.posHeart.x) && heart.posHeart.y>=this->posShip.y)
+        {
+            heart.isActive = false;
+            heart.posHeart.x = 0;
+            heart.posHeart.y = 0;
+            this->add_life();
+        }
+    if((this->posShip.x<=(star.posStar.x+40) && (this->posShip.x + 40) >= star.posStar.x) && star.posStar.y>=this->posShip.y)
+        {
+            star.isActive = false;
+            star.posStar.x = 0;
+            star.posStar.y = 0;
+            this->add_point(100);
+        }
+}
+
+
 
 //---------------------Stone-klassen----------------------//
 
@@ -58,7 +90,7 @@ void theStone::stone_movement()
     {
         if(arrayofStones[i].isActive == true)
         {
-            if(arrayofStones[i].posStone.x > 480)
+            if(arrayofStones[i].posStone.y > 480)
             {
                 arrayofStones[i].isActive = false;
             }
@@ -68,12 +100,6 @@ void theStone::stone_movement()
             }
         }
     }
-    //check collision
-
-//    for (int i=0;i<20;i++)
-//    {
-//        posStone.y = arrayofStones[i].y;
-//    }
 }
 
 void theStone::add_stone()
@@ -105,20 +131,23 @@ void theStone::getStone(int i)
 {
     if(arrayofStones[i].isActive == true)
     {
-    *this = arrayofStones[i];
+        *this = arrayofStones[i];
     }
 }
 
-void theStone::collision(int x,int y)
+void theStone::collision(theBullet name)
 {
     for(int i =0;i<20;i++)
     {
-        if(arrayofStones[i].posStone.x<=x && x<=(arrayofStones[i].posStone.x + 30) &&
-           arrayofStones[i].posStone.y<=y && y<= (arrayofStones[i].posStone.y+30))
+        if(arrayofStones[i].posStone.x<=name.posBullet.x && name.posBullet.x<=(arrayofStones[i].posStone.x + 30) &&
+           arrayofStones[i].posStone.y<=name.posBullet.y && name.posBullet.y<= (arrayofStones[i].posStone.y+30))
         {
             arrayofStones[i].isActive = false;
+            arrayofStones[i].posStone.x = 0;
+            arrayofStones[i].posStone.y = 0;
 
-            //std::cout << mystone.posStone.x << std::endl;
+            name.isActive = false;
+
         }
     }
 }
@@ -143,7 +172,7 @@ void theHeart::heart_movement()
 
 void theHeart::add_heart()
 {
-    if(rand() % 10 == 5)
+    if(rand() % 100 == 5)
     {
         if(this->isActive == false)
         {
@@ -179,7 +208,7 @@ void theStar::star_movement()
 
 void theStar::add_star()
 {
-    if(rand() % 10 == 5)
+    if(rand() % 100 == 5)
     {
         if(this->isActive == false)
         {
@@ -218,12 +247,6 @@ void theBullet::bullet_movement()
             }
         }
     }
-    //check collision
-
-//    for (int i=0;i<20;i++)
-//    {
-//        posStone.y = arrayofStones[i].y;
-//    }
 }
 
 
@@ -258,31 +281,4 @@ void theBullet::getBullet(int i)
        *this = arrayofBullet[i];
     }
 }
-
-//void theBullet::collision(theStone mystone)
-//{
-//    for(int i =0;i<20;i++)
-//    {
-//        if(mystone.posStone.x<arrayofBullet[i].x && arrayofBullet[i].x<(mystone.posStone.x+25) &&
-//           mystone.posStone.y<arrayofBullet[i].y && arrayofBullet[i].y<(mystone.posStone.y+25))
-//        {
-//            arrayofBullet[i].isActive = false;
-//                mystone.posStone.y = 0;
-//            mystone.isActive = false;
-//
-//            //std::cout << mystone.posStone.x << std::endl;
-//        }
-//    }
-//        for(int j=0;j<20;i++)
-//        {
-////            if((arrayofStones[j].x<arrayofBullet[i].x &&
-////                arrayofBullet[i].x<(arrayofStones[j].x+20)) &&
-////               (arrayofStones[j].y<arrayofBullet[i].y &&
-////                arrayofBullet[i].y<arrayofStones[j].y+20))
-////            {
-////                arrayofStones[j].isActive = false;
-////                arrayofBullet[i].isActive = false;
-////            }
-//        }
-//    }
 

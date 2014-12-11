@@ -9,13 +9,20 @@ extern SDL_Surface* Heart;
 extern SDL_Surface* Star;
 extern SDL_Surface* Bullet;
 
-class theShip
+
+
+class theBullet
 {
 public:
-    SDL_Rect posShip;
-    theShip();
 
-    void ship_movement();
+    theBullet();
+    SDL_Rect posBullet;
+    void bullet_movement();
+    void add_bullet(int x,int y);
+    void init_bullet();
+    void getBullet(int i);
+    bool isActive;
+
 };
 
 class theStone
@@ -27,7 +34,7 @@ public:
     void stone_movement();
     void add_stone();
     void init_stone();
-    void collision(int x, int y);
+    void collision(theBullet name);
     bool isActive;
 
 };
@@ -56,20 +63,20 @@ public:
     bool isActive;
 
 };
-
-class theBullet
+class theShip
 {
 public:
+    SDL_Rect posShip;
+    theShip();
+    void collision(theHeart heart,theStar star);
+    void add_life();
+    void add_point(int i);
 
-    theBullet();
-    SDL_Rect posBullet;
-    void bullet_movement();
-    void add_bullet(int x,int y);
-    void init_bullet();
-    void getBullet(int i);
-    bool isActive;
-    void collision(theStone mystone);
-
+    void ship_movement();
+private:
+    int life;
+    int point;
 };
+
 
 #endif // _GAMEOBJECT_H_

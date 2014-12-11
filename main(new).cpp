@@ -3,7 +3,6 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-
 #include "gameobject.h"
 
 using namespace std;
@@ -13,7 +12,6 @@ SDL_Texture* heart1 = nullptr;
 SDL_Texture* star1 = nullptr;
 SDL_Texture* bullet1 = nullptr;
 
-
 GameSetup World;
 
 void render1(SDL_Texture* texture,SDL_Rect* type)
@@ -21,25 +19,9 @@ void render1(SDL_Texture* texture,SDL_Rect* type)
     SDL_RenderCopy(World.GameRender, texture, NULL, type);
     SDL_RenderPresent(World.GameRender);
 }
-//SDL_Texture* createTexture(char name,const char nameOnFile)
-//{
-//SDL_Surface* Sf;
-//Sf = SDL_LoadBMP("nameOnFile");
-//	if (Sf == NULL)
-//	{
-//        std::cout << "Error in loading player." << SDL_GetError() << std::endl;
-//		SDL_Quit();
-//	}
-//SDL_Texture* name;
-//name = SDL_CreateTextureFromSurface(World.GameRender, Sf);
-//SDL_FreeSurface(Sf);
-//return name;
-//}
 
 int main(int, char **)
 {
-
-
 World.setup();
 World.LoadMedia();
 
@@ -100,10 +82,7 @@ bullet1 = SDL_CreateTextureFromSurface(World.GameRender, Bullet);
 SDL_FreeSurface(Bullet);
 
 
-
-//SDL_SetTextureAlphaMod(ship1, 125);
-//SDL_SetTextureBlendMode(ship1, SDL_BLENDMODE_ADD);
-//Our event structure
+    //Our event structure
     bool quit = false;
     SDL_Event Event;
     while (!quit)
@@ -131,7 +110,6 @@ SDL_FreeSurface(Bullet);
     for (int i = 0;i<20;i++)
     {
         myStone.getStone(i);
-        //myBullet.collision(myStone.loop1(i));
         render1(stone1,&myStone.posStone);
     }
 
@@ -140,11 +118,12 @@ SDL_FreeSurface(Bullet);
     for (int i = 0;i<20;i++)//ritar ut bullet
     {
         myBullet.getBullet(i);
-        myStone.collision(myBullet.posBullet.x, myBullet.posBullet.y);
+        myStone.collision(myBullet);
         render1(bullet1,&myBullet.posBullet);
     }
 
     myShip.ship_movement();//flyttar ship
+    myShip.collision(myHeart,myStar);
     render1(ship1,&myShip.posShip);//Ritar ut ship
 
     while (SDL_PollEvent(&Event))
