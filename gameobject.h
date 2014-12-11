@@ -5,9 +5,8 @@
 
 extern SDL_Surface* Ship;
 extern SDL_Surface* Stone;
-
-
-
+extern SDL_Surface* Heart;
+extern SDL_Surface* Star;
 
 class theShip
 {
@@ -15,7 +14,6 @@ public:
     SDL_Rect posShip;
     theShip();
     void ship_movement();
-    void show_ship(SDL_Surface* bakgrund,SDL_Surface* ship);
 
 private:
     int x;
@@ -25,7 +23,7 @@ private:
 
 class theStone
 {
-    public:
+public:
     theStone();
     SDL_Rect posStone;
     void stone_movement();
@@ -40,7 +38,34 @@ class theStone
 
 };
 
+class theHeart
+{
+public:
+    theHeart();
+    SDL_Rect posHeart;
+    void heart_movement();
+    void add_heart();
+    void init_heart();
+    bool isActive;
 
-//theStone arrayofStones[20];
+    private:
+    int x;
+    int y;
+};
+
+class theStar
+{
+public:
+    theStar();
+    SDL_Rect posStar;
+    void star_movement();
+    void add_star();
+    void init_star();
+    bool isActive;
+
+    private:
+    int x;
+    int y;
+};
 
 #endif // _GAMEOBJECT_H_
