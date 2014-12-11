@@ -4,11 +4,6 @@
 
 theStone arrayofStones[20];
 theBullet arrayofBullet[20];
-//SDL_Surface* Stone = NULL;
-//SDL_Surface* Ship = NULL;
-//SDL_Surface* Heart = NULL;
-//SDL_Surface* Star = NULL;
-//SDL_Surface* Bullet = NULL;
 
 const Uint8* keystate = SDL_GetKeyboardState(NULL);
 
@@ -94,8 +89,6 @@ void theShip :: collisionWstone(theStone* stone)
         }
 }
 
-
-
 //---------------------Stone-klassen----------------------//
 
 theStone::theStone()
@@ -155,18 +148,18 @@ void theStone::getStone(int i)
     }
 }
 
-void theStone::collision(theBullet name)
+void theStone::collision(theBullet* name)
 {
     for(int i =0;i<20;i++)
     {
-        if(arrayofStones[i].posStone.x<=name.posBullet.x && name.posBullet.x<=(arrayofStones[i].posStone.x + 30) &&
-           arrayofStones[i].posStone.y<=name.posBullet.y && name.posBullet.y<= (arrayofStones[i].posStone.y+30))
+        if(arrayofStones[i].posStone.x<=name->posBullet.x && name->posBullet.x<=(arrayofStones[i].posStone.x + 30) &&
+           arrayofStones[i].posStone.y<=name->posBullet.y && name->posBullet.y<= (arrayofStones[i].posStone.y+30))
         {
             arrayofStones[i].isActive = false;
             arrayofStones[i].posStone.x = 0;
             arrayofStones[i].posStone.y = 0;
 
-            name.isActive = false;
+            name->isActive = false;
 
         }
     }
@@ -188,9 +181,11 @@ void theHeart::heart_movement()
     {
         posHeart.y += 2;
     }
-    if(this->posHeart.y = 470)
+    if(this->posHeart.y > 450)
     {
         this->isActive = false;
+        this->posHeart.x = 0;
+        this->posHeart.y = 0;
     }
 }
 
@@ -200,7 +195,7 @@ void theHeart::add_heart()
     {
         if(this->isActive == false)
         {
-        posHeart.x = rand() % 630;
+        posHeart.x = rand() % 450;
         posHeart.y = 0;
         this->isActive = true;
         }
@@ -228,9 +223,11 @@ void theStar::star_movement()
     {
         posStar.y += 2;
     }
-    if(this->posStar.y > 450)
+    if(this->posStar.y > 400)
     {
         this->isActive = false;
+        this->posStar.x = 0;
+        this->posStar.y = 0;
     }
 }
 

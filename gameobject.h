@@ -35,7 +35,7 @@ public:
     void stone_movement();
     void add_stone();
     void init_stone();
-    void collision(theBullet name);
+    void collision(theBullet* name);
     bool isActive;
 
 };
@@ -75,7 +75,7 @@ public:
     void add_point(int i);
     void delete_life();
     void ship_movement();
-private:
+
     int life;
     int point;
 };

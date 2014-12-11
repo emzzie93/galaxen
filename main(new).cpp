@@ -19,101 +19,110 @@ void render1(SDL_Texture* texture,SDL_Rect* type)
 
 int main(int, char **)
 {
-World.setup();
-World.LoadMedia();
+//Initierar World och laddar upp bakgrund
+    World.setup();
+    World.LoadMedia();
 
-theShip myShip;
-theStone myStone;
-theHeart myHeart;
-theStar myStar;
-theBullet myBullet;
 
-myStone.init_stone();
-myHeart.init_heart();
-myStar.init_star();
-myBullet.init_bullet();
+//Create  stuff
+    theShip myShip;
+    theStone myStone;
+    theHeart myHeart;
+    theStar myStar;
+    theBullet myBullet;
 
-Objects.CreateObjects(World);
+//Initierar stuff
+    myStone.init_stone();
+    myHeart.init_heart();
+    myStar.init_star();
+    myBullet.init_bullet();
 
-    //Our event structure
+    Objects.CreateObjects(World);
+
+//Skapar en bool och en Event struktur
     bool quit = false;
     SDL_Event Event;
+
+//loop som testar om användaren vill avsluta
     while (!quit)
     {
-    //render the background
-    World.render();//ritar ut bakgrund
-    myShip.collision(&myHeart,&myStar);
+        //ritar ut bakgrund
+        World.render();
 
-    myHeart.add_heart();
-    myHeart.heart_movement();
-    if(myHeart.isActive==true)
-    {
-    render1(Objects.heart1,&myHeart.posHeart);
-    }
-
-    myStar.add_star();
-    myStar.star_movement();
-    if(myStar.isActive==true)
-    {
-    render1(Objects.star1,&myStar.posStar);
-    }
+        //Flyttar skepp och kollar kollision med hjärta eller stjärna
+        myShip.ship_movement();
+        myShip.collision(&myHeart,&myStar);
+        render1(Objects.ship1,&myShip.posShip);
 
 
-    myStone.add_stone();//lägger till stenar
-    myStone.stone_movement();
-    for (int i = 0;i<20;i++)
-    {
-        myStone.getStone(i);
-        myShip.collisionWstone(&myStone);
-        render1(Objects.stone1,&myStone.posStone);
-    }
+        //lägger till hjärta, flyttar hjärta, målar upp hjärta
+        myHeart.add_heart();
+        myHeart.heart_movement();
+        if(myHeart.isActive==true)
+        {
+            render1(Objects.heart1,&myHeart.posHeart);
+        }
 
-     for (int i = 0;i<20;i++)
-    {
-        myStone.getStone(i);
-        myShip.collisionWstone(&myStone);
-    }
+        //lägger till stjärna, flyttar stjärna, målar upp stjärna
+        myStar.add_star();
+        myStar.star_movement();
+        if(myStar.isActive==true)
+        {
+            render1(Objects.star1,&myStar.posStar);
+        }
+
+        //lägger till sten, flyttar sten, målar upp sten, kollision skepp/sten
+        myStone.add_stone();
+        myStone.stone_movement();
+        for (int i = 0; i<20; i++)
+        {
+            myStone.getStone(i);
+            myShip.collisionWstone(&myStone);
+            render1(Objects.stone1,&myStone.posStone);
+        }
+
+        //flyttar skott, målar upp skott,kollision skott/sten
+        myBullet.bullet_movement();
+        for (int i = 0; i<20; i++) //ritar ut bullet
+        {
+            myBullet.getBullet(i);
+            myStone.collision(&myBullet);
+            render1(Objects.bullet1,&myBullet.posBullet);
+        }
 
 
-    myBullet.bullet_movement();
-    for (int i = 0;i<20;i++)//ritar ut bullet
-    {
-        myBullet.getBullet(i);
-        myStone.collision(myBullet);
-        render1(Objects.bullet1,&myBullet.posBullet);
-    }
 
-    myShip.ship_movement();//flyttar ship
-
-    render1(Objects.ship1,&myShip.posShip);//Ritar ut ship
-
-    while (SDL_PollEvent(&Event))
+        while (SDL_PollEvent(&Event))
         {
             switch( Event.type )
             {
             /* Look for a keypress */
-        case SDL_QUIT:
-            quit = true;
-            break;
+            case SDL_QUIT:
+                quit = true;
+                break;
 
-        case SDL_KEYDOWN:
-                /* Check the SDLKey values and move change the coords */
-            switch( Event.key.keysym.sym ){
-                    case SDLK_SPACE:
+            case SDL_KEYDOWN:
+                switch( Event.key.keysym.sym )
+                {
+                case SDLK_SPACE:
+                    //Skapar skott vid mellanslag
+                    myBullet.add_bullet(myShip.posShip.x,myShip.posShip.y);
 
-                        myBullet.add_bullet(myShip.posShip.x,myShip.posShip.y);
-
-                        break;
-            }
+                    break;
+                }
             }
         }
-    SDL_Delay(20);
+        SDL_Delay(20);
+        if(myShip.life <= 0)
+        {
+            quit = true;
+        }
 
     }
 
-World.close();
+    World.close();
 
-return 0;
+    return 0;
 }
 
 

@@ -342,12 +342,15 @@
 
 1418048112 source:c:\users\emma\desktop\galaxen\world.cpp
 
-1418215541 source:c:\users\hugo\desktop\galaxen\gameobject.cpp
+1418334239 source:c:\users\hugo\desktop\galaxen\gameobject.cpp
+	<random>
 	"gameobject.h"
+	"ObjectSetup.h"
 
-1418215541 c:\users\hugo\desktop\galaxen\gameobject.h
+1418335262 c:\users\hugo\desktop\galaxen\gameobject.h
 	<SDL.h>
 	"setup.h"
+	"ObjectSetup.h"
 
 1394937196 c:\users\hugo\documents\program\lib for codeblocks\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -682,18 +685,19 @@
 	"begin_code.h"
 	"close_code.h"
 
-1418211240 c:\users\hugo\desktop\galaxen\setup.h
+1418334024 c:\users\hugo\desktop\galaxen\setup.h
 	<iostream>
 	<string>
 	<SDL.h>
 
-1418217616 source:c:\users\hugo\desktop\galaxen\main(new).cpp
+1418335280 source:c:\users\hugo\desktop\galaxen\main(new).cpp
 	<iostream>
 	<string>
 	<SDL.h>
+	<SDL_image.h>
 	"gameobject.h"
 
-1418216720 source:c:\users\hugo\desktop\galaxen\setup.cpp
+1418297459 source:c:\users\hugo\desktop\galaxen\setup.cpp
 	"setup.h"
 
 1418333295 c:\users\emma\desktop\galaxen\setup.h
@@ -712,6 +716,17 @@
 	"gameobject.h"
 
 1418333561 c:\users\emma\desktop\galaxen\objectsetup.h
+	<iostream>
+	<string>
+	<SDL.h>
+	<SDL_image.h>
+	"setup.h"
+
+1418334024 source:c:\users\hugo\desktop\galaxen\objectsetup.cpp
+	"ObjectSetup.h"
+	"ObjectSetup.h"
+
+1418334024 c:\users\hugo\desktop\galaxen\objectsetup.h
 	<iostream>
 	<string>
 	<SDL.h>
