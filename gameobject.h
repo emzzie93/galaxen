@@ -68,10 +68,11 @@ class theShip
 public:
     SDL_Rect posShip;
     theShip();
-    void collision(theHeart heart,theStar star);
+    void collision(theHeart* heart,theStar* star);
+    void collisionWstone(theStone* stone);
     void add_life();
     void add_point(int i);
-
+    void delete_life();
     void ship_movement();
 private:
     int life;

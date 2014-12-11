@@ -27,6 +27,11 @@ void theShip :: add_life()
     this->life++;
 }
 
+void theShip :: delete_life()
+{
+    this->life--;
+}
+
 void theShip :: add_point(int i)
 {
     this->point = this->point + i;
@@ -56,21 +61,34 @@ if ((posShip.y + 30) > 480)
     }
 }
 
-void theShip :: collision(theHeart heart, theStar star)
+void theShip :: collision(theHeart* heart, theStar* star)
 {
-    if((this->posShip.x<=(heart.posHeart.x+40) && (this->posShip.x + 40) >= heart.posHeart.x) && heart.posHeart.y>=this->posShip.y)
+    if((this->posShip.x<=(heart->posHeart.x+40) && (this->posShip.x + 40) >= heart->posHeart.x) && heart->posHeart.y>=this->posShip.y)
         {
-            heart.isActive = false;
-            heart.posHeart.x = 0;
-            heart.posHeart.y = 0;
+            heart->isActive = false;
+            heart->posHeart.x = 0;
+            heart->posHeart.y = 0;
             this->add_life();
+            std ::cout<<"liv: "<<this->life<< std::endl;
         }
-    if((this->posShip.x<=(star.posStar.x+40) && (this->posShip.x + 40) >= star.posStar.x) && star.posStar.y>=this->posShip.y)
+    if((this->posShip.x<=(star->posStar.x+40) && (this->posShip.x + 40) >= star->posStar.x) && star->posStar.y>=this->posShip.y)
         {
-            star.isActive = false;
-            star.posStar.x = 0;
-            star.posStar.y = 0;
+            star->isActive = false;
+            star->posStar.x = 0;
+            star->posStar.y = 0;
             this->add_point(100);
+            std::cout<<"Points: "<<this->point<< std::endl;
+        }
+}
+void theShip :: collisionWstone(theStone* stone)
+{
+    if((this->posShip.x<=(stone->posStone.x+40) && (this->posShip.x + 40) >= stone->posStone.x) && stone->posStone.y>=this->posShip.y)
+        {
+            stone->isActive = false;
+            stone->posStone.x = 0;
+            stone->posStone.y = 0;
+            this->delete_life();
+            std ::cout<<"liv: "<<this->life<< std::endl;
         }
 }
 
@@ -168,6 +186,10 @@ void theHeart::heart_movement()
     {
         posHeart.y += 2;
     }
+    if(this->posHeart.y = 470)
+    {
+        this->isActive = false;
+    }
 }
 
 void theHeart::add_heart()
@@ -203,6 +225,10 @@ void theStar::star_movement()
     if(this->isActive == true)
     {
         posStar.y += 2;
+    }
+    if((this->posStar.y) = 470)
+    {
+        this->isActive = false;
     }
 }
 

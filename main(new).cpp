@@ -89,6 +89,7 @@ SDL_FreeSurface(Bullet);
     {
     //render the background
     World.render();//ritar ut bakgrund
+    myShip.collision(&myHeart,&myStar);
 
     myHeart.add_heart();
     myHeart.heart_movement();
@@ -110,6 +111,7 @@ SDL_FreeSurface(Bullet);
     for (int i = 0;i<20;i++)
     {
         myStone.getStone(i);
+        myShip.collisionWstone(&myStone);
         render1(stone1,&myStone.posStone);
     }
 
@@ -123,7 +125,7 @@ SDL_FreeSurface(Bullet);
     }
 
     myShip.ship_movement();//flyttar ship
-    myShip.collision(myHeart,myStar);
+
     render1(ship1,&myShip.posShip);//Ritar ut ship
 
     while (SDL_PollEvent(&Event))
