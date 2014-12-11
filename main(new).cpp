@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <SDL.h>
+#include <SDL_image.h>
 
 
 #include "gameobject.h"
@@ -52,7 +53,7 @@ myStone.init_stone();
 myHeart.init_heart();
 myStar.init_star();
 
-Star = SDL_LoadBMP("star.bmp");
+Star = IMG_Load("star.png");
 	if (Star == NULL)
 	{
         std::cout << "Error in loading Star." << SDL_GetError() << std::endl;
@@ -61,7 +62,7 @@ Star = SDL_LoadBMP("star.bmp");
 star1 = SDL_CreateTextureFromSurface(World.GameRender, Star);
 SDL_FreeSurface(Star);
 
- Heart = SDL_LoadBMP("heart.bmp");
+ Heart = IMG_Load("heart.png");
 	if (Heart == NULL)
 	{
         std::cout << "Error in loading player." << SDL_GetError() << std::endl;
@@ -70,7 +71,7 @@ SDL_FreeSurface(Star);
 heart1 = SDL_CreateTextureFromSurface(World.GameRender, Heart);
 SDL_FreeSurface(Heart);
 
- Ship = SDL_LoadBMP("smallship.bmp");
+ Ship = IMG_Load("fighter.png");
 	if (Ship == NULL)
 	{
         std::cout << "Error in loading player." << SDL_GetError() << std::endl;
@@ -79,7 +80,7 @@ SDL_FreeSurface(Heart);
 ship1 = SDL_CreateTextureFromSurface(World.GameRender, Ship);
 SDL_FreeSurface(Ship);
 
-Stone = SDL_LoadBMP("stone.bmp");
+Stone = IMG_Load("stone.png");
 	if (Ship == NULL)
 	{
         std::cout << "Error in loading player." << SDL_GetError() << std::endl;
@@ -88,7 +89,7 @@ Stone = SDL_LoadBMP("stone.bmp");
 stone1 = SDL_CreateTextureFromSurface(World.GameRender, Stone);
 SDL_FreeSurface(Stone);
 
-Bullet = SDL_LoadBMP("bullet.bmp");
+Bullet = IMG_Load("bullet.png");
 	if (Bullet == NULL)
 	{
         std::cout << "Error in loading player." << SDL_GetError() << std::endl;
@@ -148,7 +149,7 @@ SDL_FreeSurface(Bullet);
                 /* Check the SDLKey values and move change the coords */
             switch( Event.key.keysym.sym ){
                     case SDLK_SPACE:
-                        myBullet.add_bullet();
+                        myBullet.add_bullet(myShip.posShip.x);
                         break;
             }
             }

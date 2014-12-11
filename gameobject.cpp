@@ -15,9 +15,9 @@ const Uint8* keystate = SDL_GetKeyboardState(NULL);
 theShip::theShip()
 {
     posShip.x = 180;
-    posShip.y = 480;
-    posShip.w = 20;
-    posShip.h = 30;
+    posShip.y = 400;
+    posShip.w = 80;
+    posShip.h = 90;
 }
 
 void theShip :: ship_movement()
@@ -116,8 +116,8 @@ SDL_Rect theStone::loop(int i)
 theHeart::theHeart()
 {
     posHeart.y = 0;
-    posHeart.w = 30;
-    posHeart.h = 30;
+    posHeart.w = 15;
+    posHeart.h = 15;
 }
 
 void theHeart::heart_movement()
@@ -131,7 +131,7 @@ void theHeart::heart_movement()
 
 void theHeart::add_heart()
 {
-    if(rand() % 1000 == 5)
+    if(rand() % 10 == 5)
     {
         if(this->isActive == false)
         {
@@ -152,8 +152,8 @@ void theHeart::init_heart()
 theStar::theStar()
 {
     posStar.y = 0;
-    posStar.w = 30;
-    posStar.h = 30;
+    posStar.w = 20;
+    posStar.h = 20;
 }
 
 void theStar::star_movement()
@@ -167,7 +167,7 @@ void theStar::star_movement()
 
 void theStar::add_star()
 {
-    if(rand() % 1000 == 5)
+    if(rand() % 10 == 5)
     {
         if(this->isActive == false)
         {
@@ -187,8 +187,8 @@ void theStar::init_star()
 
 theBullet::theBullet()
 {
-    posBullet.w = 2;
-    posBullet.h = 2;
+    posBullet.w = 13;
+    posBullet.h = 13;
 }
 
 void theBullet::bullet_movement()
@@ -214,13 +214,13 @@ void theBullet::bullet_movement()
 //    }
 }
 
-void theBullet::add_bullet()
+void theBullet::add_bullet(int x_position)
 {
 for (int i=0; i<20 ;i++)
         {
             if(arrayofBullet[i].isActive == false)
             {
-                arrayofBullet[i].x = theShip::posShip.x;
+                arrayofBullet[i].x = x_position;
                 arrayofBullet[i].y = 480;
                 arrayofBullet[i].isActive = true;
                 break;
