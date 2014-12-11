@@ -130,7 +130,7 @@ SDL_FreeSurface(Bullet);
     myStone.stone_movement();
     for (int i = 0;i<20;i++)
     {
-        myStone.loop(i);
+        myStone.getStone(i);
         //myBullet.collision(myStone.loop1(i));
         render1(stone1,&myStone.posStone);
     }
@@ -139,8 +139,8 @@ SDL_FreeSurface(Bullet);
     myBullet.bullet_movement();
     for (int i = 0;i<20;i++)//ritar ut bullet
     {
-        myBullet.loop(i);
-
+        myBullet.getBullet(i);
+        myStone.collision(myBullet.posBullet.x, myBullet.posBullet.y);
         render1(bullet1,&myBullet.posBullet);
     }
 

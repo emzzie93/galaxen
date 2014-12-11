@@ -16,11 +16,6 @@ public:
     theShip();
 
     void ship_movement();
-
-    private:
-    int x;
-    int y;
-
 };
 
 class theStone
@@ -28,14 +23,13 @@ class theStone
 public:
     theStone();
     SDL_Rect posStone;
-    void loop(int i);
+    void getStone(int i);
     void stone_movement();
     void add_stone();
     void init_stone();
+    void collision(int x, int y);
     bool isActive;
 
-    int x;
-    int y;
 };
 
 class theHeart
@@ -47,10 +41,6 @@ public:
     void add_heart();
     void init_heart();
     bool isActive;
-
-    private:
-    int x;
-    int y;
 
 };
 
@@ -65,10 +55,6 @@ public:
     void init_star();
     bool isActive;
 
-    private:
-    int x;
-    int y;
-
 };
 
 class theBullet
@@ -80,13 +66,9 @@ public:
     void bullet_movement();
     void add_bullet(int x,int y);
     void init_bullet();
-    void loop(int i);
+    void getBullet(int i);
     bool isActive;
     void collision(theStone mystone);
-
-    private:
-    int x;
-    int y;
 
 };
 

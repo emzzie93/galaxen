@@ -58,13 +58,13 @@ void theStone::stone_movement()
     {
         if(arrayofStones[i].isActive == true)
         {
-            if(arrayofStones[i].y > 480)
+            if(arrayofStones[i].posStone.x > 480)
             {
                 arrayofStones[i].isActive = false;
             }
             else
             {
-                arrayofStones[i].y += 2;
+                arrayofStones[i].posStone.y += 2;
             }
         }
     }
@@ -84,8 +84,8 @@ void theStone::add_stone()
         {
             if(arrayofStones[i].isActive == false)
             {
-                arrayofStones[i].x = rand() % 630;
-                arrayofStones[i].y = 0;
+                arrayofStones[i].posStone.x = rand() % 630;
+                arrayofStones[i].posStone.y = 0;
                 arrayofStones[i].isActive = true;
                 break;
             }
@@ -101,14 +101,26 @@ void theStone::init_stone()
     }
 }
 
-void theStone::loop(int i)
+void theStone::getStone(int i)
 {
     if(arrayofStones[i].isActive == true)
     {
-    posStone.y = arrayofStones[i].y;
-    posStone.x = arrayofStones[i].x;
+    *this = arrayofStones[i];
     }
+}
 
+void theStone::collision(int x,int y)
+{
+    for(int i =0;i<20;i++)
+    {
+        if(arrayofStones[i].posStone.x<=x && x<=(arrayofStones[i].posStone.x + 30) &&
+           arrayofStones[i].posStone.y<=y && y<= (arrayofStones[i].posStone.y+30))
+        {
+            arrayofStones[i].isActive = false;
+
+            //std::cout << mystone.posStone.x << std::endl;
+        }
+    }
 }
 
 //---------------------Heart-klassen----------------------//
@@ -197,12 +209,12 @@ void theBullet::bullet_movement()
     {
         if(arrayofBullet[i].isActive == true)
         {
-            if(arrayofBullet[i].y < 0)
+            if(arrayofBullet[i].posBullet.y < 10)
             {
                 arrayofBullet[i].isActive = false;
             }else
             {
-                arrayofBullet[i].y -= 2;
+                arrayofBullet[i].posBullet.y -= 2;
             }
         }
     }
@@ -223,8 +235,8 @@ for (int i=0; i<20 ;i++)
             if(arrayofBullet[i].isActive == false)
             {
 
-                arrayofBullet[i].x = x+9;
-                arrayofBullet[i].y = y;
+                arrayofBullet[i].posBullet.x = x+33;
+                arrayofBullet[i].posBullet.y = y+30;
                 arrayofBullet[i].isActive = true;
                 break;
             }
@@ -239,31 +251,28 @@ void theBullet::init_bullet()
     }
 }
 
-void theBullet::loop(int i)
+void theBullet::getBullet(int i)
 {
     if(arrayofBullet[i].isActive == true)
     {
-    posBullet.y = arrayofBullet[i].y;
-    posBullet.x = arrayofBullet[i].x;
+       *this = arrayofBullet[i];
     }
-
-
 }
 
-void theBullet::collision(theStone mystone)
-{
-    for(int i =0;i<20;i++)
-    {
-        if(mystone.posStone.x<arrayofBullet[i].x && arrayofBullet[i].x<(mystone.posStone.x+25) &&
-           mystone.posStone.y<arrayofBullet[i].y && arrayofBullet[i].y<(mystone.posStone.y+25))
-        {
-            arrayofBullet[i].isActive = false;
-                mystone.posStone.y = 0;
-            mystone.isActive = false;
-
-            //std::cout << mystone.posStone.x << std::endl;
-        }
-    }
+//void theBullet::collision(theStone mystone)
+//{
+//    for(int i =0;i<20;i++)
+//    {
+//        if(mystone.posStone.x<arrayofBullet[i].x && arrayofBullet[i].x<(mystone.posStone.x+25) &&
+//           mystone.posStone.y<arrayofBullet[i].y && arrayofBullet[i].y<(mystone.posStone.y+25))
+//        {
+//            arrayofBullet[i].isActive = false;
+//                mystone.posStone.y = 0;
+//            mystone.isActive = false;
+//
+//            //std::cout << mystone.posStone.x << std::endl;
+//        }
+//    }
 //        for(int j=0;j<20;i++)
 //        {
 ////            if((arrayofStones[j].x<arrayofBullet[i].x &&
@@ -276,4 +285,4 @@ void theBullet::collision(theStone mystone)
 ////            }
 //        }
 //    }
-}
+
