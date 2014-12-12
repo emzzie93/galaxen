@@ -13,8 +13,8 @@ theShip::theShip()
 {
     posShip.x = 180;
     posShip.y = 400;
-    posShip.w = 80;
-    posShip.h = 90;
+    posShip.w = 50;
+    posShip.h = 60;
     life = 3;
     point = 0;
 }
@@ -454,7 +454,7 @@ void theBullet::bullet_movement()
 }
 
 
-void theBullet::add_bullet(int x,int y)
+void theBullet::add_bullet(int x,int y, int w)
 
 {
 for (int i=0; i<20 ;i++)
@@ -462,8 +462,8 @@ for (int i=0; i<20 ;i++)
             if(arrayofBullet[i].isActive == false)
             {
 
-                arrayofBullet[i].posBullet.x = x+33;
-                arrayofBullet[i].posBullet.y = y+30;
+                arrayofBullet[i].posBullet.x = x+(w/2-6);
+                arrayofBullet[i].posBullet.y = y;
                 arrayofBullet[i].isActive = true;
                 break;
             }
