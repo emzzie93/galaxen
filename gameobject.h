@@ -95,6 +95,7 @@ public:
     void add_point(int i);
     void delete_life();
     void ship_movement();
+    void level_up();
 
     int life;
     int point;

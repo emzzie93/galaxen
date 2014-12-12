@@ -10,7 +10,8 @@ using namespace std;
 
 GameSetup World;
 ObjectSetup Objects;
-int time = 0;
+int time_point = 0;
+int time_level = 0;
 
 void render1(SDL_Texture* texture,SDL_Rect* type)
 {
@@ -136,11 +137,17 @@ int main(int, char **)
             quit = true;
         }
 
-        time++;
-        if(time == 100)
+        time_level++;
+        if(time_level == 5000 || time_level == 10000)
+        {
+            myShip.level_up();
+        }
+
+        time_point++;
+        if(time_point == 100)
         {
             myShip.add_point(1);
-            time = 0;
+            time_point = 0;
         }
 
     }

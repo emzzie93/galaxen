@@ -4,6 +4,7 @@
 
 theStone arrayofStones[20];
 theBullet arrayofBullet[20];
+int level=1;
 
 const Uint8* keystate = SDL_GetKeyboardState(NULL);
 
@@ -71,8 +72,11 @@ theStone::theStone()
 
 void theStone::movement()
 {
+    if(level == 1)
+    {
     for(int i=0; i<20; i++)
     {
+
         if(arrayofStones[i].isActive == true)
         {
             if(arrayofStones[i].position.y > 480)
@@ -113,6 +117,103 @@ void theStone::movement()
             }
         }
     }
+    }
+
+    if(level == 2)
+    {
+    for(int i=0; i<20; i++)
+    {
+
+        if(arrayofStones[i].isActive == true)
+        {
+            if(arrayofStones[i].position.y > 480)
+            {
+                arrayofStones[i].isActive = false;
+            }
+            else if (arrayofStones[i].move_type == 1)
+            {
+                arrayofStones[i].position.y += 3;
+            }
+            else if (arrayofStones[i].move_type == 2)
+            {
+                if(arrayofStones[i].position.x < 0)
+                {
+                    arrayofStones[i].position.y += 2;
+                    arrayofStones[i].position.x += 3;
+                    arrayofStones[i].move_type = 3;
+                }
+                else
+                {
+                    arrayofStones[i].position.y += 2;
+                    arrayofStones[i].position.x -= 3;
+                }
+            }
+            else if(arrayofStones[i].move_type == 3)
+            {
+                if(arrayofStones[i].position.x + arrayofStones[i].position.w > 640)
+                {
+                    arrayofStones[i].position.y += 2;
+                    arrayofStones[i].position.x -= 3;
+                    arrayofStones[i].move_type = 2;
+                }
+                else
+                {
+                    arrayofStones[i].position.y += 2;
+                    arrayofStones[i].position.x += 3;
+                }
+            }
+        }
+    }
+    }
+
+    if(level == 3)
+    {
+    for(int i=0; i<20; i++)
+    {
+
+        if(arrayofStones[i].isActive == true)
+        {
+            if(arrayofStones[i].position.y > 480)
+            {
+                arrayofStones[i].isActive = false;
+            }
+            else if (arrayofStones[i].move_type == 1)
+            {
+                arrayofStones[i].position.y += 4;
+            }
+            else if (arrayofStones[i].move_type == 2)
+            {
+                if(arrayofStones[i].position.x < 0)
+                {
+                    arrayofStones[i].position.y += 3;
+                    arrayofStones[i].position.x += 4;
+                    arrayofStones[i].move_type = 3;
+                }
+                else
+                {
+                    arrayofStones[i].position.y += 3;
+                    arrayofStones[i].position.x -= 4;
+                }
+            }
+            else if(arrayofStones[i].move_type == 3)
+            {
+                if(arrayofStones[i].position.x + arrayofStones[i].position.w > 640)
+                {
+                    arrayofStones[i].position.y += 3;
+                    arrayofStones[i].position.x -= 4;
+                    arrayofStones[i].move_type = 2;
+                }
+                else
+                {
+                    arrayofStones[i].position.y += 3;
+                    arrayofStones[i].position.x += 4;
+                }
+            }
+        }
+    }
+    }
+
+
 }
 
 void theStone::add()
@@ -404,4 +505,9 @@ void theShip :: collisionWstone()
             std ::cout<<"Liv: "<<this->life<< std::endl;
         }
     }
+}
+
+void theShip::level_up()
+{
+    level++;
 }
