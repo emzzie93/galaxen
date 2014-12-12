@@ -60,7 +60,10 @@ if ((posShip.y + 30) > 480)
 
 void theShip :: collision(theHeart* heart, theStar* star)
 {
-    if((this->posShip.x<=(heart->posHeart.x+heart->posHeart.w) && (this->posShip.x +this->posShip.w) >= heart->posHeart.x) && heart->posHeart.y==this->posShip.y)
+    if((this->posShip.x<=(heart->posHeart.x+heart->posHeart.w) &&
+        (this->posShip.x +this->posShip.w) >= heart->posHeart.x) &&
+       (this->posShip.y<=(heart->posHeart.y+heart->posHeart.h) &&
+        (this->posShip.y +this->posShip.h) >= heart->posHeart.y))
         {
             heart->isActive = false;
             heart->posHeart.x = 0;
@@ -68,7 +71,10 @@ void theShip :: collision(theHeart* heart, theStar* star)
             this->add_life();
             std ::cout<<"liv: "<<this->life<< std::endl;
         }
-    if((this->posShip.x<=(star->posStar.x+star->posStar.w) && (this->posShip.x + this->posShip.w) >= star->posStar.x) && star->posStar.y==this->posShip.y)
+    if((this->posShip.x<=(star->posStar.x+star->posStar.w) &&
+        (this->posShip.x + this->posShip.w) >= star->posStar.x) &&
+       this->posShip.y<=(star->posStar.y+star->posStar.h) &&
+        (this->posShip.y + this->posShip.h) >= star->posStar.y)
         {
             star->isActive = false;
             star->posStar.x = 0;
@@ -81,7 +87,10 @@ void theShip :: collisionWstone()
 {
     for(int i=0;i<20;i++)
     {
-    if((this->posShip.x<=(arrayofStones[i].posStone.x+arrayofStones[i].posStone.w) && (this->posShip.x + this->posShip.w) >= arrayofStones[i].posStone.x) && arrayofStones[i].posStone.y == this->posShip.y)
+    if((this->posShip.x<=(arrayofStones[i].posStone.x+arrayofStones[i].posStone.w) &&
+        (this->posShip.x + this->posShip.w) >= arrayofStones[i].posStone.x) &&
+       (this->posShip.y<=(arrayofStones[i].posStone.y+arrayofStones[i].posStone.h) &&
+        (this->posShip.y + this->posShip.h) >= arrayofStones[i].posStone.y))
         {
             arrayofStones[i].isActive = false;
             arrayofStones[i].posStone.x = 0;
