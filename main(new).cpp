@@ -10,6 +10,7 @@ using namespace std;
 
 GameSetup World;
 ObjectSetup Objects;
+int time = 0;
 
 void render1(SDL_Texture* texture,SDL_Rect* type)
 {
@@ -134,6 +135,13 @@ int main(int, char **)
         if(myShip.life <= 0)
         {
             quit = true;
+        }
+
+        time++;
+        if(time == 100)
+        {
+            myShip.add_point(1);
+            time = 0;
         }
 
     }
