@@ -128,7 +128,7 @@ void theStone::add_stone()
 {
     if(rand() % 45 == 5)
     {
-    int t = rand() % 100;
+    int t = rand() % 120;
     if(t<=60)
     {
 
@@ -215,9 +215,20 @@ void theStone::collision()
         if(arrayofStones[i].posStone.x<=arrayofBullet[j].posBullet.x && arrayofBullet[j].posBullet.x<=(arrayofStones[i].posStone.x + arrayofStones[i].posStone.w) &&
            arrayofStones[i].posStone.y<=arrayofBullet[j].posBullet.y && arrayofBullet[j].posBullet.y<= (arrayofStones[i].posStone.y+arrayofStones[i].posStone.h))
         {
+            if(arrayofStones[i].type == 1)
+            {
             arrayofStones[i].isActive = false;
             arrayofStones[i].posStone.x = 0;
             arrayofStones[i].posStone.y = 0;
+            }
+            else if (arrayofStones[i].type == 2)
+            {
+                arrayofStones[i].type = 1;
+            }
+            else if (arrayofStones[i].type == 3)
+                {
+                    arrayofStones[i].type = 2;
+                }
 
             arrayofBullet[j].isActive = false;
             arrayofBullet[j].posBullet.x = 0;

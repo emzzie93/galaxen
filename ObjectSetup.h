@@ -10,6 +10,8 @@ class ObjectSetup
 public:
 SDL_Texture* ship1 = nullptr;
 SDL_Texture* stone1 = nullptr;
+SDL_Texture* stone2 = nullptr;
+SDL_Texture* stone3 = nullptr;
 SDL_Texture* heart1 = nullptr;
 SDL_Texture* star1 = nullptr;
 SDL_Texture* bullet1 = nullptr;

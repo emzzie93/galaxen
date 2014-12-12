@@ -37,7 +37,7 @@ SDL_FreeSurface(Heart);
 ship1 = SDL_CreateTextureFromSurface(World.GameRender, Ship);
 SDL_FreeSurface(Ship);
 
-Stone = IMG_Load("stone3.png");
+Stone = IMG_Load("stone.png");
 	if (Ship == NULL)
 	{
         std::cout << "Error in loading player." << SDL_GetError() << std::endl;

@@ -88,7 +88,7 @@ int main(int, char **)
                 {
                     render1(Objects.stone2,&myStone.posStone);
                 }
-                else
+                else if(myStone.type == 3)
                 {
                     render1(Objects.stone3,&myStone.posStone);
                 }
