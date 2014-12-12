@@ -124,7 +124,7 @@ int main(int, char **)
                 {
                 case SDLK_SPACE:
                     //Skapar skott vid mellanslag
-                    myBullet.add_bullet(myShip.posShip.x,myShip.posShip.y);
+                    myBullet.add_bullet(myShip.posShip.x,myShip.posShip.y,myShip.posShip.w);
 
                     break;
                 }
