@@ -60,7 +60,7 @@ if ((posShip.y + 30) > 480)
 
 void theShip :: collision(theHeart* heart, theStar* star)
 {
-    if((this->posShip.x<=(heart->posHeart.x+40) && (this->posShip.x + 40) >= heart->posHeart.x) && heart->posHeart.y>=this->posShip.y)
+    if((this->posShip.x<=(heart->posHeart.x+40) && (this->posShip.x +40) >= heart->posHeart.x) && heart->posHeart.y==this->posShip.y)
         {
             heart->isActive = false;
             heart->posHeart.x = 0;
@@ -68,7 +68,7 @@ void theShip :: collision(theHeart* heart, theStar* star)
             this->add_life();
             std ::cout<<"liv: "<<this->life<< std::endl;
         }
-    if((this->posShip.x<=(star->posStar.x+40) && (this->posShip.x + 40) >= star->posStar.x) && star->posStar.y>=this->posShip.y)
+    if((this->posShip.x<=(star->posStar.x+40) && (this->posShip.x + 40) >= star->posStar.x) && star->posStar.y==this->posShip.y)
         {
             star->isActive = false;
             star->posStar.x = 0;
@@ -77,16 +77,20 @@ void theShip :: collision(theHeart* heart, theStar* star)
             std::cout<<"Points: "<<this->point<< std::endl;
         }
 }
-void theShip :: collisionWstone(theStone* stone)
+void theShip :: collisionWstone()
 {
-    if((this->posShip.x<=(stone->posStone.x+40) && (this->posShip.x + 40) >= stone->posStone.x) && stone->posStone.y == this->posShip.y)
+    for(int i=0;i<20;i++)
+    {
+    if((this->posShip.x<=(arrayofStones[i].posStone.x+40) && (this->posShip.x + 40) >= arrayofStones[i].posStone.x) && arrayofStones[i].posStone.y == this->posShip.y)
         {
-            stone->posStone.x = 0;
-            stone->posStone.y = 0;
-            stone->isActive = false;
+            arrayofStones[i].isActive = false;
+            arrayofStones[i].posStone.x = 0;
+            arrayofStones[i].posStone.y = 0;
+
             this->delete_life();
-            std ::cout<<"liv: "<<this->life<< std::endl;
+            std ::cout<<"Liv: "<<this->life<< std::endl;
         }
+    }
 }
 
 //---------------------Stone-klassen----------------------//
@@ -111,6 +115,11 @@ void theStone::stone_movement()
             {
                 arrayofStones[i].posStone.y += 2;
             }
+        }
+        else
+        {
+            arrayofStones[i].posStone.x = 0;
+            arrayofStones[i].posStone.y = 0;
         }
     }
 }
@@ -142,25 +151,49 @@ void theStone::init_stone()
 
 void theStone::getStone(int i)
 {
-    if(arrayofStones[i].isActive == true)
-    {
+    //if(arrayofStones[i].isActive == true)
+    //{
         *this = arrayofStones[i];
-    }
+    //}
 }
 
-void theStone::collision(theBullet* name)
+void theStone::collision()
 {
-    for(int i =0;i<20;i++)
+//    for(int i =0;i<20;i++)
+//    {
+//        if(arrayofStones[i].posStone.x<=name->posBullet.x && name->posBullet.x<=(arrayofStones[i].posStone.x + 30) &&
+//           arrayofStones[i].posStone.y<=name->posBullet.y && name->posBullet.y<= (arrayofStones[i].posStone.y+30))
+//        {
+//            arrayofStones[i].isActive = false;
+//            arrayofStones[i].posStone.x = 0;
+//            arrayofStones[i].posStone.y = 0;
+//
+//            name->isActive = false;
+//
+//        }
+//    }
+
+    for(int i=0;i<20;i++)
     {
-        if(arrayofStones[i].posStone.x<=name->posBullet.x && name->posBullet.x<=(arrayofStones[i].posStone.x + 30) &&
-           arrayofStones[i].posStone.y<=name->posBullet.y && name->posBullet.y<= (arrayofStones[i].posStone.y+30))
+        if(arrayofStones[i].isActive == true)
+        {
+        for(int j=0;j<20;j++)
+        {
+        if(arrayofBullet[j].isActive == true)
+        {
+        if(arrayofStones[i].posStone.x<=arrayofBullet[j].posBullet.x && arrayofBullet[j].posBullet.x<=(arrayofStones[i].posStone.x + 30) &&
+           arrayofStones[i].posStone.y<=arrayofBullet[j].posBullet.y && arrayofBullet[j].posBullet.y<= (arrayofStones[i].posStone.y+30))
         {
             arrayofStones[i].isActive = false;
             arrayofStones[i].posStone.x = 0;
             arrayofStones[i].posStone.y = 0;
 
-            name->isActive = false;
-
+            arrayofBullet[j].isActive = false;
+            arrayofBullet[j].posBullet.x = 0;
+            arrayofBullet[j].posBullet.y = 0;
+        }
+        }
+        }
         }
     }
 }
@@ -253,6 +286,8 @@ void theStar::init_star()
 
 theBullet::theBullet()
 {
+    posBullet.x;
+    posBullet.y;
     posBullet.w = 13;
     posBullet.h = 13;
 }

@@ -35,7 +35,7 @@ public:
     void stone_movement();
     void add_stone();
     void init_stone();
-    void collision(theBullet* name);
+    void collision();
     bool isActive;
 
 };
@@ -70,7 +70,7 @@ public:
     SDL_Rect posShip;
     theShip();
     void collision(theHeart* heart,theStar* star);
-    void collisionWstone(theStone* stone);
+    void collisionWstone();
     void add_life();
     void add_point(int i);
     void delete_life();

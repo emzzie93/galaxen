@@ -77,8 +77,13 @@ int main(int, char **)
         for (int i = 0; i<20; i++)
         {
             myStone.getStone(i);
-            myShip.collisionWstone(&myStone);
-            render1(Objects.stone1,&myStone.posStone);
+            cout<<myStone.isActive<<endl;
+            myShip.collisionWstone();
+            if(myStone.isActive == true)
+            {
+                render1(Objects.stone1,&myStone.posStone);
+            }
+
         }
 
         //flyttar skott, målar upp skott,kollision skott/sten
@@ -86,7 +91,7 @@ int main(int, char **)
         for (int i = 0; i<20; i++) //ritar ut bullet
         {
             myBullet.getBullet(i);
-            myStone.collision(&myBullet);
+            myStone.collision();
             render1(Objects.bullet1,&myBullet.posBullet);
         }
 
