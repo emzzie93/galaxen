@@ -347,7 +347,7 @@
 	"gameobject.h"
 	"ObjectSetup.h"
 
-1418387701 c:\users\hugo\desktop\galaxen\gameobject.h
+1418390925 c:\users\hugo\desktop\galaxen\gameobject.h
 	<SDL.h>
 	"setup.h"
 	"ObjectSetup.h"
@@ -690,7 +690,7 @@
 	<string>
 	<SDL.h>
 
-1418387701 source:c:\users\hugo\desktop\galaxen\main(new).cpp
+1418390179 source:c:\users\hugo\desktop\galaxen\main(new).cpp
 	<iostream>
 	<string>
 	<SDL.h>

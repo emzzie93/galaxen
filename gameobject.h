@@ -38,6 +38,8 @@ public:
     void collision();
     bool isActive;
 
+    int type;
+
 };
 
 class theHeart

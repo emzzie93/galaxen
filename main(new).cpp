@@ -80,7 +80,18 @@ int main(int, char **)
             myShip.collisionWstone();
             if(myStone.isActive == true)
             {
-                render1(Objects.stone1,&myStone.posStone);
+                if(myStone.type == 1)
+                {
+                    render1(Objects.stone1,&myStone.posStone);
+                }
+                else if(myStone.type == 2)
+                {
+                    render1(Objects.stone2,&myStone.posStone);
+                }
+                else
+                {
+                    render1(Objects.stone3,&myStone.posStone);
+                }
             }
 
         }
@@ -91,7 +102,10 @@ int main(int, char **)
         {
             myBullet.getBullet(i);
             myStone.collision();
-            render1(Objects.bullet1,&myBullet.posBullet);
+            if(myBullet.isActive == true)
+            {
+                render1(Objects.bullet1,&myBullet.posBullet);
+            }
         }
 
 

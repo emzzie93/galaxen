@@ -128,6 +128,10 @@ void theStone::add_stone()
 {
     if(rand() % 45 == 5)
     {
+    int t = rand() % 100;
+    if(t<=60)
+    {
+
         for (int i=0; i<20;i++)
         {
             if(arrayofStones[i].isActive == false)
@@ -135,9 +139,39 @@ void theStone::add_stone()
                 arrayofStones[i].posStone.x = rand() % 630;
                 arrayofStones[i].posStone.y = 0;
                 arrayofStones[i].isActive = true;
+                arrayofStones[i].type = 1;
                 break;
             }
         }
+    }
+    else if(t<=90)
+    {
+         for (int i=0; i<20;i++)
+        {
+            if(arrayofStones[i].isActive == false)
+            {
+                arrayofStones[i].posStone.x = rand() % 630;
+                arrayofStones[i].posStone.y = 0;
+                arrayofStones[i].isActive = true;
+                arrayofStones[i].type = 2;
+                break;
+            }
+        }
+    }
+    else
+    {
+         for (int i=0; i<20;i++)
+        {
+            if(arrayofStones[i].isActive == false)
+            {
+                arrayofStones[i].posStone.x = rand() % 630;
+                arrayofStones[i].posStone.y = 0;
+                arrayofStones[i].isActive = true;
+                arrayofStones[i].type = 3;
+                break;
+            }
+        }
+    }
     }
 }
 
@@ -151,10 +185,7 @@ void theStone::init_stone()
 
 void theStone::getStone(int i)
 {
-    //if(arrayofStones[i].isActive == true)
-    //{
-        *this = arrayofStones[i];
-    //}
+    *this = arrayofStones[i];
 }
 
 void theStone::collision()
@@ -286,8 +317,6 @@ void theStar::init_star()
 
 theBullet::theBullet()
 {
-    posBullet.x;
-    posBullet.y;
     posBullet.w = 13;
     posBullet.h = 13;
 }
@@ -336,9 +365,6 @@ void theBullet::init_bullet()
 
 void theBullet::getBullet(int i)
 {
-    if(arrayofBullet[i].isActive == true)
-    {
        *this = arrayofBullet[i];
-    }
 }
 
