@@ -24,7 +24,6 @@ int main(int, char **)
     World.setup();
     World.LoadMedia();
 
-
 //Create  stuff
     theShip myShip;
     theStone myStone;
@@ -33,10 +32,10 @@ int main(int, char **)
     theBullet myBullet;
 
 //Initierar stuff
-    myStone.init_stone();
-    myHeart.init_heart();
-    myStar.init_star();
-    myBullet.init_bullet();
+    myStone.init();
+    myHeart.init();
+    myStar.init();
+    myBullet.init();
 
     Objects.CreateObjects(World);
 
@@ -53,28 +52,28 @@ int main(int, char **)
         //Flyttar skepp och kollar kollision med hjärta eller stjärna
         myShip.ship_movement();
         myShip.collision(&myHeart,&myStar);
-        render1(Objects.ship1,&myShip.posShip);
+        render1(Objects.ship1,&myShip.position);
 
 
         //lägger till hjärta, flyttar hjärta, målar upp hjärta
-        myHeart.add_heart();
-        myHeart.heart_movement();
+        myHeart.add();
+        myHeart.movement();
         if(myHeart.isActive==true)
         {
-            render1(Objects.heart1,&myHeart.posHeart);
+            render1(Objects.heart1,&myHeart.position);
         }
 
         //lägger till stjärna, flyttar stjärna, målar upp stjärna
-        myStar.add_star();
-        myStar.star_movement();
+        myStar.add();
+        myStar.movement();
         if(myStar.isActive==true)
         {
-            render1(Objects.star1,&myStar.posStar);
+            render1(Objects.star1,&myStar.position);
         }
 
         //lägger till sten, flyttar sten, målar upp sten, kollision skepp/sten
-        myStone.add_stone();
-        myStone.stone_movement();
+        myStone.add();
+        myStone.movement();
         for (int i = 0; i<20; i++)
         {
             myStone.getStone(i);
@@ -83,29 +82,29 @@ int main(int, char **)
             {
                 if(myStone.type == 1)
                 {
-                    render1(Objects.stone1,&myStone.posStone);
+                    render1(Objects.stone1,&myStone.position);
                 }
                 else if(myStone.type == 2)
                 {
-                    render1(Objects.stone2,&myStone.posStone);
+                    render1(Objects.stone2,&myStone.position);
                 }
                 else if(myStone.type == 3)
                 {
-                    render1(Objects.stone3,&myStone.posStone);
+                    render1(Objects.stone3,&myStone.position);
                 }
             }
 
         }
 
         //flyttar skott, målar upp skott,kollision skott/sten
-        myBullet.bullet_movement();
+        myBullet.movement();
         for (int i = 0; i<20; i++) //ritar ut bullet
         {
             myBullet.getBullet(i);
             myStone.collision();
             if(myBullet.isActive == true)
             {
-                render1(Objects.bullet1,&myBullet.posBullet);
+                render1(Objects.bullet1,&myBullet.position);
             }
         }
 
@@ -125,7 +124,7 @@ int main(int, char **)
                 {
                 case SDLK_SPACE:
                     //Skapar skott vid mellanslag
-                    myBullet.add_bullet(myShip.posShip.x,myShip.posShip.y,myShip.posShip.w);
+                    myBullet.add(myShip.position.x,myShip.position.y,myShip.position.w);
 
                     break;
                 }

@@ -10,31 +10,48 @@
 //extern SDL_Surface* Star;
 //extern SDL_Surface* Bullet;
 
+class GameObject
+{
+public:
+virtual ~GameObject() = default;
+   SDL_Rect position;
 
 
-class theBullet
+};
+
+class Obstacle : public GameObject
+{
+public:
+   bool isActive;
+   virtual void movement() = 0;
+//   virtual void add() {};
+   virtual void init() = 0;
+};
+
+
+class theBullet : public Obstacle
 {
 public:
 
     theBullet();
-    SDL_Rect posBullet;
-    void bullet_movement();
-    void add_bullet(int x,int y, int w);
-    void init_bullet();
+//    SDL_Rect posBullet;
+    virtual void movement() override;
+    void add(int x,int y, int w);
+    virtual void init() override;
     void getBullet(int i);
     bool isActive;
 
 };
 
-class theStone
+class theStone : public Obstacle
 {
 public:
     theStone();
-    SDL_Rect posStone;
+ //   SDL_Rect posStone;
     void getStone(int i);
-    void stone_movement();
-    void add_stone();
-    void init_stone();
+   virtual  void movement() override;
+    void add();
+    virtual void init() override;
     void collision();
     bool isActive;
 
@@ -43,34 +60,34 @@ public:
 
 };
 
-class theHeart
+class theHeart : public Obstacle
 {
 public:
     theHeart();
-    SDL_Rect posHeart;
-    void heart_movement();
-    void add_heart();
-    void init_heart();
+//    SDL_Rect posHeart;
+    virtual void movement() override;
+    void add() ;
+    virtual void init() override;
     bool isActive;
 
 };
 
-class theStar
+class theStar : public Obstacle
 {
 public:
 
     theStar();
-    SDL_Rect posStar;
-    void star_movement();
-    void add_star();
-    void init_star();
+//    SDL_Rect posStar;
+    virtual void movement() override;
+    void add() ;
+    virtual void init() override;
     bool isActive;
 
 };
-class theShip
+class theShip : public GameObject
 {
 public:
-    SDL_Rect posShip;
+//    SDL_Rect posShip;
     theShip();
     void collision(theHeart* heart,theStar* star);
     void collisionWstone();
