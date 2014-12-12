@@ -44,13 +44,13 @@ if(keystate[SDL_SCANCODE_RIGHT])
     {
         posShip.x += 5;
     }
-if ((posShip.x + 10) > 640)
+if ((posShip.x + posShip.w) > 640)
     {
-        posShip.x = (640 - 30);
+        posShip.x = (640 - posShip.w);
     }
-if((posShip.x - 10) < 0)
+if(posShip.x < 0)
 {
-        posShip.x = 10;
+        posShip.x = 3;
 }
 if ((posShip.y + 30) > 480)
     {
@@ -60,7 +60,7 @@ if ((posShip.y + 30) > 480)
 
 void theShip :: collision(theHeart* heart, theStar* star)
 {
-    if((this->posShip.x<=(heart->posHeart.x+40) && (this->posShip.x +40) >= heart->posHeart.x) && heart->posHeart.y==this->posShip.y)
+    if((this->posShip.x<=(heart->posHeart.x+heart->posHeart.w) && (this->posShip.x +this->posShip.w) >= heart->posHeart.x) && heart->posHeart.y==this->posShip.y)
         {
             heart->isActive = false;
             heart->posHeart.x = 0;
@@ -68,7 +68,7 @@ void theShip :: collision(theHeart* heart, theStar* star)
             this->add_life();
             std ::cout<<"liv: "<<this->life<< std::endl;
         }
-    if((this->posShip.x<=(star->posStar.x+40) && (this->posShip.x + 40) >= star->posStar.x) && star->posStar.y==this->posShip.y)
+    if((this->posShip.x<=(star->posStar.x+star->posStar.w) && (this->posShip.x + this->posShip.w) >= star->posStar.x) && star->posStar.y==this->posShip.y)
         {
             star->isActive = false;
             star->posStar.x = 0;
@@ -81,7 +81,7 @@ void theShip :: collisionWstone()
 {
     for(int i=0;i<20;i++)
     {
-    if((this->posShip.x<=(arrayofStones[i].posStone.x+40) && (this->posShip.x + 40) >= arrayofStones[i].posStone.x) && arrayofStones[i].posStone.y == this->posShip.y)
+    if((this->posShip.x<=(arrayofStones[i].posStone.x+arrayofStones[i].posStone.w) && (this->posShip.x + this->posShip.w) >= arrayofStones[i].posStone.x) && arrayofStones[i].posStone.y == this->posShip.y)
         {
             arrayofStones[i].isActive = false;
             arrayofStones[i].posStone.x = 0;
@@ -181,8 +181,8 @@ void theStone::collision()
         {
         if(arrayofBullet[j].isActive == true)
         {
-        if(arrayofStones[i].posStone.x<=arrayofBullet[j].posBullet.x && arrayofBullet[j].posBullet.x<=(arrayofStones[i].posStone.x + 30) &&
-           arrayofStones[i].posStone.y<=arrayofBullet[j].posBullet.y && arrayofBullet[j].posBullet.y<= (arrayofStones[i].posStone.y+30))
+        if(arrayofStones[i].posStone.x<=arrayofBullet[j].posBullet.x && arrayofBullet[j].posBullet.x<=(arrayofStones[i].posStone.x + arrayofStones[i].posStone.w) &&
+           arrayofStones[i].posStone.y<=arrayofBullet[j].posBullet.y && arrayofBullet[j].posBullet.y<= (arrayofStones[i].posStone.y+arrayofStones[i].posStone.h))
         {
             arrayofStones[i].isActive = false;
             arrayofStones[i].posStone.x = 0;
