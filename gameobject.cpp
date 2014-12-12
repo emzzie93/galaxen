@@ -97,8 +97,8 @@ void theShip :: collisionWstone()
 
 theStone::theStone()
 {
-    posStone.w = 30;
-    posStone.h = 30;
+    posStone.w = 50;
+    posStone.h = 50;
 }
 
 void theStone::stone_movement()

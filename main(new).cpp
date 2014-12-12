@@ -77,7 +77,6 @@ int main(int, char **)
         for (int i = 0; i<20; i++)
         {
             myStone.getStone(i);
-            cout<<myStone.isActive<<endl;
             myShip.collisionWstone();
             if(myStone.isActive == true)
             {
