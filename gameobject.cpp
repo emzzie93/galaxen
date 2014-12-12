@@ -103,7 +103,7 @@ theStone::theStone()
 
 void theStone::stone_movement()
 {
-    for(int i=0; i<20;i++)
+    for(int i=0; i<20; i++)
     {
         if(arrayofStones[i].isActive == true)
         {
@@ -111,24 +111,125 @@ void theStone::stone_movement()
             {
                 arrayofStones[i].isActive = false;
             }
-            else
+            else if (arrayofStones[i].move_type == 1)
             {
                 arrayofStones[i].posStone.y += 2;
             }
-        }
-        else
-        {
-            arrayofStones[i].posStone.x = 0;
-            arrayofStones[i].posStone.y = 0;
+            else if (arrayofStones[i].move_type == 2)
+            {
+                if(arrayofStones[i].posStone.x < 0)
+                {
+                    arrayofStones[i].posStone.y += 1;
+                    arrayofStones[i].posStone.x += 2;
+                    arrayofStones[i].move_type = 3;
+                }
+                else
+                {
+                    arrayofStones[i].posStone.y += 1;
+                    arrayofStones[i].posStone.x -= 2;
+                }
+            }
+            else if(arrayofStones[i].move_type == 3)
+            {
+                if(arrayofStones[i].posStone.x + arrayofStones[i].posStone.w > 640)
+                {
+                     arrayofStones[i].posStone.y += 1;
+                    arrayofStones[i].posStone.x -= 2;
+                    arrayofStones[i].move_type = 2;
+                }
+                else
+                {
+                    arrayofStones[i].posStone.y += 1;
+                    arrayofStones[i].posStone.x += 2;
+                }
+            }
         }
     }
 }
+
+
+
+
+
+//    if(arrayofStones[i].move_type == 1)
+//    {
+//
+//        if(arrayofStones[i].isActive == true)
+//        {
+//            if(arrayofStones[i].posStone.y > 480)
+//            {
+//                arrayofStones[i].isActive = false;
+//            }
+//            else
+//            {
+//                arrayofStones[i].posStone.y += 2;
+//            }
+//        }
+//        else
+//        {
+//            arrayofStones[i].posStone.x = 0;
+//            arrayofStones[i].posStone.y = 0;
+//        }
+//    }
+//
+//    else if(arrayofStones[i].move_type == 2)
+//    {
+//        if(arrayofStones[i].isActive == true)
+//        {
+//            if(arrayofStones[i].posStone.y > 480)
+//            {
+//                arrayofStones[i].isActive = false;
+//            }
+//            else if(arrayofStones[i].posStone.x >= 0 && (arrayofStones[i].posStone.x + arrayofStones[i].posStone.w) <= 640)
+//            {
+//                arrayofStones[i].posStone.y += 1;
+//                arrayofStones[i].posStone.x += 2;
+//            }
+//            else
+//            {
+//                arrayofStones[i].move_type = 3;
+//            }
+//        }
+//        else
+//        {
+//            arrayofStones[i].posStone.x = 0;
+//            arrayofStones[i].posStone.y = 0;
+//        }
+//    }
+//    else if(arrayofStones[i].move_type == 3)
+//    {
+//        if(arrayofStones[i].isActive == true)
+//        {
+//            if(arrayofStones[i].posStone.y > 480)
+//            {
+//                arrayofStones[i].isActive = false;
+//            }
+//            else if(arrayofStones[i].posStone.x >= 0 && (arrayofStones[i].posStone.x + arrayofStones[i].posStone.w) <= 640)
+//            {
+//                arrayofStones[i].posStone.y += 1;
+//                arrayofStones[i].posStone.x -= 2;
+//            }
+//            else
+//            {
+//                arrayofStones[i].move_type = 2;
+//            }
+//        }
+//        else
+//        {
+//            arrayofStones[i].posStone.x = 0;
+//            arrayofStones[i].posStone.y = 0;
+//        }
+//    }
+//    }
+//
+//}
 
 void theStone::add_stone()
 {
     if(rand() % 45 == 5)
     {
-    int t = rand() % 120;
+    int t = rand() % 100;
+    int m = rand() % 3 + 1;
     if(t<=60)
     {
 
@@ -140,6 +241,7 @@ void theStone::add_stone()
                 arrayofStones[i].posStone.y = 0;
                 arrayofStones[i].isActive = true;
                 arrayofStones[i].type = 1;
+                arrayofStones[i].move_type = m;
                 break;
             }
         }
@@ -154,6 +256,7 @@ void theStone::add_stone()
                 arrayofStones[i].posStone.y = 0;
                 arrayofStones[i].isActive = true;
                 arrayofStones[i].type = 2;
+                arrayofStones[i].move_type = m;
                 break;
             }
         }
@@ -168,6 +271,7 @@ void theStone::add_stone()
                 arrayofStones[i].posStone.y = 0;
                 arrayofStones[i].isActive = true;
                 arrayofStones[i].type = 3;
+                arrayofStones[i].move_type = m;
                 break;
             }
         }

@@ -39,6 +39,7 @@ public:
     bool isActive;
 
     int type;
+    int move_type;
 
 };
 
