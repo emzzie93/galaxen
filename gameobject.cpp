@@ -402,7 +402,7 @@ void theStar::star_movement()
     {
         posStar.y += 2;
     }
-    if(this->posStar.y > 400)
+    if(this->posStar.y > 450)
     {
         this->isActive = false;
         this->posStar.x = 0;
