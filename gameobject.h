@@ -13,7 +13,7 @@
 class GameObject
 {
 public:
-virtual ~GameObject() = default;
+ virtual ~GameObject() = default;
    SDL_Rect position;
 
 

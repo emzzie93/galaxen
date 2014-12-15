@@ -28,7 +28,7 @@ void theBullet::movement()
             }
             else
             {
-                arrayofBullet[i].position.y -= 2;
+                arrayofBullet[i].position.y -= 5;
             }
         }
     }
@@ -74,143 +74,143 @@ void theStone::movement()
 {
     if(level == 1)
     {
-    for(int i=0; i<20; i++)
-    {
-
-        if(arrayofStones[i].isActive == true)
+        for(int i=0; i<20; i++)
         {
-            if(arrayofStones[i].position.y > 480)
+
+            if(arrayofStones[i].isActive == true)
             {
-                arrayofStones[i].isActive = false;
-            }
-            else if (arrayofStones[i].move_type == 1)
-            {
-                arrayofStones[i].position.y += 2;
-            }
-            else if (arrayofStones[i].move_type == 2)
-            {
-                if(arrayofStones[i].position.x < 0)
+                if(arrayofStones[i].position.y > 480)
                 {
-                    arrayofStones[i].position.y += 1;
-                    arrayofStones[i].position.x += 2;
-                    arrayofStones[i].move_type = 3;
+                    arrayofStones[i].isActive = false;
                 }
-                else
+                else if (arrayofStones[i].move_type == 1)
                 {
-                    arrayofStones[i].position.y += 1;
-                    arrayofStones[i].position.x -= 2;
+                    arrayofStones[i].position.y += 2;
                 }
-            }
-            else if(arrayofStones[i].move_type == 3)
-            {
-                if(arrayofStones[i].position.x + arrayofStones[i].position.w > 640)
+                else if (arrayofStones[i].move_type == 2)
                 {
-                    arrayofStones[i].position.y += 1;
-                    arrayofStones[i].position.x -= 2;
-                    arrayofStones[i].move_type = 2;
+                    if(arrayofStones[i].position.x < 0)
+                    {
+                        arrayofStones[i].position.y += 1;
+                        arrayofStones[i].position.x += 2;
+                        arrayofStones[i].move_type = 3;
+                    }
+                    else
+                    {
+                        arrayofStones[i].position.y += 1;
+                        arrayofStones[i].position.x -= 2;
+                    }
                 }
-                else
+                else if(arrayofStones[i].move_type == 3)
                 {
-                    arrayofStones[i].position.y += 1;
-                    arrayofStones[i].position.x += 2;
+                    if(arrayofStones[i].position.x + arrayofStones[i].position.w > 640)
+                    {
+                        arrayofStones[i].position.y += 1;
+                        arrayofStones[i].position.x -= 2;
+                        arrayofStones[i].move_type = 2;
+                    }
+                    else
+                    {
+                        arrayofStones[i].position.y += 1;
+                        arrayofStones[i].position.x += 2;
+                    }
                 }
             }
         }
-    }
     }
 
     if(level == 2)
     {
-    for(int i=0; i<20; i++)
-    {
-
-        if(arrayofStones[i].isActive == true)
+        for(int i=0; i<20; i++)
         {
-            if(arrayofStones[i].position.y > 480)
+
+            if(arrayofStones[i].isActive == true)
             {
-                arrayofStones[i].isActive = false;
-            }
-            else if (arrayofStones[i].move_type == 1)
-            {
-                arrayofStones[i].position.y += 3;
-            }
-            else if (arrayofStones[i].move_type == 2)
-            {
-                if(arrayofStones[i].position.x < 0)
+                if(arrayofStones[i].position.y > 480)
                 {
-                    arrayofStones[i].position.y += 2;
-                    arrayofStones[i].position.x += 3;
-                    arrayofStones[i].move_type = 3;
+                    arrayofStones[i].isActive = false;
                 }
-                else
+                else if (arrayofStones[i].move_type == 1)
                 {
-                    arrayofStones[i].position.y += 2;
-                    arrayofStones[i].position.x -= 3;
+                    arrayofStones[i].position.y += 3;
                 }
-            }
-            else if(arrayofStones[i].move_type == 3)
-            {
-                if(arrayofStones[i].position.x + arrayofStones[i].position.w > 640)
+                else if (arrayofStones[i].move_type == 2)
                 {
-                    arrayofStones[i].position.y += 2;
-                    arrayofStones[i].position.x -= 3;
-                    arrayofStones[i].move_type = 2;
+                    if(arrayofStones[i].position.x < 0)
+                    {
+                        arrayofStones[i].position.y += 2;
+                        arrayofStones[i].position.x += 3;
+                        arrayofStones[i].move_type = 3;
+                    }
+                    else
+                    {
+                        arrayofStones[i].position.y += 2;
+                        arrayofStones[i].position.x -= 3;
+                    }
                 }
-                else
+                else if(arrayofStones[i].move_type == 3)
                 {
-                    arrayofStones[i].position.y += 2;
-                    arrayofStones[i].position.x += 3;
+                    if(arrayofStones[i].position.x + arrayofStones[i].position.w > 640)
+                    {
+                        arrayofStones[i].position.y += 2;
+                        arrayofStones[i].position.x -= 3;
+                        arrayofStones[i].move_type = 2;
+                    }
+                    else
+                    {
+                        arrayofStones[i].position.y += 2;
+                        arrayofStones[i].position.x += 3;
+                    }
                 }
             }
         }
-    }
     }
 
     if(level == 3)
     {
-    for(int i=0; i<20; i++)
-    {
-
-        if(arrayofStones[i].isActive == true)
+        for(int i=0; i<20; i++)
         {
-            if(arrayofStones[i].position.y > 480)
+
+            if(arrayofStones[i].isActive == true)
             {
-                arrayofStones[i].isActive = false;
-            }
-            else if (arrayofStones[i].move_type == 1)
-            {
-                arrayofStones[i].position.y += 4;
-            }
-            else if (arrayofStones[i].move_type == 2)
-            {
-                if(arrayofStones[i].position.x < 0)
+                if(arrayofStones[i].position.y > 480)
                 {
-                    arrayofStones[i].position.y += 3;
-                    arrayofStones[i].position.x += 4;
-                    arrayofStones[i].move_type = 3;
+                    arrayofStones[i].isActive = false;
                 }
-                else
+                else if (arrayofStones[i].move_type == 1)
                 {
-                    arrayofStones[i].position.y += 3;
-                    arrayofStones[i].position.x -= 4;
+                    arrayofStones[i].position.y += 4;
                 }
-            }
-            else if(arrayofStones[i].move_type == 3)
-            {
-                if(arrayofStones[i].position.x + arrayofStones[i].position.w > 640)
+                else if (arrayofStones[i].move_type == 2)
                 {
-                    arrayofStones[i].position.y += 3;
-                    arrayofStones[i].position.x -= 4;
-                    arrayofStones[i].move_type = 2;
+                    if(arrayofStones[i].position.x < 0)
+                    {
+                        arrayofStones[i].position.y += 3;
+                        arrayofStones[i].position.x += 4;
+                        arrayofStones[i].move_type = 3;
+                    }
+                    else
+                    {
+                        arrayofStones[i].position.y += 3;
+                        arrayofStones[i].position.x -= 4;
+                    }
                 }
-                else
+                else if(arrayofStones[i].move_type == 3)
                 {
-                    arrayofStones[i].position.y += 3;
-                    arrayofStones[i].position.x += 4;
+                    if(arrayofStones[i].position.x + arrayofStones[i].position.w > 640)
+                    {
+                        arrayofStones[i].position.y += 3;
+                        arrayofStones[i].position.x -= 4;
+                        arrayofStones[i].move_type = 2;
+                    }
+                    else
+                    {
+                        arrayofStones[i].position.y += 3;
+                        arrayofStones[i].position.x += 4;
+                    }
                 }
             }
         }
-    }
     }
 
 
@@ -296,9 +296,9 @@ void theStone::collision()
                 if(arrayofBullet[j].isActive == true)
                 {
                     if(arrayofStones[i].position.x<=arrayofBullet[j].position.x &&
-                       arrayofBullet[j].position.x<=(arrayofStones[i].position.x + arrayofStones[i].position.w) &&
+                            arrayofBullet[j].position.x<=(arrayofStones[i].position.x + arrayofStones[i].position.w) &&
                             arrayofStones[i].position.y<=arrayofBullet[j].position.y &&
-                             arrayofBullet[j].position.y<= (arrayofStones[i].position.y+arrayofStones[i].position.h))
+                            arrayofBullet[j].position.y<= (arrayofStones[i].position.y+arrayofStones[i].position.h))
                     {
                         if(arrayofStones[i].type == 1)
                         {
@@ -332,16 +332,16 @@ void theStone::collision()
 
 theHeart::theHeart()
 {
-   position.y = 0;
-   position.w = 15;
-   position.h = 15;
+    position.y = 0;
+    position.w = 15;
+    position.h = 15;
 }
 
 void theHeart::movement()
 {
     if(this->isActive == true)
     {
-       position.y += 2;
+        position.y += 2;
     }
     if(this->position.y > 450)
     {
@@ -357,8 +357,8 @@ void theHeart::add()
     {
         if(this->isActive == false)
         {
-           position.x = rand() % 450;
-           position.y = 0;
+            position.x = rand() % 450;
+            position.y = 0;
             this->isActive = true;
         }
     }
@@ -449,6 +449,15 @@ void theShip :: ship_movement()
     {
         position.x += 5;
     }
+    if (keystate[SDL_SCANCODE_UP])
+    {
+        position.y -= 5;
+    }
+    if (keystate[SDL_SCANCODE_DOWN])
+    {
+        position.y += 5;
+    }
+
     if ((position.x + position.w) > 640)
     {
         position.x = (640 - position.w);

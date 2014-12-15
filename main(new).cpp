@@ -16,7 +16,7 @@ int time_level = 0;
 void render1(SDL_Texture* texture,SDL_Rect* type)
 {
     SDL_RenderCopy(World.GameRender, texture, NULL, type);
-    SDL_RenderPresent(World.GameRender);
+
 }
 
 int main(int, char **)
@@ -120,6 +120,7 @@ int main(int, char **)
                 quit = true;
                 break;
 
+
             case SDL_KEYDOWN:
                 switch( Event.key.keysym.sym )
                 {
@@ -128,9 +129,15 @@ int main(int, char **)
                     myBullet.add(myShip.position.x,myShip.position.y,myShip.position.w);
 
                     break;
+
+                case SDLK_q:
+                    quit = true;
+                    break;
                 }
             }
         }
+
+        SDL_RenderPresent(World.GameRender);
         SDL_Delay(20);
         if(myShip.life <= 0)
         {
