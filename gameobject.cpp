@@ -218,7 +218,7 @@ void theStone::movement()
 
 void theStone::add()
 {
-    if(rand() % 45 == 5)
+    if(rand() % 35 == 5)
     {
         int t = rand() % 100;
         int m = rand() % 3 + 1;
@@ -229,7 +229,7 @@ void theStone::add()
             {
                 if(arrayofStones[i].isActive == false)
                 {
-                    arrayofStones[i].position.x = rand() % 630;
+                    arrayofStones[i].position.x = rand() % 620;
                     arrayofStones[i].position.y = 0;
                     arrayofStones[i].isActive = true;
                     arrayofStones[i].type = 1;
@@ -244,7 +244,7 @@ void theStone::add()
             {
                 if(arrayofStones[i].isActive == false)
                 {
-                    arrayofStones[i].position.x = rand() % 630;
+                    arrayofStones[i].position.x = rand() % 620;
                     arrayofStones[i].position.y = 0;
                     arrayofStones[i].isActive = true;
                     arrayofStones[i].type = 2;
@@ -259,7 +259,7 @@ void theStone::add()
             {
                 if(arrayofStones[i].isActive == false)
                 {
-                    arrayofStones[i].position.x = rand() % 630;
+                    arrayofStones[i].position.x = rand() % 620;
                     arrayofStones[i].position.y = 0;
                     arrayofStones[i].isActive = true;
                     arrayofStones[i].type = 3;
@@ -353,7 +353,7 @@ void theHeart::movement()
 
 void theHeart::add()
 {
-    if(rand() % 100 == 5)
+    if(rand() % 10000 == 5)
     {
         if(this->isActive == false)
         {
@@ -395,7 +395,7 @@ void theStar::movement()
 
 void theStar::add()
 {
-    if(rand() % 100 == 5)
+    if(rand() % 150 == 5)
     {
         if(this->isActive == false)
         {
