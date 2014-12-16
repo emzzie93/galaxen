@@ -10,92 +10,71 @@
 //extern SDL_Surface* Star;
 //extern SDL_Surface* Bullet;
 
-class GameObject
-{
-public:
- virtual ~GameObject() = default;
-   SDL_Rect position;
 
 
-};
-
-class Obstacle : public GameObject
-{
-public:
-   bool isActive;
-   virtual void movement() = 0;
-//   virtual void add() {};
-   virtual void init() = 0;
-};
-
-
-class theBullet : public Obstacle
+class theBullet
 {
 public:
 
     theBullet();
-//    SDL_Rect posBullet;
-    virtual void movement() override;
-    void add(int x,int y, int w);
-    virtual void init() override;
+    SDL_Rect posBullet;
+    void bullet_movement();
+    void add_bullet(int x,int y);
+    void init_bullet();
     void getBullet(int i);
     bool isActive;
 
 };
 
-class theStone : public Obstacle
+class theStone
 {
 public:
     theStone();
- //   SDL_Rect posStone;
+    SDL_Rect posStone;
     void getStone(int i);
-   virtual  void movement() override;
-    void add();
-    virtual void init() override;
-    void collision();
+    void stone_movement();
+    void add_stone();
+    void init_stone();
+    void collision(theBullet* name);
     bool isActive;
-
-    int type;
-    int move_type;
 
 };
 
-class theHeart : public Obstacle
+class theHeart
 {
 public:
     theHeart();
-//    SDL_Rect posHeart;
-    virtual void movement() override;
-    void add() ;
-    virtual void init() override;
+    SDL_Rect posHeart;
+    void heart_movement();
+    void add_heart();
+    void init_heart();
     bool isActive;
 
 };
 
-class theStar : public Obstacle
+class theStar
 {
 public:
 
     theStar();
-//    SDL_Rect posStar;
-    virtual void movement() override;
-    void add() ;
-    virtual void init() override;
+    SDL_Rect posStar;
+    void star_movement();
+    void add_star();
+    void init_star();
     bool isActive;
 
 };
-class theShip : public GameObject
+class theShip
 {
 public:
-//    SDL_Rect posShip;
+    SDL_Rect posShip;
     theShip();
     void collision(theHeart* heart,theStar* star);
-    void collisionWstone();
+    void collisionWstone(theStone* stone);
     void add_life();
     void add_point(int i);
     void delete_life();
     void ship_movement();
-    void level_up();
 
     int life;
     int point;

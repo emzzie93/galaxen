@@ -4,7 +4,7 @@
 	"gameobject.h"
 	"ObjectSetup.h"
 
-1418416120 c:\users\emma\desktop\galaxen\gameobject.h
+1418332774 c:\users\emma\desktop\galaxen\gameobject.h
 	<SDL.h>
 	"setup.h"
 	"ObjectSetup.h"
@@ -342,12 +342,12 @@
 
 1418048112 source:c:\users\emma\desktop\galaxen\world.cpp
 
-1418392669 source:c:\users\hugo\desktop\galaxen\gameobject.cpp
+1418334239 source:c:\users\hugo\desktop\galaxen\gameobject.cpp
 	<random>
 	"gameobject.h"
 	"ObjectSetup.h"
 
-1418392163 c:\users\hugo\desktop\galaxen\gameobject.h
+1418335262 c:\users\hugo\desktop\galaxen\gameobject.h
 	<SDL.h>
 	"setup.h"
 	"ObjectSetup.h"
@@ -690,7 +690,7 @@
 	<string>
 	<SDL.h>
 
-1418392163 source:c:\users\hugo\desktop\galaxen\main(new).cpp
+1418335280 source:c:\users\hugo\desktop\galaxen\main(new).cpp
 	<iostream>
 	<string>
 	<SDL.h>
@@ -708,32 +708,28 @@
 1418301171 source:c:\users\emma\desktop\galaxen\setup.cpp
 	"setup.h"
 
-1418643258 source:c:\users\emma\desktop\galaxen\main(new).cpp
+1418333402 source:c:\users\emma\desktop\galaxen\main(new).cpp
 	<iostream>
 	<string>
 	<SDL.h>
 	<SDL_image.h>
 	"gameobject.h"
 
-1418395766 c:\users\emma\desktop\galaxen\objectsetup.h
+1418333561 c:\users\emma\desktop\galaxen\objectsetup.h
 	<iostream>
 	<string>
 	<SDL.h>
 	<SDL_image.h>
 	"setup.h"
 
-1418392163 source:c:\users\hugo\desktop\galaxen\objectsetup.cpp
+1418334024 source:c:\users\hugo\desktop\galaxen\objectsetup.cpp
 	"ObjectSetup.h"
 	"ObjectSetup.h"
 
-1418392209 c:\users\hugo\desktop\galaxen\objectsetup.h
+1418334024 c:\users\hugo\desktop\galaxen\objectsetup.h
 	<iostream>
 	<string>
 	<SDL.h>
 	<SDL_image.h>
 	"setup.h"
-
-1418395772 source:c:\users\emma\desktop\galaxen\objectsetup.cpp
-	"ObjectSetup.h"
-	"ObjectSetup.h"
 
