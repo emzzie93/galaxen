@@ -66,7 +66,7 @@ void GameSetup::close(){
 
 void GameSetup::render() {
 
-    SDL_RenderClear(GameSetup::GameRender);
+    //SDL_RenderClear(GameSetup::GameRender);
     SDL_RenderCopy(GameSetup::GameRender, GameSetup::tex, NULL, NULL);
-    SDL_RenderPresent(GameSetup::GameRender);
+    //SDL_RenderPresent(GameSetup::GameRender);
     }

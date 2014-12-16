@@ -2,7 +2,8 @@
 #include <string>
 #include <SDL.h>
 #include <SDL_ttf.h>
-//#include <SDL_mixer.h>
+
+#include <SDL_mixer.h>
 #include "gameobject.h"
 #include "Meny(text).h"
 
@@ -32,10 +33,23 @@ int main(int, char **)
     Instructions = SDL_LoadBMP("about.bmp");
     Quitgame = SDL_LoadBMP("exit.bmp");
 
-    Mix_Chunk* effect1;
-    Mix_Music* menymusik;
+    // Audio
+    int flags = MIX_INIT_OGG;
+    int inited = Mix_Init(flags);
+    if(inited & flags != flags)
+    {
+        cerr << "Audio didn't initialize!\n";
+    }
 
-    Mix_OpenAudio(22050,MIX_DEFAULT_)
+    Mix_Chunk* effect1 = NULL;
+    Mix_Music* menymusik = NULL;
+
+    Mix_OpenAudio(22050,MIX_DEFAULT_FORMAT, 2, 2048);
+
+effect1 = Mix_LoadWAV("Laser.wav");
+    menymusik = Mix_LoadMUS("Menue.ogg");
+    Mix_PlayMusic(menymusik,2);
+
 
     headermeny = SDL_CreateTextureFromSurface(World.GameRender, Menyheader);
     newgame = SDL_CreateTextureFromSurface(World.GameRender, Newgame);
@@ -44,44 +58,45 @@ int main(int, char **)
 
 
 
-  // Initialize SDL_ttf library
-   if (TTF_Init() != 0)
-   {
-      cerr << "TTF_Init() Failed: " << TTF_GetError() << endl;
-      SDL_Quit();
-      exit(1);
-   }
+    // Initialize SDL_ttf library
+    if (TTF_Init() != 0)
+    {
+        cerr << "TTF_Init() Failed: " << TTF_GetError() << endl;
+        SDL_Quit();
+        exit(1);
+    }
 
-   // Load a font
-   TTF_Font *font;
-   font = TTF_OpenFont("LucidaTypewriterBold.ttf",14);
-   if (font == NULL)
-   {
-      cerr << "TTF_OpenFont() Failed: " << TTF_GetError() << endl;
-      TTF_Quit();
-      SDL_Quit();
-      exit(1);
-   }
+    // Load a font
+    TTF_Font *font;
+    font = TTF_OpenFont("LucidaTypewriterBold.ttf",14);
+    if (font == NULL)
+    {
+        cerr << "TTF_OpenFont() Failed: " << TTF_GetError() << endl;
+        TTF_Quit();
+        SDL_Quit();
+        exit(1);
+    }
 
-   // Write text to surface
-   SDL_Surface *text;
-   SDL_Color text_color = {250, 250, 250};
-   text = TTF_RenderText_Solid(font,"SCORE:",text_color);
+    // Write text to surface
+    SDL_Surface *text;
+    SDL_Color text_color = {250, 250, 250};
+    text = TTF_RenderText_Solid(font,"SCORE:",text_color);
 
-   if (text == NULL)
-   {
-      cerr << "TTF_RenderText_Solid() Failed: " << TTF_GetError() << endl;
-      TTF_Quit();
-      SDL_Quit();
-      exit(1);
-   }
-   texttest = SDL_CreateTextureFromSurface(World.GameRender, text);
-   SDL_Rect* srcrect;
+    if (text == NULL)
+    {
+        cerr << "TTF_RenderText_Solid() Failed: " << TTF_GetError() << endl;
+        TTF_Quit();
+        SDL_Quit();
+        exit(1);
+    }
+    texttest = SDL_CreateTextureFromSurface(World.GameRender, text);
+    SDL_Rect* srcrect;
 
-srcrect->x = 0;
-srcrect->y = 0;
-srcrect->w = 60;
-srcrect->h = 30;
+    srcrect->x = 0;
+    srcrect->y = 0;
+    srcrect->w = 60;
+    srcrect->h = 30;
+
 
 
 //Our event structure
@@ -89,6 +104,7 @@ srcrect->h = 30;
     SDL_Event Event;
     while (!quit)
     {
+        SDL_RenderClear(World.GameRender);
         //render the background
         World.render();
         SDL_RenderCopy(World.GameRender, headermeny, NULL, &myMeny.posMeny);
@@ -96,7 +112,12 @@ srcrect->h = 30;
         SDL_RenderCopy(World.GameRender, instructions, NULL, &myInstructions.posMeny);
         SDL_RenderCopy(World.GameRender, quitgame, NULL, &myQuitgame.posMeny);
         SDL_RenderCopy(World.GameRender, texttest, NULL, srcrect);
+
+
         SDL_RenderPresent(World.GameRender);
+
+
+
 
 
 
@@ -116,65 +137,68 @@ srcrect->h = 30;
             }
             else
             {
-            if(Mx >= myQuitgame.posMeny.x && Mx <= myQuitgame.posMeny.x + myQuitgame.posMeny.w && My >= myQuitgame.posMeny.y && My <= myQuitgame.posMeny.y + myQuitgame.posMeny.h)
-            {
-                SDL_SetTextureColorMod(quitgame, 250, 0, 0 );
-                if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
+                if(Mx >= myQuitgame.posMeny.x && Mx <= myQuitgame.posMeny.x + myQuitgame.posMeny.w && My >= myQuitgame.posMeny.y && My <= myQuitgame.posMeny.y + myQuitgame.posMeny.h)
                 {
-                    if (Event.button.button == SDL_BUTTON_LEFT)
-                    {
-                        //if it is pressed then play1 becomes true which you could use to initiate the newgame
-                        quit = true;
-                    }
-                }
-            }
-            else
-            {
-                SDL_SetTextureColorMod(quitgame, 250, 250, 250);
-                if(Mx >= myInstructions.posMeny.x && Mx <= myInstructions.posMeny.x + myInstructions.posMeny.w && My >= myInstructions.posMeny.y && My <= myInstructions.posMeny.y + myInstructions.posMeny.h)
-                {
-                    SDL_SetTextureColorMod(instructions, 250, 0, 0 );
+                    Mix_PlayChannel(-1,effect1,0);
+                    SDL_SetTextureColorMod(quitgame, 250, 0, 0 );
                     if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
                     {
                         if (Event.button.button == SDL_BUTTON_LEFT)
                         {
                             //if it is pressed then play1 becomes true which you could use to initiate the newgame
-                            cout <<  "Instruktioner" << endl;
-                        }
-                    }
-                }
-            else
-            {
-                SDL_SetTextureColorMod(instructions, 250, 250, 250);
-                if(Mx >= myNewgame.posMeny.x && Mx <= myNewgame.posMeny.x + myNewgame.posMeny.w && My >= myNewgame.posMeny.y && My <= myNewgame.posMeny.y + myNewgame.posMeny.h)
-                {
-                    SDL_SetTextureColorMod(newgame, 250, 0, 0 );
-                    if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
-                    {
-                        if (Event.button.button == SDL_BUTTON_LEFT)
-                        {
-                            //if it is pressed then play1 becomes true which you could use to initiate the newgame
-                            cout <<  "Starta spelet" << endl;
-
+                            quit = true;
                         }
                     }
                 }
                 else
                 {
-                    SDL_SetTextureColorMod(newgame, 250, 250, 250);
+                    SDL_SetTextureColorMod(quitgame, 250, 250, 250);
+                    if(Mx >= myInstructions.posMeny.x && Mx <= myInstructions.posMeny.x + myInstructions.posMeny.w && My >= myInstructions.posMeny.y && My <= myInstructions.posMeny.y + myInstructions.posMeny.h)
+                    {
+                         Mix_PlayChannel(-1,effect1,0);
+                        SDL_SetTextureColorMod(instructions, 250, 0, 0 );
+                        if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
+                        {
+                            if (Event.button.button == SDL_BUTTON_LEFT)
+                            {
+                                //if it is pressed then play1 becomes true which you could use to initiate the newgame
+                                cout <<  "Instruktioner" << endl;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        SDL_SetTextureColorMod(instructions, 250, 250, 250);
+                        if(Mx >= myNewgame.posMeny.x && Mx <= myNewgame.posMeny.x + myNewgame.posMeny.w && My >= myNewgame.posMeny.y && My <= myNewgame.posMeny.y + myNewgame.posMeny.h)
+                        {
+                             Mix_PlayChannel(-1,effect1,0);
+                            SDL_SetTextureColorMod(newgame, 250, 0, 0 );
+                            if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
+                            {
+                                if (Event.button.button == SDL_BUTTON_LEFT)
+                                {
+                                    //if it is pressed then play1 becomes true which you could use to initiate the newgame
+                                    cout <<  "Starta spelet" << endl;
+
+                                }
+                            }
+                        }
+                        else
+                        {
+                            SDL_SetTextureColorMod(newgame, 250, 250, 250);
+                        }
+                    }
                 }
             }
-            }
-            }
 
 
 
-           // SDL_Delay(0);
+            // SDL_Delay(0);
             //SDL_UpdateWindowSurface(World.GameWindow);
 
         }
 
-        }
+    }
     World.close();
 
     return 0;
