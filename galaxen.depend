@@ -737,3 +737,13 @@
 	"ObjectSetup.h"
 	"ObjectSetup.h"
 
+1418317823 source:c:\users\demo\desktop\galaxen\setup.cpp
+	"setup.h"
+
+1418381780 c:\users\demo\desktop\galaxen\setup.h
+	<iostream>
+	<string>
+	<SDL.h>
+
+1418203849 source:c:\users\demo\desktop\galaxen\world.cpp
+
