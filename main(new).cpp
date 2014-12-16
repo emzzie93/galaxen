@@ -78,14 +78,7 @@ int main(int, char **)
         {
             myStone.getStone(i);
             myShip.collisionWstone(&myStone);
-            if (myStone.isActive == true)
-            {
-             render1(Objects.stone1,&myStone.posStone);
-            }
-            else
-                {
-              delete
-            }
+            render1(Objects.stone1,&myStone.posStone);
         }
 
         //flyttar skott, målar upp skott,kollision skott/sten
