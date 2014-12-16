@@ -466,9 +466,13 @@ void theShip :: ship_movement()
     {
         position.x = 3;
     }
-    if ((position.y + 30) > 480)
+    if ((position.y + 50) > 480)
     {
-        position.y = (480 - 30);
+        position.y = (480 - 50);
+    }
+    if (position.y <0)
+    {
+        position.y=0;
     }
 }
 
