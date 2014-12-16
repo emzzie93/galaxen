@@ -50,8 +50,6 @@
 			<Add directory="C:/Users/Hugo/Documents/Program/Lib for codeblocks/lib" />
 			<Add directory="C:/Users/Hugo/Documents/Program/Image/lib" />
 		</Linker>
-		<Unit filename="ObjectSetup.cpp" />
-		<Unit filename="ObjectSetup.h" />
 		<Unit filename="fighter4.png" />
 		<Unit filename="gameobject.cpp" />
 		<Unit filename="gameobject.h" />
