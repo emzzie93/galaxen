@@ -14,6 +14,7 @@ public:
 
     SDL_Window *GameWindow = nullptr;
     SDL_Renderer *GameRender  = nullptr;
+    //SDL_Renderer *InstructionsRender = nullptr;
     SDL_Surface *background = nullptr;
     SDL_Texture* Instructions = nullptr;
     SDL_Texture *tex = nullptr;
@@ -21,6 +22,7 @@ public:
     Mix_Music* menymusik = nullptr;
     SDL_Surface* instructions = nullptr;
 
+    bool quit = false;
     bool fullscreen;
     GameSetup() = default;
     ~GameSetup()=default;
@@ -29,7 +31,7 @@ public:
     void render();
     void LoadMedia();
     void PlaySound();
-    void SetInstruction(SDL_Renderer* GameRenderer);
+    void SetInstruction(SDL_Renderer* GameRenderer, SDL_Texture* tex);
 };
 
 #endif

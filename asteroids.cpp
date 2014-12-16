@@ -167,7 +167,11 @@ ObjectSetup Objects;
 
     }
 
-    World.close();
+  //  SDL_DestroyTexture(tex);
+  //  SDL_DestroyRenderer(GameRender);
+    SDL_DestroyWindow(World.GameWindow);
+
+    //World.close();
 
     //return 0;
 }
