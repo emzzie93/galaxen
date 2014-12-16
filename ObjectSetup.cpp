@@ -28,7 +28,7 @@ SDL_FreeSurface(Star);
 heart1 = SDL_CreateTextureFromSurface(World.GameRender, Heart);
 SDL_FreeSurface(Heart);
 
- Ship = IMG_Load("fighter.png");
+ Ship = IMG_Load("fighter-01.png");
 	if (Ship == NULL)
 	{
         std::cout << "Error in loading player." << SDL_GetError() << std::endl;
@@ -44,6 +44,24 @@ Stone = IMG_Load("stone.png");
 		SDL_Quit();
 	}
 stone1 = SDL_CreateTextureFromSurface(World.GameRender, Stone);
+SDL_FreeSurface(Stone);
+
+Stone = IMG_Load("stone2.png");
+	if (Ship == NULL)
+	{
+        std::cout << "Error in loading player." << SDL_GetError() << std::endl;
+		SDL_Quit();
+	}
+stone2 = SDL_CreateTextureFromSurface(World.GameRender, Stone);
+SDL_FreeSurface(Stone);
+
+Stone = IMG_Load("stone3.png");
+	if (Ship == NULL)
+	{
+        std::cout << "Error in loading player." << SDL_GetError() << std::endl;
+		SDL_Quit();
+	}
+stone3 = SDL_CreateTextureFromSurface(World.GameRender, Stone);
 SDL_FreeSurface(Stone);
 
 Bullet = IMG_Load("bullet.png");
