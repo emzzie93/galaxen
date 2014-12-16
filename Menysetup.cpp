@@ -35,14 +35,14 @@ Newgame = SDL_LoadBMP("play.bmp");
 newgame = SDL_CreateTextureFromSurface(World.GameRender, Newgame);
 SDL_FreeSurface(Newgame);
 
- Instructions = SDL_LoadBMP("about.bmp");
-	if (Instructions == NULL)
+ About = SDL_LoadBMP("about.bmp");
+	if (About == NULL)
 	{
         std::cout << "Error in loading Instructions." << SDL_GetError() << std::endl;
 		SDL_Quit();
 	}
-instructions = SDL_CreateTextureFromSurface(World.GameRender, Instructions);
-SDL_FreeSurface(Instructions);
+about = SDL_CreateTextureFromSurface(World.GameRender, About);
+SDL_FreeSurface(About);
 
 Quitgame = SDL_LoadBMP("exit.bmp");
 	if (Quitgame == NULL)

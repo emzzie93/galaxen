@@ -10,13 +10,13 @@ class Menysetup
 public:
     SDL_Texture* headermeny = nullptr;
     SDL_Texture* newgame = nullptr;
-    SDL_Texture* instructions = nullptr;
+    SDL_Texture* about = nullptr;
     SDL_Texture* quitgame = nullptr;
    SDL_Texture* texttest = nullptr;
 
     SDL_Surface* Menyheader = nullptr;
     SDL_Surface* Newgame = nullptr;
-    SDL_Surface* Instructions = nullptr;
+    SDL_Surface* About = nullptr;
     SDL_Surface* Quitgame = nullptr;
 
     SDL_Rect posMeny;
