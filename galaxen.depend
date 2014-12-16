@@ -1133,3 +1133,13 @@
 	<SDL.h>
 	"setup.h"
 
+1418757382 source:c:\users\emma\desktop\galaxen\main1.cpp
+	<iostream>
+	<string>
+	<SDL.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	"gameobject.h"
+	"Meny(text).h"
+	"asteroids.h"
+

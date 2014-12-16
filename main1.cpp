@@ -103,11 +103,6 @@ int main(int argc, char *argv[])
 
         SDL_RenderPresent(World.GameRender);
 
-
-
-
-
-
 //        if (SDL_BlitSurface(text, NULL, World.background, NULL) != 0)
 //
 //         cerr << "SDL_BlitSurface() Failed: " << SDL_GetError() << endl;
@@ -142,45 +137,40 @@ int main(int argc, char *argv[])
                     SDL_SetTextureColorMod(quitgame, 250, 250, 250);
                     if(Mx >= myAbout.posMeny.x && Mx <= myAbout.posMeny.x + myAbout.posMeny.w && My >= myAbout.posMeny.y && My <= myAbout.posMeny.y + myAbout.posMeny.h)
                     {
-                         //Mix_PlayChannel(-1,effect1,0);
+                        //Mix_PlayChannel(-1,effect1,0);
                         SDL_SetTextureColorMod(aboutpic, 250, 0, 0 );
                         if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
                         {
-                            if (Event.button.button == SDL_BUTTON_LEFT)
+                            //bool inst = false;
+//                            if (Event.button.button == SDL_BUTTON_LEFT)
+//                            {
+                            World.SetInstruction(World.GameRender);
+                            SDL_DestroyTexture(aboutpic);
+                            SDL_DestroyTexture(newgame);
+                            SDL_DestroyTexture(quitgame);
+                            SDL_DestroyTexture(headermeny);
+
+                            //if it is pressed then play1 becomes true which you could use to initiate the newgame
+//                                while (!inst){
+
+                            SDL_RenderClear(World.GameRender);
+                            SDL_RenderCopy(World.GameRender, World.tex, NULL, NULL );
+                            if (Event.key.keysym.sym== SDLK_q)
                             {
-
-                                bool inst = false;
-                                //if it is pressed then play1 becomes true which you could use to initiate the newgame
-                                while (!inst){
-
-                                    SDL_RenderClear(World.GameRender);
-                                    cout <<  "Instruktioner" << endl;
-                                    World.SetInstruction(World.GameRender);
-                                    SDL_DestroyTexture(aboutpic);
-                                    SDL_DestroyTexture(newgame);
-                                    SDL_DestroyTexture(quitgame);
-                                    SDL_DestroyTexture(headermeny);
-
-                                    SDL_RenderCopy(World.GameRender, World.tex, NULL, NULL );
-                                    if (Event.button.button == SDL_BUTTON_LEFT)
-                                        {
-                                           inst = true;
-                                        }
-                                }
-                            }
-
-
+                                //inst = true;
+                                cout <<  "Instruktioner" << endl;
 
                             }
-
+                        }
                     }
+
                     else
                     {
 
                         SDL_SetTextureColorMod(aboutpic, 250, 250, 250);
                         if(Mx >= myNewgame.posMeny.x && Mx <= myNewgame.posMeny.x + myNewgame.posMeny.w && My >= myNewgame.posMeny.y && My <= myNewgame.posMeny.y + myNewgame.posMeny.h)
                         {
-                             //Mix_PlayChannel(-1,effect1,0);
+                            //Mix_PlayChannel(-1,effect1,0);
                             SDL_SetTextureColorMod(newgame, 250, 0, 0 );
                             if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
                             {
