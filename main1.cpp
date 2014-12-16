@@ -148,13 +148,20 @@ int main(int argc, char *argv[])
                         {
                             if (Event.button.button == SDL_BUTTON_LEFT)
                             {
-                                cout <<  "Instruktioner" << endl;
+
                                 bool inst = false;
                                 //if it is pressed then play1 becomes true which you could use to initiate the newgame
                                 while (!inst){
-                                    SDL_RenderClear(World.GameRender);
-                                    World.SetInstruction(World.GameRender);
 
+                                    SDL_RenderClear(World.GameRender);
+                                    cout <<  "Instruktioner" << endl;
+                                    World.SetInstruction(World.GameRender);
+                                    SDL_DestroyTexture(aboutpic);
+                                    SDL_DestroyTexture(newgame);
+                                    SDL_DestroyTexture(quitgame);
+                                    SDL_DestroyTexture(headermeny);
+
+                                    SDL_RenderCopy(World.GameRender, World.tex, NULL, NULL );
                                     if (Event.button.button == SDL_BUTTON_LEFT)
                                         {
                                            inst = true;

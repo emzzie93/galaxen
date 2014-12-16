@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1418723744 source:c:\users\emma\desktop\galaxen\gameobject.cpp
+1418744629 source:c:\users\emma\desktop\galaxen\gameobject.cpp
 	<random>
 	"gameobject.h"
 	"ObjectSetup.h"
 
-1418723744 c:\users\emma\desktop\galaxen\gameobject.h
+1418751090 c:\users\emma\desktop\galaxen\gameobject.h
 	<SDL.h>
 	"setup.h"
 	"ObjectSetup.h"
@@ -700,12 +700,14 @@
 1418297459 source:c:\users\hugo\desktop\galaxen\setup.cpp
 	"setup.h"
 
-1418333295 c:\users\emma\desktop\galaxen\setup.h
+1418754574 c:\users\emma\desktop\galaxen\setup.h
 	<iostream>
 	<string>
 	<SDL.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
 
-1418301171 source:c:\users\emma\desktop\galaxen\setup.cpp
+1418754642 source:c:\users\emma\desktop\galaxen\setup.cpp
 	"setup.h"
 
 1418723177 source:c:\users\emma\desktop\galaxen\main(new).cpp
@@ -715,7 +717,7 @@
 	<SDL_image.h>
 	"gameobject.h"
 
-1418723744 c:\users\emma\desktop\galaxen\objectsetup.h
+1418731143 c:\users\emma\desktop\galaxen\objectsetup.h
 	<iostream>
 	<string>
 	<SDL.h>
@@ -733,7 +735,7 @@
 	<SDL_image.h>
 	"setup.h"
 
-1418395772 source:c:\users\emma\desktop\galaxen\objectsetup.cpp
+1418731143 source:c:\users\emma\desktop\galaxen\objectsetup.cpp
 	"ObjectSetup.h"
 	"ObjectSetup.h"
 
@@ -1097,4 +1099,37 @@
 1418720965 source:c:\users\demo\desktop\galaxen\objectsetup.cpp
 	"ObjectSetup.h"
 	"ObjectSetup.h"
+
+1418751832 source:c:\users\emma\desktop\galaxen\asteroids.cpp
+	"ObjectSetup.h"
+	"gameobject.h"
+	"asteroids.h"
+
+1376152943 c:\users\emma\desktop\skriv\universitetet\ht2014\c++\sdl2_ttf-2.0.12\i686-w64-mingw32\include\sdl2\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1376152825 c:\users\emma\desktop\skriv\universitetet\ht2014\c++\sdl2_mixer-2.0.0\i686-w64-mingw32\include\sdl2\sdl_mixer.h
+	"SDL_stdinc.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1418751090 c:\users\emma\desktop\galaxen\asteroids.h
+	<iostream>
+	<string>
+	<SDL.h>
+	<SDL_image.h>
+	"gameobject.h"
+
+1418753592 source:c:\users\emma\desktop\galaxen\meny(text).cpp
+	"Meny(text).h"
+
+1418753323 c:\users\emma\desktop\galaxen\meny(text).h
+	<SDL.h>
+	"setup.h"
 
