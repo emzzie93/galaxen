@@ -5,17 +5,14 @@
 
 #include <SDL_mixer.h>
 #include "gameobject.h"
-#include "Meny(text).h"
+#include "setup.h"
+#include "Menysetup.h"
 #include "asteroids.h"
 
 using namespace std;
+GameSetup World;
 
-SDL_Texture* headermeny = nullptr;
-SDL_Texture* newgame = nullptr;
-SDL_Texture* aboutpic = nullptr;
-SDL_Texture* quitgame = nullptr;
 SDL_Texture* texttest = nullptr;
-//SDL_Texture* instruction = nullptr;
 
 
 int main(int argc, char *argv[])
@@ -27,24 +24,12 @@ int main(int argc, char *argv[])
     World.LoadMedia();
     World.PlaySound();
 
-    theMeny myMeny(200,30,230,100);
-    theMeny myNewgame(240,160,150,50);
-    theMeny myAbout(240,240,150,50);
-    theMeny myQuitgame(240,320,150,50);
+    Menysetup astroids(200,30,230,100);
+    Menysetup Newgame(240,160,150,50);
+    Menysetup About(240,240,150,50);
+    Menysetup Quitgame(240,320,150,50);
 
-
-    Menyheader = SDL_LoadBMP("Asteroids.bmp");
-    Newgame = SDL_LoadBMP("play.bmp");
-    About = SDL_LoadBMP("about.bmp");
-    Quitgame = SDL_LoadBMP("exit.bmp");
-
-
-    headermeny = SDL_CreateTextureFromSurface(World.GameRender, Menyheader);
-    newgame = SDL_CreateTextureFromSurface(World.GameRender, Newgame);
-    aboutpic = SDL_CreateTextureFromSurface(World.GameRender, About);
-    quitgame = SDL_CreateTextureFromSurface(World.GameRender, Quitgame);
-
-
+    astroids.CreateMeny(World);
 
     // Initialize SDL_ttf library
     if (TTF_Init() != 0)
@@ -94,11 +79,10 @@ int main(int argc, char *argv[])
         SDL_RenderClear(World.GameRender);
         //render the background
         World.render();
-        SDL_RenderCopy(World.GameRender, headermeny, NULL, &myMeny.posMeny);
-        SDL_RenderCopy(World.GameRender, newgame, NULL, &myNewgame.posMeny);
-        SDL_RenderCopy(World.GameRender, aboutpic, NULL, &myAbout.posMeny);
-        SDL_RenderCopy(World.GameRender, quitgame, NULL, &myQuitgame.posMeny);
-        SDL_RenderCopy(World.GameRender, texttest, NULL, &srcrect);
+        SDL_RenderCopy(World.GameRender, astroids.headermeny, NULL, &astroids.posMeny);
+        SDL_RenderCopy(World.GameRender, astroids.newgame, NULL, &Newgame.posMeny);
+        SDL_RenderCopy(World.GameRender, astroids.about, NULL, &About.posMeny);
+        SDL_RenderCopy(World.GameRender, astroids.quitgame, NULL, &Quitgame.posMeny);
 
 
         SDL_RenderPresent(World.GameRender);
@@ -124,10 +108,10 @@ int main(int argc, char *argv[])
             }
             else
             {
-                if(Mx >= myQuitgame.posMeny.x && Mx <= myQuitgame.posMeny.x + myQuitgame.posMeny.w && My >= myQuitgame.posMeny.y && My <= myQuitgame.posMeny.y + myQuitgame.posMeny.h)
+                if(Mx >= Quitgame.posMeny.x && Mx <= Quitgame.posMeny.x + Quitgame.posMeny.w && My >= Quitgame.posMeny.y && My <= Quitgame.posMeny.y + Quitgame.posMeny.h)
                 {
-                    //Mix_PlayChannel(-1,World.effect1,0);
-                    SDL_SetTextureColorMod(quitgame, 250, 0, 0 );
+                    //Mix_PlayChannel(-1,effect1,0);
+                    SDL_SetTextureColorMod(astroids.quitgame, 250, 0, 0 );
                     if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
                     {
                         if (Event.button.button == SDL_BUTTON_LEFT)
@@ -139,11 +123,11 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
-                    SDL_SetTextureColorMod(quitgame, 250, 250, 250);
-                    if(Mx >= myAbout.posMeny.x && Mx <= myAbout.posMeny.x + myAbout.posMeny.w && My >= myAbout.posMeny.y && My <= myAbout.posMeny.y + myAbout.posMeny.h)
+                   SDL_SetTextureColorMod(astroids.quitgame, 250, 250, 250);
+                    if(Mx >= About.posMeny.x && Mx <= About.posMeny.x + About.posMeny.w && My >= About.posMeny.y && My <= About.posMeny.y + About.posMeny.h)
                     {
-                         //Mix_PlayChannel(-1,effect1,0);
-                        SDL_SetTextureColorMod(aboutpic, 250, 0, 0 );
+                        //Mix_PlayChannel(-1,effect1,0);
+                        SDL_SetTextureColorMod(astroids.About, 250, 0, 0 );
                         if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
                         {
                             if (Event.button.button == SDL_BUTTON_LEFT)
@@ -177,11 +161,11 @@ int main(int argc, char *argv[])
                     else
                     {
 
-                        SDL_SetTextureColorMod(aboutpic, 250, 250, 250);
-                        if(Mx >= myNewgame.posMeny.x && Mx <= myNewgame.posMeny.x + myNewgame.posMeny.w && My >= myNewgame.posMeny.y && My <= myNewgame.posMeny.y + myNewgame.posMeny.h)
+                      SDL_SetTextureColorMod(astroids.About, 250, 250, 250);
+                        if(Mx >= Newgame.posMeny.x && Mx <= Newgame.posMeny.x + Newgame.posMeny.w && My >= Newgame.posMeny.y && My <= Newgame.posMeny.y + Newgame.posMeny.h)
                         {
-                             //Mix_PlayChannel(-1,effect1,0);
-                            SDL_SetTextureColorMod(newgame, 250, 0, 0 );
+                            //Mix_PlayChannel(-1,effect1,0);
+                            SDL_SetTextureColorMod(astroids.newgame, 250, 0, 0 );
                             if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
                             {
                                 if (Event.button.button == SDL_BUTTON_LEFT)
@@ -195,7 +179,7 @@ int main(int argc, char *argv[])
                         }
                         else
                         {
-                            SDL_SetTextureColorMod(newgame, 250, 250, 250);
+                             SDL_SetTextureColorMod(astroids.newgame, 250, 250, 250);
                         }
                     }
                 }
