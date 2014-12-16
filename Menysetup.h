@@ -12,7 +12,7 @@ public:
     SDL_Texture* newgame = nullptr;
     SDL_Texture* about = nullptr;
     SDL_Texture* quitgame = nullptr;
-   SDL_Texture* texttest = nullptr;
+
 
     SDL_Surface* Menyheader = nullptr;
     SDL_Surface* Newgame = nullptr;

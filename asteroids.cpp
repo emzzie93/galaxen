@@ -20,6 +20,7 @@ int time_level = 0;
 
 GameSetup World;
 ObjectSetup Objects;
+//TextSetup Text;
 
 //Initierar World och laddar upp bakgrund
     World.setup();
@@ -39,6 +40,9 @@ ObjectSetup Objects;
     myStar.init();
     myBullet.init();
 
+//Text
+ //Text.ScoreInit
+
     Objects.CreateObjects(World);
 
 //Skapar en bool och en Event struktur
@@ -50,6 +54,7 @@ ObjectSetup Objects;
     {
         //ritar ut bakgrund
         World.render();
+
 
         //Flyttar skepp och kollar kollision med hjärta eller stjärna
         myShip.ship_movement();
@@ -145,6 +150,7 @@ ObjectSetup Objects;
             }
         }
 
+      //  SDL_RenderCopy(World.GameRender, texttest,NULL, &Text.ScoreText);
         SDL_RenderPresent(World.GameRender);
         SDL_Delay(20);
         if(myShip.life <= 0)
@@ -166,9 +172,7 @@ ObjectSetup Objects;
         }
 
     }
-
-  //  SDL_DestroyTexture(tex);
-  //  SDL_DestroyRenderer(GameRender);
+    World.GameOver();
     SDL_DestroyWindow(World.GameWindow);
 
     //World.close();

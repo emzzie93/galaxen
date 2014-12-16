@@ -12,7 +12,8 @@
 using namespace std;
 GameSetup World;
 
-SDL_Texture* texttest = nullptr;
+
+
 
 
 int main(int argc, char *argv[])
@@ -30,46 +31,6 @@ int main(int argc, char *argv[])
     Menysetup Quitgame(240,320,150,50);
 
     astroids.CreateMeny(World);
-
-    // Initialize SDL_ttf library
-    if (TTF_Init() != 0)
-    {
-        cerr << "TTF_Init() Failed: " << TTF_GetError() << endl;
-        SDL_Quit();
-        exit(1);
-    }
-
-    // Load a font
-    TTF_Font *font;
-    font = TTF_OpenFont("LucidaTypewriterBold.ttf",14);
-    if (font == NULL)
-    {
-        cerr << "TTF_OpenFont() Failed: " << TTF_GetError() << endl;
-        TTF_Quit();
-        SDL_Quit();
-        exit(1);
-    }
-
-    // Write text to surface
-    SDL_Surface *text;
-    SDL_Color text_color = {250, 250, 250};
-    text = TTF_RenderText_Solid(font,"SCORE:",text_color);
-
-    if (text == NULL)
-    {
-        cerr << "TTF_RenderText_Solid() Failed: " << TTF_GetError() << endl;
-        TTF_Quit();
-        SDL_Quit();
-        exit(1);
-    }
-    texttest = SDL_CreateTextureFromSurface(World.GameRender, text);
-    SDL_Rect srcrect;
-
-    srcrect.x = 0;
-    srcrect.y = 0;
-    srcrect.w = 60;
-    srcrect.h = 30;
-
 
 //Our event structure
 

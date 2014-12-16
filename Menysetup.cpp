@@ -11,8 +11,6 @@ Menysetup::Menysetup(int xpos, int ypos, int width, int height)
 }
 
 
-
-
 void Menysetup::CreateMeny(GameSetup World)
  {
 

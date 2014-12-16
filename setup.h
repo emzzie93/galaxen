@@ -14,10 +14,13 @@ public:
 
     SDL_Window *GameWindow = nullptr;
     SDL_Renderer *GameRender  = nullptr;
-    //SDL_Renderer *InstructionsRender = nullptr;
     SDL_Surface *background = nullptr;
     SDL_Texture* Instructions = nullptr;
     SDL_Texture *tex = nullptr;
+
+    SDL_Texture *Gameover = nullptr;
+    SDL_Surface *gameover = nullptr;
+
     Mix_Music* effect1 = nullptr;
     Mix_Music* menymusik = nullptr;
     SDL_Surface* instructions = nullptr;
@@ -32,6 +35,7 @@ public:
     void LoadMedia();
     void PlaySound();
     void SetInstruction(SDL_Renderer* GameRenderer, SDL_Texture* tex);
+    void GameOver();
 };
 
 #endif

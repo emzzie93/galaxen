@@ -14,6 +14,7 @@ using namespace std;
 class Asteroids
 {
 public:
+    SDL_Texture* texttest = nullptr;
     void Play(int argc, char *argv[]);
     void render1(SDL_Renderer* GameRender,SDL_Texture* texture,SDL_Rect* type);
 };

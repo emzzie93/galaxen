@@ -72,7 +72,6 @@ void GameSetup::PlaySound()
     Mix_PlayMusic(menymusik,2);
 }
 
-
 void GameSetup::close()
 {
     SDL_DestroyTexture(GameSetup::tex);
@@ -121,36 +120,75 @@ void GameSetup::SetInstruction(SDL_Renderer* GameRender, SDL_Texture* tex)
 //    SDL_DestroyTexture(astroids.newgame);
 //    SDL_DestroyTexture(astroids.quitgame);
 //    SDL_DestroyTexture(astroids.headermeny);
-SDL_Event Event;
-bool instruct=true;
+    SDL_Event Event;
+    bool instruct=true;
 
 
-while (instruct){
-    SDL_RenderClear(GameRender);
-    SDL_RenderCopy(GameRender, tex, NULL, NULL );
-    SDL_RenderPresent(GameRender);
-    //SDL_Delay(100);
+    while (instruct)
+    {
+        SDL_RenderClear(GameRender);
+        SDL_RenderCopy(GameRender, tex, NULL, NULL );
+        SDL_RenderPresent(GameRender);
+        //SDL_Delay(100);
 
-    while (SDL_PollEvent(&Event)){
-
-        switch (Event.type)
+        while (SDL_PollEvent(&Event))
         {
-              case SDL_QUIT:
+
+            switch (Event.type)
+            {
+            case SDL_QUIT:
                 quit = true;
                 break;
 
             case SDL_KEYDOWN:
-                switch ( Event.key.keysym.sym ){
-                    case SDLK_q:
-                        instruct = false;
-                        break;
+                switch ( Event.key.keysym.sym )
+                {
+                case SDLK_q:
+                    instruct = false;
+                    break;
                 }
-        }
+            }
         }
 
     }
 }
 
+void GameSetup::GameOver()
+{
+       //SDL_Surface *
+    gameover = SDL_LoadBMP("Game-Over.bmp");
+    if (gameover == nullptr)
+    {
+        SDL_DestroyRenderer(GameRender);
+        SDL_DestroyWindow(GameWindow);
+        std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
+        SDL_Quit();
+        // return 1;
+    }
+
+    Gameover = SDL_CreateTextureFromSurface(GameRender, gameover);
+    //create a texture from the surface
+    //SDL_Texture *
+    tex = SDL_CreateTextureFromSurface(GameRender, gameover);
+    SDL_FreeSurface(gameover);
+    if (tex == nullptr)
+    {
+        SDL_DestroyRenderer(GameRender);
+        SDL_DestroyWindow(GameWindow);
+        std::cout << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
+        SDL_Quit();
+        // return 1;
+    }
+    int counter = 0;
+    while (counter != 100)
+    {
+        SDL_RenderClear(GameRender);
+        SDL_RenderCopy(GameRender, tex, NULL, NULL );
+        SDL_RenderPresent(GameRender);
+        SDL_Delay(20);
+        counter++;
+    }
+}
 
 
 
