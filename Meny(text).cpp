@@ -1,9 +1,10 @@
 #include "Meny(text).h"
 
-SDL_Surface* Menyheader = NULL;
-SDL_Surface* Newgame = NULL;
-SDL_Surface* Instructions = NULL;
-SDL_Surface* Quitgame = NULL;
+SDL_Surface* Menyheader = nullptr;
+SDL_Surface* Newgame = nullptr;
+SDL_Surface* About = nullptr;
+SDL_Surface* Quitgame = nullptr;
+SDL_Surface* Instructions = nullptr;
 
 theMeny::theMeny(int xpos, int ypos, int width, int height)
 {

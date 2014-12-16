@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <SDL.h>
+#include <SDL_ttf.h>
+#include <SDL_mixer.h>
 
 
 class GameSetup
@@ -13,7 +15,12 @@ public:
     SDL_Window *GameWindow = nullptr;
     SDL_Renderer *GameRender  = nullptr;
     SDL_Surface *background = nullptr;
+    SDL_Texture* Instructions = nullptr;
     SDL_Texture *tex = nullptr;
+    Mix_Music* effect1 = nullptr;
+    Mix_Music* menymusik = nullptr;
+    SDL_Surface* instructions = nullptr;
+
     bool fullscreen;
     GameSetup() = default;
     ~GameSetup()=default;
@@ -21,6 +28,8 @@ public:
     void close();
     void render();
     void LoadMedia();
+    void PlaySound();
+    void SetInstruction(SDL_Renderer* GameRenderer);
 };
 
 #endif

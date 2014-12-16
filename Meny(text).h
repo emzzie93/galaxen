@@ -7,6 +7,7 @@ extern SDL_Surface* Menyheader;
 extern SDL_Surface* Newgame;
 extern SDL_Surface* Instructions;
 extern SDL_Surface* Quitgame;
+extern SDL_Surface* About;
 
 
 class theMeny

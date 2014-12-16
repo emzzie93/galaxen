@@ -6,54 +6,42 @@
 #include <SDL_mixer.h>
 #include "gameobject.h"
 #include "Meny(text).h"
+#include "asteroids.h"
 
 using namespace std;
 
 SDL_Texture* headermeny = nullptr;
 SDL_Texture* newgame = nullptr;
-SDL_Texture* instructions = nullptr;
+SDL_Texture* aboutpic = nullptr;
 SDL_Texture* quitgame = nullptr;
 SDL_Texture* texttest = nullptr;
+//SDL_Texture* instruction = nullptr;
 
 
-int main(int, char **)
+int main(int argc, char *argv[])
 {
 
     GameSetup World;
+    Asteroids Gameloop;
     World.setup();
     World.LoadMedia();
+    World.PlaySound();
+
     theMeny myMeny(200,30,230,100);
     theMeny myNewgame(240,160,150,50);
-    theMeny myInstructions(240,240,150,50);
+    theMeny myAbout(240,240,150,50);
     theMeny myQuitgame(240,320,150,50);
 
 
     Menyheader = SDL_LoadBMP("Asteroids.bmp");
     Newgame = SDL_LoadBMP("play.bmp");
-    Instructions = SDL_LoadBMP("about.bmp");
+    About = SDL_LoadBMP("about.bmp");
     Quitgame = SDL_LoadBMP("exit.bmp");
-
-    // Audio
-    int flags = MIX_INIT_OGG;
-    int inited = Mix_Init(flags);
-    if(inited & flags != flags)
-    {
-        cerr << "Audio didn't initialize!\n";
-    }
-
-    Mix_Chunk* effect1 = NULL;
-    Mix_Music* menymusik = NULL;
-
-    Mix_OpenAudio(22050,MIX_DEFAULT_FORMAT, 2, 2048);
-
-effect1 = Mix_LoadWAV("Laser.wav");
-    menymusik = Mix_LoadMUS("Menue.ogg");
-    Mix_PlayMusic(menymusik,2);
 
 
     headermeny = SDL_CreateTextureFromSurface(World.GameRender, Menyheader);
     newgame = SDL_CreateTextureFromSurface(World.GameRender, Newgame);
-    instructions = SDL_CreateTextureFromSurface(World.GameRender, Instructions);
+    aboutpic = SDL_CreateTextureFromSurface(World.GameRender, About);
     quitgame = SDL_CreateTextureFromSurface(World.GameRender, Quitgame);
 
 
@@ -90,13 +78,12 @@ effect1 = Mix_LoadWAV("Laser.wav");
         exit(1);
     }
     texttest = SDL_CreateTextureFromSurface(World.GameRender, text);
-    SDL_Rect* srcrect;
+    SDL_Rect srcrect;
 
-    srcrect->x = 0;
-    srcrect->y = 0;
-    srcrect->w = 60;
-    srcrect->h = 30;
-
+    srcrect.x = 0;
+    srcrect.y = 0;
+    srcrect.w = 60;
+    srcrect.h = 30;
 
 
 //Our event structure
@@ -109,9 +96,9 @@ effect1 = Mix_LoadWAV("Laser.wav");
         World.render();
         SDL_RenderCopy(World.GameRender, headermeny, NULL, &myMeny.posMeny);
         SDL_RenderCopy(World.GameRender, newgame, NULL, &myNewgame.posMeny);
-        SDL_RenderCopy(World.GameRender, instructions, NULL, &myInstructions.posMeny);
+        SDL_RenderCopy(World.GameRender, aboutpic, NULL, &myAbout.posMeny);
         SDL_RenderCopy(World.GameRender, quitgame, NULL, &myQuitgame.posMeny);
-        SDL_RenderCopy(World.GameRender, texttest, NULL, srcrect);
+        SDL_RenderCopy(World.GameRender, texttest, NULL, &srcrect);
 
 
         SDL_RenderPresent(World.GameRender);
@@ -139,7 +126,7 @@ effect1 = Mix_LoadWAV("Laser.wav");
             {
                 if(Mx >= myQuitgame.posMeny.x && Mx <= myQuitgame.posMeny.x + myQuitgame.posMeny.w && My >= myQuitgame.posMeny.y && My <= myQuitgame.posMeny.y + myQuitgame.posMeny.h)
                 {
-                    Mix_PlayChannel(-1,effect1,0);
+                    //Mix_PlayChannel(-1,World.effect1,0);
                     SDL_SetTextureColorMod(quitgame, 250, 0, 0 );
                     if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
                     {
@@ -153,33 +140,49 @@ effect1 = Mix_LoadWAV("Laser.wav");
                 else
                 {
                     SDL_SetTextureColorMod(quitgame, 250, 250, 250);
-                    if(Mx >= myInstructions.posMeny.x && Mx <= myInstructions.posMeny.x + myInstructions.posMeny.w && My >= myInstructions.posMeny.y && My <= myInstructions.posMeny.y + myInstructions.posMeny.h)
+                    if(Mx >= myAbout.posMeny.x && Mx <= myAbout.posMeny.x + myAbout.posMeny.w && My >= myAbout.posMeny.y && My <= myAbout.posMeny.y + myAbout.posMeny.h)
                     {
-                         Mix_PlayChannel(-1,effect1,0);
-                        SDL_SetTextureColorMod(instructions, 250, 0, 0 );
+                         //Mix_PlayChannel(-1,effect1,0);
+                        SDL_SetTextureColorMod(aboutpic, 250, 0, 0 );
                         if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
                         {
                             if (Event.button.button == SDL_BUTTON_LEFT)
                             {
-                                //if it is pressed then play1 becomes true which you could use to initiate the newgame
                                 cout <<  "Instruktioner" << endl;
+                                bool inst = false;
+                                //if it is pressed then play1 becomes true which you could use to initiate the newgame
+                                while (!inst){
+                                    SDL_RenderClear(World.GameRender);
+                                    World.SetInstruction(World.GameRender);
+
+                                    if (Event.button.button == SDL_BUTTON_LEFT)
+                                        {
+                                           inst = true;
+                                        }
+                                }
                             }
-                        }
+
+
+
+                            }
+
                     }
                     else
                     {
-                        SDL_SetTextureColorMod(instructions, 250, 250, 250);
+
+                        SDL_SetTextureColorMod(aboutpic, 250, 250, 250);
                         if(Mx >= myNewgame.posMeny.x && Mx <= myNewgame.posMeny.x + myNewgame.posMeny.w && My >= myNewgame.posMeny.y && My <= myNewgame.posMeny.y + myNewgame.posMeny.h)
                         {
-                             Mix_PlayChannel(-1,effect1,0);
+                             //Mix_PlayChannel(-1,effect1,0);
                             SDL_SetTextureColorMod(newgame, 250, 0, 0 );
                             if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
                             {
                                 if (Event.button.button == SDL_BUTTON_LEFT)
                                 {
+
                                     //if it is pressed then play1 becomes true which you could use to initiate the newgame
                                     cout <<  "Starta spelet" << endl;
-
+                                    Gameloop.Play(argc,argv);
                                 }
                             }
                         }
