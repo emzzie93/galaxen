@@ -433,6 +433,7 @@ void theShip :: add_life()
 void theShip :: delete_life()
 {
     this->life--;
+    lostLife = true;
 }
 
 void theShip :: add_point(int i)

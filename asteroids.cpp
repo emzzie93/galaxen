@@ -5,13 +5,6 @@
 
 
 
-
-
-void render1(SDL_Renderer* GameRender, SDL_Texture* texture,SDL_Rect* type)
-{
-    SDL_RenderCopy(GameRender, texture, NULL, type);
-}
-
 void Asteroids::Play(int argc, char *argv[])
 {
 
@@ -49,7 +42,6 @@ TextSetup Texten;
 //Texten.ScoreInit();
 
  //Text.ScoreInit
-
     Objects.CreateObjects(World);
 
 //Skapar en bool och en Event struktur
@@ -66,7 +58,6 @@ TextSetup Texten;
         //Flyttar skepp och kollar kollision med hjärta eller stjärna
         myShip.ship_movement();
         myShip.collision(&myHeart,&myStar);
-        //Asteroids.render1(World.GameRender, Objects.ship1,&myShip.position);
         SDL_RenderCopy(World.GameRender, Objects.ship1, NULL, &myShip.position);
 
         //lägger till hjärta, flyttar hjärta, målar upp hjärta
@@ -74,7 +65,6 @@ TextSetup Texten;
         myHeart.movement();
         if(myHeart.isActive==true)
         {
-            //render1(World.GameRender,Objects.heart1,&myHeart.position);
             SDL_RenderCopy(World.GameRender, Objects.heart1, NULL, &myHeart.position);
         }
 
@@ -83,7 +73,6 @@ TextSetup Texten;
         myStar.movement();
         if(myStar.isActive==true)
         {
-           // render1(World.GameRender,Objects.star1,&myStar.position);
            SDL_RenderCopy(World.GameRender, Objects.star1, NULL, &myStar.position);
         }
 
@@ -98,17 +87,14 @@ TextSetup Texten;
             {
                 if(myStone.type == 1)
                 {
-                    //render1(World.GameRender,Objects.stone1,&myStone.position);
                     SDL_RenderCopy(World.GameRender, Objects.stone1, NULL, &myStone.position);
                 }
                 else if(myStone.type == 2)
                 {
                     SDL_RenderCopy(World.GameRender, Objects.stone2, NULL, &myStone.position);
-                    //render1(World.GameRender,Objects.stone2,&myStone.position);
                 }
                 else if(myStone.type == 3)
                 {
-                   // render1(World.GameRender,Objects.stone3,&myStone.position);
                    SDL_RenderCopy(World.GameRender, Objects.stone3, NULL, &myStone.position);
                 }
             }
@@ -123,7 +109,6 @@ TextSetup Texten;
             myStone.collision();
             if(myBullet.isActive == true)
             {
-               // render1(World.GameRender,Objects.bullet1,&myBullet.position);
                SDL_RenderCopy(World.GameRender, Objects.bullet1, NULL, &myBullet.position);
             }
         }
@@ -146,8 +131,6 @@ Texten.TextOnScreen(World.GameRender, World.counter);
                 case SDLK_SPACE:
                     //Skapar skott vid mellanslag
                     myBullet.add(myShip.position.x,myShip.position.y,myShip.position.w);
-                    //Mix_PlayChannel(-1, World.effect1, 1);
-                    //Mix_FreeChunk( World.effect1);
                     break;
 
                 case SDLK_q:
@@ -157,9 +140,16 @@ Texten.TextOnScreen(World.GameRender, World.counter);
             }
         }
 
-      //  SDL_RenderCopy(World.GameRender, texttest,NULL, &Text.ScoreText);
+
         SDL_RenderPresent(World.GameRender);
         SDL_Delay(20);
+
+        if(myShip.lostLife)
+        {
+            SDL_Delay(1500);
+            myShip.lostLife = false;
+        }
+
         if(myShip.life <= 0)
         {
             quit = true;
@@ -182,9 +172,6 @@ Texten.TextOnScreen(World.GameRender, World.counter);
     World.GameOver();
     SDL_DestroyWindow(World.GameWindow);
 
-    //World.close();
-
-    //return 0;
 }
 
 

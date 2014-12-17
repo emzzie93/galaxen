@@ -1,10 +1,4 @@
 #include "ObjectSetup.h"
-
-//SDL_Surface* Stone = NULL;
-//SDL_Surface* Ship = NULL;
-//SDL_Surface* Heart = NULL;
-//SDL_Surface* Star = NULL;
-//SDL_Surface* Bullet = NULL;
 #include "ObjectSetup.h"
 
 
