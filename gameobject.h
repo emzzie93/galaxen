@@ -87,8 +87,8 @@ public:
     void ship_movement();
     void level_up();
 
-    int life;
-    int point;
+    long life;
+    long point;
     bool lostLife = false;
 };
 

@@ -120,6 +120,8 @@ void Asteroids::Play(int argc, char *argv[])
         }
 
         Texten.TextOnScreen(World.GameRender, myShip.point);
+        Texten.SetLives(World.GameRender, myShip.life);
+
 
         while (SDL_PollEvent(&Event))
         {
