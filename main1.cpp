@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
     Asteroids Gameloop;
     World.setup();
     World.LoadMedia();
+    World.playmeny = true;
     World.PlaySound();
 
     Menysetup astroids(200,30,230,100);
@@ -37,8 +38,7 @@ int main(int argc, char *argv[])
     SDL_Event Event;
     while (!World.quit)
     {
-        World.playmeny = true;
-        World.PlaySound();
+
         SDL_RenderClear(World.GameRender);
         //render the background
         World.render();
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
             {
                 if(Mx >= Quitgame.posMeny.x && Mx <= Quitgame.posMeny.x + Quitgame.posMeny.w && My >= Quitgame.posMeny.y && My <= Quitgame.posMeny.y + Quitgame.posMeny.h)
                 {
-                    World.playmeny = true;
+                    World.playeffect = true;
                     World.PlaySound();
                     SDL_SetTextureColorMod(astroids.quitgame, 250, 0, 0 );
                     if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?

@@ -76,7 +76,7 @@ void GameSetup::PlaySound()
 
     if (playmeny)
     {
-        Mix_PlayMusic(menymusik,0);
+        Mix_PlayMusic(menymusik,-1);
     }
 
     if (playeffect)

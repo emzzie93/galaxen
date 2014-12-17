@@ -699,7 +699,7 @@
 	<SDL_image.h>
 	"gameobject.h"
 
-1418825120 source:c:\users\hugo\desktop\galaxen\setup.cpp
+1418825772 source:c:\users\hugo\desktop\galaxen\setup.cpp
 	"setup.h"
 
 1418773450 c:\users\emma\desktop\galaxen\setup.h
@@ -1224,7 +1224,7 @@
 1394937197 c:\users\hugo\documents\program\lib for codeblocks\include\sdl2\sdl_types.h
 	"SDL_stdinc.h"
 
-1418825630 source:c:\users\hugo\desktop\galaxen\main1.cpp
+1418825930 source:c:\users\hugo\desktop\galaxen\main1.cpp
 	<iostream>
 	<string>
 	<SDL.h>
