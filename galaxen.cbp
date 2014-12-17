@@ -43,26 +43,24 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="C:/Users/DEMO/Documents/TDDC76/C++/SDL2-2.0.3/i686-w64-mingw32/include/SDL2" />
-			<Add directory="C:/Users/DEMO/Documents/TDDC76/C++/SDL2_image-2.0.0/i686-w64-mingw32/include/SDL2" />
-			<Add directory="C:/Users/DEMO/Documents/TDDC76/C++/SDL2_ttf-2.0.12/i686-w64-mingw32/include/SDL2" />
-			<Add directory="C:/Users/DEMO/Documents/TDDC76/C++/SDL2_mixer-2.0.0/i686-w64-mingw32/include/SDL2" />
+			<Add directory="C:/Users/Hugo/Documents/Program/Lib for codeblocks/include/SDL2" />
+			<Add directory="C:/Users/Hugo/Documents/Program/Image/include/SDL2" />
+			<Add directory="C:/Users/Hugo/Documents/Program/SDL2_mixer-2.0.0/i686-w64-mingw32/include/SDL2" />
+			<Add directory="C:/Users/Hugo/Documents/Program/SDL2_ttf-2.0.12/i686-w64-mingw32/include/SDL2" />
 		</Compiler>
 		<Linker>
 			<Add option="-lmingw32 -lSDL2main -lSDL2" />
 			<Add option="-lSDL2_image -lSDL2_ttf -lSDL2_mixer" />
-			<Add directory="C:/Users/DEMO/Documents/TDDC76/C++/SDL2-2.0.3/i686-w64-mingw32/lib" />
-			<Add directory="C:/Users/DEMO/Documents/TDDC76/C++/SDL2_image-2.0.0/i686-w64-mingw32/lib" />
-			<Add directory="C:/Users/DEMO/Documents/TDDC76/C++/SDL2_mixer-2.0.0/i686-w64-mingw32/lib" />
-			<Add directory="C:/Users/DEMO/Documents/TDDC76/C++/SDL2_ttf-2.0.12/i686-w64-mingw32/lib" />
+			<Add directory="C:/Users/Hugo/Documents/Program/Lib for codeblocks/lib" />
+			<Add directory="C:/Users/Hugo/Documents/Program/Image/lib" />
+			<Add directory="C:/Users/Hugo/Documents/Program/SDL2_mixer-2.0.0/i686-w64-mingw32/lib" />
+			<Add directory="C:/Users/Hugo/Documents/Program/SDL2_ttf-2.0.12/i686-w64-mingw32/lib" />
 		</Linker>
 		<Unit filename="Laser.wav" />
 		<Unit filename="Menysetup.cpp" />
 		<Unit filename="Menysetup.h" />
 		<Unit filename="ObjectSetup.cpp" />
 		<Unit filename="ObjectSetup.h" />
-		<Unit filename="TextSetup.cpp" />
-		<Unit filename="TextSetup.h" />
 		<Unit filename="asteroids.cpp" />
 		<Unit filename="asteroids.h" />
 		<Unit filename="fighter4.png" />
