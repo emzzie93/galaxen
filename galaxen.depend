@@ -739,17 +739,19 @@
 	"ObjectSetup.h"
 	"ObjectSetup.h"
 
-1418729543 source:c:\users\demo\desktop\galaxen\setup.cpp
+1418813488 source:c:\users\demo\desktop\galaxen\setup.cpp
 	"setup.h"
 
-1418381780 c:\users\demo\desktop\galaxen\setup.h
+1418813573 c:\users\demo\desktop\galaxen\setup.h
 	<iostream>
 	<string>
 	<SDL.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
 
 1418203849 source:c:\users\demo\desktop\galaxen\world.cpp
 
-1418722939 source:c:\users\demo\desktop\galaxen\gameobject.cpp
+1418755829 source:c:\users\demo\desktop\galaxen\gameobject.cpp
 	<random>
 	"gameobject.h"
 	"ObjectSetup.h"
@@ -1153,4 +1155,53 @@
 
 1418770695 source:c:\users\emma\desktop\galaxen\menysetup.cpp
 	"Menysetup.h"
+
+1376152944 c:\users\demo\documents\tddc76\c++\sdl2_ttf-2.0.12\i686-w64-mingw32\include\sdl2\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1376152826 c:\users\demo\documents\tddc76\c++\sdl2_mixer-2.0.0\i686-w64-mingw32\include\sdl2\sdl_mixer.h
+	"SDL_stdinc.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1418808325 source:c:\users\demo\desktop\galaxen\asteroids.cpp
+	"ObjectSetup.h"
+	"gameobject.h"
+	"asteroids.h"
+
+1418808325 c:\users\demo\desktop\galaxen\asteroids.h
+	<iostream>
+	<string>
+	<SDL.h>
+	<SDL_image.h>
+	"gameobject.h"
+
+1418813345 source:c:\users\demo\desktop\galaxen\main1.cpp
+	<iostream>
+	<string>
+	<SDL.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	"gameobject.h"
+	"setup.h"
+	"Menysetup.h"
+	"asteroids.h"
+
+1418808325 c:\users\demo\desktop\galaxen\menysetup.h
+	<iostream>
+	<string>
+	<SDL.h>
+	<SDL_image.h>
+	"setup.h"
+
+1418808325 source:c:\users\demo\desktop\galaxen\menysetup.cpp
+	"Menysetup.h"
+
+1418808325 source:c:\users\demo\desktop\galaxen\textsetup.cpp
 
