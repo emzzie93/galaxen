@@ -32,7 +32,7 @@ void GameSetup::LoadMedia()
 {
 
     //SDL_Surface *
-    background = SDL_LoadBMP("background_converted2.0.bmp");
+    background = SDL_LoadBMP("nybakgrund.bmp");
     if (background== nullptr)
     {
         SDL_DestroyRenderer(GameRender);
