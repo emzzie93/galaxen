@@ -28,7 +28,6 @@ public:
    virtual void init() = 0;
 };
 
-
 class theBullet : public Obstacle
 {
 public:
@@ -49,7 +48,7 @@ public:
     theStone();
  //   SDL_Rect posStone;
     void getStone(int i);
-   virtual  void movement() override;
+    virtual  void movement() override;
     void add();
     virtual void init() override;
     void collision();
@@ -84,6 +83,7 @@ public:
     bool isActive;
 
 };
+
 class theShip : public GameObject
 {
 public:

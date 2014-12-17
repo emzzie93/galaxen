@@ -1,6 +1,7 @@
 #include "ObjectSetup.h"
 #include "gameobject.h"
 #include "asteroids.h"
+#include "TextSetup.h"
 
 
 
@@ -9,7 +10,6 @@
 void render1(SDL_Renderer* GameRender, SDL_Texture* texture,SDL_Rect* type)
 {
     SDL_RenderCopy(GameRender, texture, NULL, type);
-
 }
 
 void Asteroids::Play(int argc, char *argv[])
@@ -20,7 +20,7 @@ int time_level = 0;
 
 GameSetup World;
 ObjectSetup Objects;
-//TextSetup Text;
+TextSetup Texten;
 
 //Initierar World och laddar upp bakgrund
     World.setup();
@@ -41,6 +41,13 @@ ObjectSetup Objects;
     myBullet.init();
 
 //Text
+
+//SDL_Rect ScoreRect;
+
+
+
+//Texten.ScoreInit();
+
  //Text.ScoreInit
 
     Objects.CreateObjects(World);
@@ -121,7 +128,7 @@ ObjectSetup Objects;
             }
         }
 
-
+Texten.TextOnScreen(World.GameRender, World.counter);
 
         while (SDL_PollEvent(&Event))
         {

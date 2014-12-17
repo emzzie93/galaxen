@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <SDL.h>
 #include <SDL_ttf.h>
-
 #include <SDL_mixer.h>
 #include "gameobject.h"
 #include "setup.h"
@@ -12,12 +12,16 @@
 using namespace std;
 GameSetup World;
 
+//    int score = 124;
+//    string text = to_string(score);
+//    cout << text << endl
 
 
 
 
 int main(int argc, char *argv[])
 {
+
 
     GameSetup World;
     Asteroids Gameloop;

@@ -26,6 +26,7 @@ public:
     Mix_Music* gamemusik = nullptr;
     SDL_Surface* instructions = nullptr;
 
+    long counter = 0;
     bool quit = false;
     bool playeffect;
     bool playmeny;

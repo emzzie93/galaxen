@@ -204,7 +204,7 @@ void GameSetup::GameOver()
         SDL_Quit();
         // return 1;
     }
-    int counter = 0;
+    //counter = 0;
     while (counter != 100)
     {
         SDL_RenderClear(GameRender);
