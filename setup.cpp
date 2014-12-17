@@ -68,11 +68,21 @@ void GameSetup::PlaySound()
 
     Mix_Chunk* effect1 = NULL;
     Mix_Music* menymusik = NULL;
+    Mix_Music* gamemusik = NULL;
+    Mix_Chunk* effect2 = NULL;
+
 
     Mix_OpenAudio(22050,MIX_DEFAULT_FORMAT, 2, 2048);
 
     effect1 = Mix_LoadWAV("Laser.wav");
     menymusik = Mix_LoadMUS("Menue.ogg");
+    gamemusik = Mix_LoadMUS("Game.ogg");
+    effect2 = Mix_LoadWAV("BigExplosion.wav");
+
+    if (playgame)
+    {
+        Mix_PlayMusic(gamemusik,-1);
+    }
 
     if (playmeny)
     {
@@ -83,6 +93,12 @@ void GameSetup::PlaySound()
     {
         Mix_PlayChannel(-1,effect1,0);
         playeffect = false;
+    }
+    if (playeffect2)
+    {
+        Mix_PlayChannel(-1, effect2, 0);
+        playeffect2 = false;
+
     }
 }
 

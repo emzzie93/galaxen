@@ -1,5 +1,5 @@
 #include <random>
-#
+#include "setup.h"
 #include "gameobject.h"
 #include "ObjectSetup.h"
 
@@ -285,7 +285,7 @@ void theStone::getStone(int i)
     *this = arrayofStones[i];
 }
 
-void theStone::collision()
+void theStone::collision(GameSetup* soundsoptions)
 {
 
     for(int i=0; i<20; i++)
@@ -313,9 +313,11 @@ void theStone::collision()
                         }
                         else if (arrayofStones[i].type == 3)
                         {
+
                             arrayofStones[i].type = 2;
                         }
-
+soundsoptions->playeffect2 = true;
+soundsoptions->PlaySound();
                         arrayofBullet[j].isActive = false;
                         arrayofBullet[j].position.x = 0;
                         arrayofBullet[j].position.y = 0;
@@ -515,6 +517,8 @@ void theShip :: collisionWstone()
             arrayofStones[i].isActive = false;
             arrayofStones[i].position.x = 0;
             arrayofStones[i].position.y = 0;
+
+
 
             this->delete_life();
             std ::cout<<"Liv: "<<this->life<< std::endl;
