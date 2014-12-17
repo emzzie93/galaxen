@@ -23,9 +23,13 @@ public:
 
     Mix_Music* effect1 = nullptr;
     Mix_Music* menymusik = nullptr;
+    Mix_Music* gamemusik = nullptr;
     SDL_Surface* instructions = nullptr;
 
     bool quit = false;
+    bool playeffect;
+    bool playmeny;
+    //bool playgame;
     bool fullscreen;
     GameSetup() = default;
     ~GameSetup()=default;
