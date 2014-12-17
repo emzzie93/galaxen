@@ -6,7 +6,6 @@ void GameSetup::setup()
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
         std::cerr << "SDL_Init error: " << SDL_GetError() << std::endl;
-        // return 1;
     }
     //create a window and make sure it is correctly started
     //SDL_Window *
@@ -15,7 +14,6 @@ void GameSetup::setup()
     {
         std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
-        // return 1;
     }
 
     // Create a render to draw the window on, and make sure that it works.
@@ -26,7 +24,6 @@ void GameSetup::setup()
         SDL_DestroyWindow(GameWindow);
         std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
-        //  return 1;
     }
 }
 
@@ -42,7 +39,6 @@ void GameSetup::LoadMedia()
         SDL_DestroyWindow(GameWindow);
         std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
-        // return 1;
     }
 
     //create a texture from the surface
@@ -55,7 +51,6 @@ void GameSetup::LoadMedia()
         SDL_DestroyWindow(GameWindow);
         std::cout << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
-        // return 1;
     }
 }
 
@@ -73,28 +68,21 @@ void GameSetup::PlaySound()
 
     Mix_Chunk* effect1 = NULL;
     Mix_Music* menymusik = NULL;
-    //Mix_Music* gamemusik = NULL;
 
     Mix_OpenAudio(22050,MIX_DEFAULT_FORMAT, 2, 2048);
 
     effect1 = Mix_LoadWAV("Laser.wav");
     menymusik = Mix_LoadMUS("Menue.ogg");
-    //gamemusik = Mix_LoadMUS("Game.ogg");
 
     if (playmeny)
     {
-    Mix_PlayMusic(menymusik,2);
+        Mix_PlayMusic(menymusik,2);
     }
 
     if (playeffect)
     {
         Mix_PlayChannel(-1,effect1,0);
     }
-     /*if (playgame)
-     {
-         Mix_PlayMusic(gamemusik,1);
-     }*/
-
 }
 
 void GameSetup::close()
@@ -107,10 +95,7 @@ void GameSetup::close()
 
 void GameSetup::render()
 {
-
-    //SDL_RenderClear(GameSetup::GameRender);
     SDL_RenderCopy(GameSetup::GameRender, GameSetup::tex, NULL, NULL);
-    //SDL_RenderPresent(GameSetup::GameRender);
 }
 
 void GameSetup::SetInstruction(SDL_Renderer* GameRender, SDL_Texture* tex)
@@ -124,7 +109,6 @@ void GameSetup::SetInstruction(SDL_Renderer* GameRender, SDL_Texture* tex)
         SDL_DestroyWindow(GameWindow);
         std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
-        // return 1;
     }
 
     Instructions = SDL_CreateTextureFromSurface(GameRender, instructions);
@@ -138,13 +122,8 @@ void GameSetup::SetInstruction(SDL_Renderer* GameRender, SDL_Texture* tex)
         SDL_DestroyWindow(GameWindow);
         std::cout << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
-        // return 1;
     }
 
-//    SDL_DestroyTexture(astroids.about);
-//    SDL_DestroyTexture(astroids.newgame);
-//    SDL_DestroyTexture(astroids.quitgame);
-//    SDL_DestroyTexture(astroids.headermeny);
     SDL_Event Event;
     bool instruct=true;
 
@@ -154,11 +133,9 @@ void GameSetup::SetInstruction(SDL_Renderer* GameRender, SDL_Texture* tex)
         SDL_RenderClear(GameRender);
         SDL_RenderCopy(GameRender, tex, NULL, NULL );
         SDL_RenderPresent(GameRender);
-        //SDL_Delay(100);
 
         while (SDL_PollEvent(&Event))
         {
-
             switch (Event.type)
             {
             case SDL_QUIT:
@@ -174,13 +151,12 @@ void GameSetup::SetInstruction(SDL_Renderer* GameRender, SDL_Texture* tex)
                 }
             }
         }
-
     }
 }
 
 void GameSetup::GameOver()
 {
-       //SDL_Surface *
+    //SDL_Surface *
     gameover = SDL_LoadBMP("Game-Over.bmp");
     if (gameover == nullptr)
     {
@@ -188,7 +164,6 @@ void GameSetup::GameOver()
         SDL_DestroyWindow(GameWindow);
         std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
-        // return 1;
     }
 
     Gameover = SDL_CreateTextureFromSurface(GameRender, gameover);
@@ -202,7 +177,6 @@ void GameSetup::GameOver()
         SDL_DestroyWindow(GameWindow);
         std::cout << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
-        // return 1;
     }
     int counter = 0;
     while (counter != 100)

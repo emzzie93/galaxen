@@ -26,10 +26,6 @@ int main(int argc, char *argv[])
     World.PlaySound();
     bool playeffect;
     bool playmeny;
-    //bool playgame;
-
-
-
 
     Menysetup astroids(200,30,230,100);
     Menysetup Newgame(240,160,150,50);
@@ -53,14 +49,10 @@ int main(int argc, char *argv[])
         SDL_RenderPresent(World.GameRender);
         playmeny == true;
 
-//        if (SDL_BlitSurface(text, NULL, World.background, NULL) != 0)
-//
-//         cerr << "SDL_BlitSurface() Failed: " << SDL_GetError() << endl;
-//         break;
-//      }
         int Mx = 0;
         int My = 0;
         SDL_GetMouseState(&Mx, &My);
+
         while (SDL_PollEvent(&Event))
         {
             if (Event.type == SDL_QUIT)
@@ -95,26 +87,9 @@ int main(int argc, char *argv[])
 
                         if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
                         {
-                            //bool inst = false;
                             World.SetInstruction(World.GameRender, World.tex);
-//                            SDL_DestroyTexture(astroids.about);
-//                            SDL_DestroyTexture(astroids.newgame);
-//                            SDL_DestroyTexture(astroids.quitgame);
-//                            SDL_DestroyTexture(astroids.headermeny);
-//
-//                            //if it is pressed then play1 becomes true which you could use to initiate the newgame
-////                                while (!inst)
-//
-//                                //inst = true;
-//                            SDL_RenderClear(World.GameRender);
-//                            SDL_RenderCopy(World.GameRender, World.tex, NULL, NULL );
-//                            SDL_Delay(100);
                         }
-
-
                     }
-
-
                     else
                     {
 
@@ -130,12 +105,9 @@ int main(int argc, char *argv[])
                             {
                                 if (Event.button.button == SDL_BUTTON_LEFT)
                                 {
-
                                     //if it is pressed then play1 becomes true which you could use to initiate the newgame
                                     cout <<  "Starta spelet" << endl;
                                     Gameloop.Play(argc,argv);
-                                    //playgame == true;
-                                    //World.PlaySound();
                                 }
                             }
                         }
@@ -146,12 +118,6 @@ int main(int argc, char *argv[])
                     }
                 }
             }
-
-
-
-            // SDL_Delay(0);
-            //SDL_UpdateWindowSurface(World.GameWindow);
-
         }
 
     }

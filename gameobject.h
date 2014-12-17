@@ -4,12 +4,6 @@
 #include "setup.h"
 #include "ObjectSetup.h"
 
-//extern SDL_Surface* Ship;
-//extern SDL_Surface* Stone;
-//extern SDL_Surface* Heart;
-//extern SDL_Surface* Star;
-//extern SDL_Surface* Bullet;
-
 class GameObject
 {
 public:
@@ -24,7 +18,6 @@ class Obstacle : public GameObject
 public:
    bool isActive;
    virtual void movement() = 0;
-//   virtual void add() {};
    virtual void init() = 0;
 };
 
@@ -34,7 +27,6 @@ class theBullet : public Obstacle
 public:
 
     theBullet();
-//    SDL_Rect posBullet;
     virtual void movement() override;
     void add(int x,int y, int w);
     virtual void init() override;
@@ -47,9 +39,8 @@ class theStone : public Obstacle
 {
 public:
     theStone();
- //   SDL_Rect posStone;
     void getStone(int i);
-   virtual  void movement() override;
+    virtual  void movement() override;
     void add();
     virtual void init() override;
     void collision();
@@ -64,7 +55,6 @@ class theHeart : public Obstacle
 {
 public:
     theHeart();
-//    SDL_Rect posHeart;
     virtual void movement() override;
     void add() ;
     virtual void init() override;
@@ -77,7 +67,6 @@ class theStar : public Obstacle
 public:
 
     theStar();
-//    SDL_Rect posStar;
     virtual void movement() override;
     void add() ;
     virtual void init() override;
@@ -87,7 +76,7 @@ public:
 class theShip : public GameObject
 {
 public:
-//    SDL_Rect posShip;
+
     theShip();
     void collision(theHeart* heart,theStar* star);
     void collisionWstone();
@@ -99,6 +88,7 @@ public:
 
     int life;
     int point;
+    bool lostLife = false;
 };
 
 
