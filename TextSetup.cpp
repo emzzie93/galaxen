@@ -39,7 +39,7 @@ void TextSetup::TextOnScreen( SDL_Renderer* GameRender, long poang)
 
     pointSur = TTF_RenderText_Solid(font, point ,text_color);
     pointTex = SDL_CreateTextureFromSurface(GameRender, pointSur);
-
+    SDL_FreeSurface(pointSur);
     SDL_RenderCopy(GameRender, pointTex, NULL, &ScoreRect);
     SDL_RenderPresent(GameRender);
 }
@@ -71,6 +71,7 @@ void TextSetup::SetLives(SDL_Renderer* GameRender, long lives)
     const char* live = ss.str().c_str();
     lifeSur = TTF_RenderText_Solid(font, live ,text_color);
     lifeTex = SDL_CreateTextureFromSurface(GameRender, lifeSur);
+    SDL_FreeSurface(lifeSur);
 
     LiveRect.y =17;
     LiveRect.x=550;
