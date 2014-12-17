@@ -61,15 +61,40 @@ void GameSetup::LoadMedia()
 
 void GameSetup::PlaySound()
 {
-    effect1 = Mix_LoadMUS("./galaxen/Laser.ogg");
-    if (effect1 == nullptr)
+    int flags = MIX_INIT_OGG;
+    int inited = Mix_Init(flags);
+
+
+
+    if(inited & flags != flags)
     {
-        std::cout << "ERROR: No wav file loaded!" << std::endl;
+        std::cerr << "Audio didn't initialize!\n";
     }
-    menymusik = Mix_LoadMUS("Menue.ogg");
+
+    Mix_Chunk* effect1 = NULL;
+    Mix_Music* menymusik = NULL;
+    //Mix_Music* gamemusik = NULL;
 
     Mix_OpenAudio(22050,MIX_DEFAULT_FORMAT, 2, 2048);
+
+    effect1 = Mix_LoadWAV("Laser.wav");
+    menymusik = Mix_LoadMUS("Menue.ogg");
+    //gamemusik = Mix_LoadMUS("Game.ogg");
+
+    if (playmeny)
+    {
     Mix_PlayMusic(menymusik,2);
+    }
+
+    if (playeffect)
+    {
+        Mix_PlayChannel(-1,effect1,0);
+    }
+     /*if (playgame)
+     {
+         Mix_PlayMusic(gamemusik,1);
+     }*/
+
 }
 
 void GameSetup::close()
