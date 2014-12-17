@@ -38,11 +38,12 @@ class theStone : public Obstacle
 {
 public:
     theStone();
+
     void getStone(int i);
     virtual  void movement() override;
     void add();
     virtual void init() override;
-    void collision();
+    void collision(GameSetup* soundsoptions);
     bool isActive;
 
     int type;

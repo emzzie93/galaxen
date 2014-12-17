@@ -24,6 +24,7 @@ public:
     Mix_Music* effect1 = nullptr;
     Mix_Music* menymusik = nullptr;
     Mix_Music* gamemusik = nullptr;
+    Mix_Music* effect2 = nullptr;
     SDL_Surface* instructions = nullptr;
 
     long counter = 0;
@@ -34,6 +35,8 @@ public:
     bool quit = false;
     bool playeffect;
     bool playmeny;
+    bool playgame;
+    bool playeffect2;
     bool fullscreen;
 
     void setup();

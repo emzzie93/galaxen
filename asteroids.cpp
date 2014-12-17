@@ -8,17 +8,19 @@
 void Asteroids::Play(int argc, char *argv[])
 {
 
-int time_point = 0;
-int time_level = 0;
+    int time_point = 0;
+    int time_level = 0;
 
-GameSetup World;
-ObjectSetup Objects;
-TextSetup Texten;
+    GameSetup World;
+    ObjectSetup Objects;
+    TextSetup Texten;
 
 //Initierar World och laddar upp bakgrund
     World.setup();
     World.LoadMedia();
+     World.playgame = true;
     World.PlaySound();
+
 
 //Create  stuff
     theShip myShip;
@@ -41,7 +43,7 @@ TextSetup Texten;
 
 //Texten.ScoreInit();
 
- //Text.ScoreInit
+//Text.ScoreInit
     Objects.CreateObjects(World);
 
 //Skapar en bool och en Event struktur
@@ -53,6 +55,7 @@ TextSetup Texten;
     {
         //ritar ut bakgrund
         World.render();
+
 
 
         //Flyttar skepp och kollar kollision med hjärta eller stjärna
@@ -73,7 +76,7 @@ TextSetup Texten;
         myStar.movement();
         if(myStar.isActive==true)
         {
-           SDL_RenderCopy(World.GameRender, Objects.star1, NULL, &myStar.position);
+            SDL_RenderCopy(World.GameRender, Objects.star1, NULL, &myStar.position);
         }
 
         //lägger till sten, flyttar sten, målar upp sten, kollision skepp/sten
@@ -95,7 +98,7 @@ TextSetup Texten;
                 }
                 else if(myStone.type == 3)
                 {
-                   SDL_RenderCopy(World.GameRender, Objects.stone3, NULL, &myStone.position);
+                    SDL_RenderCopy(World.GameRender, Objects.stone3, NULL, &myStone.position);
                 }
             }
 
@@ -106,14 +109,17 @@ TextSetup Texten;
         for (int i = 0; i<20; i++) //ritar ut bullet
         {
             myBullet.getBullet(i);
-            myStone.collision();
+            myStone.collision(&World);
+
             if(myBullet.isActive == true)
             {
-               SDL_RenderCopy(World.GameRender, Objects.bullet1, NULL, &myBullet.position);
+                SDL_RenderCopy(World.GameRender, Objects.bullet1, NULL, &myBullet.position);
+
             }
+
         }
 
-Texten.TextOnScreen(World.GameRender, myShip.point);
+        Texten.TextOnScreen(World.GameRender, myShip.point);
 
         while (SDL_PollEvent(&Event))
         {
@@ -131,6 +137,8 @@ Texten.TextOnScreen(World.GameRender, myShip.point);
                 case SDLK_SPACE:
                     //Skapar skott vid mellanslag
                     myBullet.add(myShip.position.x,myShip.position.y,myShip.position.w);
+                    World.playeffect = true;
+                    World.PlaySound();
                     break;
 
                 case SDLK_q:
@@ -169,9 +177,12 @@ Texten.TextOnScreen(World.GameRender, myShip.point);
         }
 
     }
+
     World.GameOver();
     SDL_DestroyWindow(World.GameWindow);
-
+      World.playgame = false;
+     World.playmeny = true;
+    World.PlaySound();
 }
 
 

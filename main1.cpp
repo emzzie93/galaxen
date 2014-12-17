@@ -110,7 +110,11 @@ int main(int argc, char *argv[])
                                 {
                                     //if it is pressed then play1 becomes true which you could use to initiate the newgame
                                     cout <<  "Starta spelet" << endl;
+                                    World.playmeny = false;
+
                                     Gameloop.Play(argc,argv);
+
+
                                 }
                             }
                         }
