@@ -61,7 +61,7 @@ void GameSetup::PlaySound()
 
 
 
-    if(inited & flags != flags)
+    if((inited & flags) != flags)
     {
         std::cerr << "Audio didn't initialize!\n";
     }
@@ -76,12 +76,13 @@ void GameSetup::PlaySound()
 
     if (playmeny)
     {
-        Mix_PlayMusic(menymusik,2);
+        Mix_PlayMusic(menymusik,0);
     }
 
     if (playeffect)
     {
         Mix_PlayChannel(-1,effect1,0);
+        playeffect = false;
     }
 }
 

@@ -24,8 +24,6 @@ int main(int argc, char *argv[])
     World.setup();
     World.LoadMedia();
     World.PlaySound();
-    bool playeffect;
-    bool playmeny;
 
     Menysetup astroids(200,30,230,100);
     Menysetup Newgame(240,160,150,50);
@@ -39,6 +37,8 @@ int main(int argc, char *argv[])
     SDL_Event Event;
     while (!World.quit)
     {
+        World.playmeny = true;
+        World.PlaySound();
         SDL_RenderClear(World.GameRender);
         //render the background
         World.render();
@@ -47,7 +47,6 @@ int main(int argc, char *argv[])
         SDL_RenderCopy(World.GameRender, astroids.about, NULL, &About.posMeny);
         SDL_RenderCopy(World.GameRender, astroids.quitgame, NULL, &Quitgame.posMeny);
         SDL_RenderPresent(World.GameRender);
-        playmeny == true;
 
         int Mx = 0;
         int My = 0;
@@ -63,7 +62,7 @@ int main(int argc, char *argv[])
             {
                 if(Mx >= Quitgame.posMeny.x && Mx <= Quitgame.posMeny.x + Quitgame.posMeny.w && My >= Quitgame.posMeny.y && My <= Quitgame.posMeny.y + Quitgame.posMeny.h)
                 {
-                    playeffect == true;
+                    World.playmeny = true;
                     World.PlaySound();
                     SDL_SetTextureColorMod(astroids.quitgame, 250, 0, 0 );
                     if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
@@ -80,7 +79,7 @@ int main(int argc, char *argv[])
                     SDL_SetTextureColorMod(astroids.quitgame, 250, 250, 250);
                     if(Mx >= About.posMeny.x && Mx <= About.posMeny.x + About.posMeny.w && My >= About.posMeny.y && My <= About.posMeny.y + About.posMeny.h)
                     {
-                        playeffect == true;
+                        World.playeffect = true;
                         World.PlaySound();
 
                         SDL_SetTextureColorMod(astroids.about, 250, 0, 0 );
@@ -96,7 +95,7 @@ int main(int argc, char *argv[])
                         SDL_SetTextureColorMod(astroids.about, 250, 250, 250);
                         if(Mx >= Newgame.posMeny.x && Mx <= Newgame.posMeny.x + Newgame.posMeny.w && My >= Newgame.posMeny.y && My <= Newgame.posMeny.y + Newgame.posMeny.h)
                         {
-                            playeffect == true;
+                            World.playeffect = true;
                             World.PlaySound();
 
                             SDL_SetTextureColorMod(astroids.newgame, 250, 0, 0 );

@@ -342,12 +342,12 @@
 
 1418048112 source:c:\users\emma\desktop\galaxen\world.cpp
 
-1418807078 source:c:\users\hugo\desktop\galaxen\gameobject.cpp
+1418823576 source:c:\users\hugo\desktop\galaxen\gameobject.cpp
 	<random>
 	"gameobject.h"
 	"ObjectSetup.h"
 
-1418823576 c:\users\hugo\desktop\galaxen\gameobject.h
+1418824087 c:\users\hugo\desktop\galaxen\gameobject.h
 	<SDL.h>
 	"setup.h"
 	"ObjectSetup.h"
@@ -685,7 +685,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1418820751 c:\users\hugo\desktop\galaxen\setup.h
+1418824087 c:\users\hugo\desktop\galaxen\setup.h
 	<iostream>
 	<string>
 	<SDL.h>
@@ -699,7 +699,7 @@
 	<SDL_image.h>
 	"gameobject.h"
 
-1418820751 source:c:\users\hugo\desktop\galaxen\setup.cpp
+1418825120 source:c:\users\hugo\desktop\galaxen\setup.cpp
 	"setup.h"
 
 1418773450 c:\users\emma\desktop\galaxen\setup.h
@@ -726,7 +726,7 @@
 	<SDL_image.h>
 	"setup.h"
 
-1418723764 source:c:\users\hugo\desktop\galaxen\objectsetup.cpp
+1418824087 source:c:\users\hugo\desktop\galaxen\objectsetup.cpp
 	"ObjectSetup.h"
 	"ObjectSetup.h"
 
@@ -1224,7 +1224,7 @@
 1394937197 c:\users\hugo\documents\program\lib for codeblocks\include\sdl2\sdl_types.h
 	"SDL_stdinc.h"
 
-1418820751 source:c:\users\hugo\desktop\galaxen\main1.cpp
+1418825630 source:c:\users\hugo\desktop\galaxen\main1.cpp
 	<iostream>
 	<string>
 	<SDL.h>
@@ -1252,7 +1252,7 @@
 1418807078 source:c:\users\hugo\desktop\galaxen\menysetup.cpp
 	"Menysetup.h"
 
-1418807078 source:c:\users\hugo\desktop\galaxen\asteroids.cpp
+1418824087 source:c:\users\hugo\desktop\galaxen\asteroids.cpp
 	"ObjectSetup.h"
 	"gameobject.h"
 	"asteroids.h"
