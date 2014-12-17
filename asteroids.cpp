@@ -113,7 +113,7 @@ TextSetup Texten;
             }
         }
 
-Texten.TextOnScreen(World.GameRender, World.counter);
+Texten.TextOnScreen(World.GameRender, myShip.point);
 
         while (SDL_PollEvent(&Event))
         {
