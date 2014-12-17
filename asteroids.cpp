@@ -113,7 +113,8 @@ TextSetup Texten;
             }
         }
 
-Texten.TextOnScreen(World.GameRender, myShip.point);
+        Texten.TextOnScreen(World.GameRender, myShip.point);
+        Texten.SetLives(World.GameRender, myShip.life);
 
         while (SDL_PollEvent(&Event))
         {
