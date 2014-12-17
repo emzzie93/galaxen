@@ -24,6 +24,12 @@ int main(int argc, char *argv[])
     World.setup();
     World.LoadMedia();
     World.PlaySound();
+    bool playeffect;
+    bool playmeny;
+    //bool playgame;
+
+
+
 
     Menysetup astroids(200,30,230,100);
     Menysetup Newgame(240,160,150,50);
@@ -45,6 +51,7 @@ int main(int argc, char *argv[])
         SDL_RenderCopy(World.GameRender, astroids.about, NULL, &About.posMeny);
         SDL_RenderCopy(World.GameRender, astroids.quitgame, NULL, &Quitgame.posMeny);
         SDL_RenderPresent(World.GameRender);
+        playmeny == true;
 
 //        if (SDL_BlitSurface(text, NULL, World.background, NULL) != 0)
 //
@@ -64,7 +71,8 @@ int main(int argc, char *argv[])
             {
                 if(Mx >= Quitgame.posMeny.x && Mx <= Quitgame.posMeny.x + Quitgame.posMeny.w && My >= Quitgame.posMeny.y && My <= Quitgame.posMeny.y + Quitgame.posMeny.h)
                 {
-                    //Mix_PlayChannel(-1,effect1,0);
+                    playeffect == true;
+                    World.PlaySound();
                     SDL_SetTextureColorMod(astroids.quitgame, 250, 0, 0 );
                     if (Event.type == SDL_MOUSEBUTTONDOWN)  //this calls an event, I assume that you already know how to make an event right?
                     {
@@ -80,7 +88,8 @@ int main(int argc, char *argv[])
                     SDL_SetTextureColorMod(astroids.quitgame, 250, 250, 250);
                     if(Mx >= About.posMeny.x && Mx <= About.posMeny.x + About.posMeny.w && My >= About.posMeny.y && My <= About.posMeny.y + About.posMeny.h)
                     {
-                        //Mix_PlayChannel(-1,effect1,0);
+                        playeffect == true;
+                        World.PlaySound();
 
                         SDL_SetTextureColorMod(astroids.about, 250, 0, 0 );
 
@@ -112,7 +121,8 @@ int main(int argc, char *argv[])
                         SDL_SetTextureColorMod(astroids.about, 250, 250, 250);
                         if(Mx >= Newgame.posMeny.x && Mx <= Newgame.posMeny.x + Newgame.posMeny.w && My >= Newgame.posMeny.y && My <= Newgame.posMeny.y + Newgame.posMeny.h)
                         {
-                            //Mix_PlayChannel(-1,effect1,0);
+                            playeffect == true;
+                            World.PlaySound();
 
                             SDL_SetTextureColorMod(astroids.newgame, 250, 0, 0 );
 
@@ -124,6 +134,8 @@ int main(int argc, char *argv[])
                                     //if it is pressed then play1 becomes true which you could use to initiate the newgame
                                     cout <<  "Starta spelet" << endl;
                                     Gameloop.Play(argc,argv);
+                                    //playgame == true;
+                                    //World.PlaySound();
                                 }
                             }
                         }
