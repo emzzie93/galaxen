@@ -83,6 +83,8 @@ void theStone::movement(long level)
                 if(arrayofStones[i].position.y > 480)
                 {
                     arrayofStones[i].isActive = false;
+                    arrayofStones[i].position.x = 0;
+                    arrayofStones[i].position.y = 0;
                 }
                 else if (arrayofStones[i].move_type == 1)
                 {
@@ -130,6 +132,8 @@ void theStone::movement(long level)
                 if(arrayofStones[i].position.y > 480)
                 {
                     arrayofStones[i].isActive = false;
+                    arrayofStones[i].position.x = 0;
+                    arrayofStones[i].position.y = 0;
                 }
                 else if (arrayofStones[i].move_type == 1)
                 {
@@ -177,6 +181,8 @@ void theStone::movement(long level)
                 if(arrayofStones[i].position.y > 480)
                 {
                     arrayofStones[i].isActive = false;
+                    arrayofStones[i].position.x = 0;
+                    arrayofStones[i].position.y = 0;
                 }
                 else if (arrayofStones[i].move_type == 1)
                 {
@@ -208,6 +214,54 @@ void theStone::movement(long level)
                     {
                         arrayofStones[i].position.y += 3;
                         arrayofStones[i].position.x += 4;
+                    }
+                }
+            }
+        }
+    }
+    if(level >= 4)
+    {
+        for(int i=0; i<20; i++)
+        {
+
+            if(arrayofStones[i].isActive == true)
+            {
+                if(arrayofStones[i].position.y > 480)
+                {
+                    arrayofStones[i].isActive = false;
+                    arrayofStones[i].position.x = 0;
+                    arrayofStones[i].position.y = 0;
+                }
+                else if (arrayofStones[i].move_type == 1)
+                {
+                    arrayofStones[i].position.y += 5;
+                }
+                else if (arrayofStones[i].move_type == 2)
+                {
+                    if(arrayofStones[i].position.x < 0)
+                    {
+                        arrayofStones[i].position.y += 3;
+                        arrayofStones[i].position.x += 5;
+                        arrayofStones[i].move_type = 3;
+                    }
+                    else
+                    {
+                        arrayofStones[i].position.y += 3;
+                        arrayofStones[i].position.x -= 5;
+                    }
+                }
+                else if(arrayofStones[i].move_type == 3)
+                {
+                    if(arrayofStones[i].position.x + arrayofStones[i].position.w > 640)
+                    {
+                        arrayofStones[i].position.y += 3;
+                        arrayofStones[i].position.x -= 5;
+                        arrayofStones[i].move_type = 2;
+                    }
+                    else
+                    {
+                        arrayofStones[i].position.y += 3;
+                        arrayofStones[i].position.x += 5;
                     }
                 }
             }
@@ -472,9 +526,9 @@ void theShip :: ship_movement()
     {
         position.x = 3;
     }
-    if ((position.y + 50) > 480)
+    if ((position.y + position.h) > 480)
     {
-        position.y = (480 - 50);
+        position.y = (480 - position.h);
     }
     if (position.y <0)
     {

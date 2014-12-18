@@ -89,7 +89,7 @@ public:
     void level_up();
 
     long levelcount;
-    long level;
+    long level = 1;
     long life;
     long point;
     bool lostLife = false;

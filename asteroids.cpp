@@ -150,15 +150,10 @@ void Asteroids::Play(int argc, char *argv[])
         }
 
         time_level++;
-        if(time_level == 500 || time_level == 1000)
+        if(time_level == 1500 || time_level == 3000 || time_level == 4500)
         {
             myShip.level_up();
             currlevel +=1;
-
-            if (time_level == 10000){
-                time_level = 0;
-            }
-
         }
 
         time_point++;
