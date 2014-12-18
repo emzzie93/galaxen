@@ -1,3 +1,24 @@
+/*
+ * IDA Programvaruproduktion AB (u.p.a.)
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    Meny(text).cpp
+ * Enhetsnamn:  Meny(text)
+ * Typ:        Moduldeklaration
+ * Revision:
+ * Skriven av:
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul ...
+ */
+
+/*
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
+
 #include "Meny(text).h"
 
 SDL_Surface* Menyheader = nullptr;
@@ -16,3 +37,6 @@ theMeny::theMeny(int xpos, int ypos, int width, int height)
 
 
 
+/*
+ * SLUT PÅ FILEN Meny(text).cpp
+ */

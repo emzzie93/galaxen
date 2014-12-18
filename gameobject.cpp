@@ -1,3 +1,25 @@
+/*
+ * IDA Programvaruproduktion AB (u.p.a.)
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    gameobject.cpp
+ * Enhetsnamn:  gameobject
+ * Typ:
+ * Revision:
+ * Skriven av:
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul ...
+ *
+ */
+
+/*
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
+
 #include <random>
 #include "setup.h"
 #include "gameobject.h"
@@ -270,7 +292,6 @@ void theStone::movement(long level)
 }
 
 
-
 void theStone::add()
 {
     if(rand() % 35 == 5)
@@ -383,9 +404,6 @@ void theStone::collision(GameSetup* soundsoptions)
         }
     }
 }
-
-
-
 
 //---------------------Heart-klassen----------------------//
 
@@ -559,6 +577,7 @@ void theShip :: collision(theHeart* heart, theStar* star)
         this->add_point(100);
     }
 }
+
 void theShip :: collisionWstone()
 {
     for(int i=0; i<20; i++)
@@ -572,8 +591,6 @@ void theShip :: collisionWstone()
             arrayofStones[i].position.x = 0;
             arrayofStones[i].position.y = 0;
 
-
-
             this->delete_life();
         }
     }
@@ -585,6 +602,7 @@ void theShip::level_up()
 }
 
 
-
-
+/*
+ * SLUT PÅ FILEN gameobject.cpp
+ */
 

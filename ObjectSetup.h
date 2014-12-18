@@ -1,3 +1,24 @@
+/*
+ * IDA Programvaruproduktion AB (u.p.a.)
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    ObjectSetup.h
+ * Enhetsnamn:  ObjectSetup
+ * Typ:        Moduldeklaration
+ * Revision:
+ * Skriven av:
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul ...
+ */
+
+/*
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
+
 #ifndef _OBJECTSETUP_H_
 #define _OBJECTSETUP_H_
 #include <iostream>
@@ -27,5 +48,9 @@ ObjectSetup()=default;
 
 void CreateObjects(GameSetup World);
 };
+
+/*
+ * SLUT PÅ FILEN ObjectSetup.h
+ */
 
 #endif

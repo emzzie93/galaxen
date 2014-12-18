@@ -1,6 +1,25 @@
+/*
+ * IDA Programvaruproduktion AB (u.p.a.)
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    TextSetup.h
+ * Enhetsnamn: TextSetup
+ * Typ:        Moduldeklaration
+ * Revision:
+ * Skriven av:
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul ...
+ */
+ /*
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
+
 #ifndef _TEXTSETUP_H_
 #define _TEXTSETUP_H_
-
 #include <SDL_ttf.h>
 #include <SDL.h>
 #include <string>
@@ -41,5 +60,9 @@ public:
 
 
 };
+
+/*
+ * SLUT PÅ FILEN TextSetup.h
+ */
 
 #endif

@@ -1,5 +1,25 @@
-#include "Menysetup.h"
+/*
+ * IDA Programvaruproduktion AB (u.p.a.)
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    Menysetup.cpp
+ * Enhetsnamn:  Menysetup
+ * Typ:        Moduldeklaration
+ * Revision:
+ * Skriven av:
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul ...
+ */
 
+/*
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
+
+#include "Menysetup.h"
 
 
 Menysetup::Menysetup(int xpos, int ypos, int width, int height)
@@ -50,8 +70,8 @@ Quitgame = SDL_LoadBMP("exit.bmp");
 	}
 quitgame = SDL_CreateTextureFromSurface(World.GameRender, Quitgame);
 SDL_FreeSurface(Quitgame);
-
-
 }
 
-
+/*
+ * SLUT PÅ FILEN Menysetup.cpp
+ */

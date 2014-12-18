@@ -1,9 +1,30 @@
+/*
+ * IDA Programvaruproduktion AB (u.p.a.)
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    asteroids.cpp
+ * Enhetsnamn:  asteroids
+ * Typ:        Moduldeklaration
+ * Revision:
+ * Skriven av:
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul ...
+ *
+ *
+ */
+
+/*
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
+
 #include "ObjectSetup.h"
 #include "gameobject.h"
 #include "asteroids.h"
 #include "TextSetup.h"
-
-
 
 void Asteroids::Play(int argc, char *argv[])
 {
@@ -27,7 +48,6 @@ void Asteroids::Play(int argc, char *argv[])
     Mix_OpenAudio(22050,MIX_DEFAULT_FORMAT, 2, 2048);
     gamemusik = Mix_LoadMUS("Game.ogg");
     Mix_PlayMusic(gamemusik,-1);
-
 
 //Create  stuff
     theShip myShip;
@@ -98,7 +118,6 @@ void Asteroids::Play(int argc, char *argv[])
                     SDL_RenderCopy(World.GameRender, Objects.stone3, NULL, &myStone.position);
                 }
             }
-
         }
 
         //flyttar skott, målar upp skott,kollision skott/sten
@@ -111,9 +130,7 @@ void Asteroids::Play(int argc, char *argv[])
             if(myBullet.isActive == true)
             {
                 SDL_RenderCopy(World.GameRender, Objects.bullet1, NULL, &myBullet.position);
-
             }
-
         }
 
         while (SDL_PollEvent(&Event))
@@ -124,7 +141,6 @@ void Asteroids::Play(int argc, char *argv[])
             case SDL_QUIT:
                 quit = true;
                 break;
-
 
             case SDL_KEYDOWN:
                 switch( Event.key.keysym.sym )
@@ -174,10 +190,7 @@ void Asteroids::Play(int argc, char *argv[])
         Texten.SetLevel(World.GameRender,currlevel, Texten.font);
         SDL_RenderPresent(World.GameRender);
         SDL_Delay(20);
-
-
     }
-
     World.GameOver();
     SDL_DestroyWindow(World.GameWindow);
     World.playgame = false;
@@ -185,5 +198,7 @@ void Asteroids::Play(int argc, char *argv[])
     World.PlaySound();
 }
 
-
+/*
+ * SLUT PÅ FILEN asteroids.cpp
+ */
 

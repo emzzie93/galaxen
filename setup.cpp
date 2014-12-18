@@ -1,3 +1,24 @@
+/*
+ * IDA Programvaruproduktion AB (u.p.a.)
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    setup.cpp
+ * Enhetsnamn:  setup
+ * Typ:        Moduldeklaration
+ * Revision:
+ * Skriven av:
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul ...
+ */
+
+/*
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
+
 #include "setup.h"
 
 void GameSetup::setup()
@@ -207,4 +228,6 @@ void GameSetup::GameOver()
 }
 
 
-
+/*
+ * SLUT PÅ FILEN setup.cpp
+ */

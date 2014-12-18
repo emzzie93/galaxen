@@ -1,3 +1,24 @@
+/*
+ * IDA Programvaruproduktion AB (u.p.a.)
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    TextSetup.cpp
+ * Enhetsnamn:  TextSetup
+ * Typ:        Moduldeklaration
+ * Revision:
+ * Skriven av:
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul ...
+ */
+
+/*
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
+
 #include "TextSetup.h"
 
 TextSetup::TextSetup()
@@ -128,6 +149,9 @@ void TextSetup::SetLevel(SDL_Renderer* GameRender, long level, TTF_Font* font)
     SDL_RenderCopy(GameRender, stringTex, NULL, &stringRect);
 
     SDL_RenderPresent(GameRender);
-
-
 }
+
+
+/*
+ * SLUT PÅ FILEN TextSetup.cpp
+ */

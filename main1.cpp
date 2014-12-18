@@ -1,3 +1,24 @@
+/*
+ * IDA Programvaruproduktion AB (u.p.a.)
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    main1.cpp
+ * Enhetsnamn:  main1
+ * Typ:        Moduldeklaration
+ * Revision:
+ * Skriven av:
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul ...
+ */
+
+/*
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -12,18 +33,9 @@
 using namespace std;
 GameSetup World;
 
-//    int score = 124;
-//    string text = to_string(score);
-//    cout << text << endl
-
-
-
-
 int main(int argc, char *argv[])
 {
-
-
-    GameSetup World;
+   GameSetup World;
     Asteroids Gameloop;
     World.setup();
     World.LoadMedia();
@@ -42,7 +54,6 @@ int main(int argc, char *argv[])
     SDL_Event Event;
     while (!World.quit)
     {
-
         SDL_RenderClear(World.GameRender);
         //render the background
         World.render();
@@ -95,7 +106,6 @@ int main(int argc, char *argv[])
                     }
                     else
                     {
-
                         SDL_SetTextureColorMod(astroids.about, 250, 250, 250);
                         if(Mx >= Newgame.posMeny.x && Mx <= Newgame.posMeny.x + Newgame.posMeny.w && My >= Newgame.posMeny.y && My <= Newgame.posMeny.y + Newgame.posMeny.h)
                         {
@@ -111,10 +121,7 @@ int main(int argc, char *argv[])
                                     //if it is pressed then play1 becomes true which you could use to initiate the newgame
                                     cout <<  "Starta spelet" << endl;
 
-
                                     Gameloop.Play(argc,argv);
-
-
                                 }
                             }
                         }
@@ -126,12 +133,13 @@ int main(int argc, char *argv[])
                 }
             }
         }
-
     }
 
     World.close();
 
     return 0;
-
 }
 
+/*
+ * SLUT PÅ FILEN main1.cpp
+ */

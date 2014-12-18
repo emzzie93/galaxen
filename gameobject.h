@@ -1,3 +1,24 @@
+/*
+ * IDA Programvaruproduktion AB (u.p.a.)
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    gameobject.h
+ * Enhetsnamn:  gameobject
+ * Typ:        Moduldeklaration
+ * Revision:
+ * Skriven av:
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul ...
+ */
+
+/*
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
+
 #ifndef _GAMEOBJECT_H_
 #define _GAMEOBJECT_H_
 #include <SDL.h>
@@ -9,8 +30,6 @@ class GameObject
 public:
  virtual ~GameObject() = default;
    SDL_Rect position;
-
-
 };
 
 class Obstacle : public GameObject
@@ -95,5 +114,8 @@ public:
     bool lostLife = false;
 };
 
+/*
+ * SLUT PÅ FILEN gameobject.h
+ */
 
 #endif // _GAMEOBJECT_H_

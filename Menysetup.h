@@ -1,3 +1,24 @@
+/*
+ * IDA Programvaruproduktion AB (u.p.a.)
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    Menysetup.h
+ * Enhetsnamn: Menysetup
+ * Typ:        Moduldeklaration
+ * Revision:
+ * Skriven av:
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul ...
+ */
+
+/*
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
+
 #ifndef _MENYSETUP_H_
 #define _MENYSETUP_H_
 #include <iostream>
@@ -26,5 +47,9 @@ public:
     void CreateMeny(GameSetup World);
 
 };
+
+/*
+ * SLUT PÅ FILEN Menysetup.h
+ */
 
 #endif

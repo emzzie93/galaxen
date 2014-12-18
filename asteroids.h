@@ -1,8 +1,31 @@
+/*
+ * IDA Programvaruproduktion AB (u.p.a.)
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    asteroids.h
+ * Enhetsnamn:  asteroids
+ * Typ:        Moduldeklaration
+ * Revision:
+ * Skriven av:
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul ...
+ *
+ */
+
+/*
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
+
 #ifndef _ASTEROIDS_H_
 #define _ASTEROIDS_H_
 
 #include <iostream>
 #include <string>
+
 #include <SDL.h>
 #include <SDL_image.h>
 
@@ -19,4 +42,8 @@ public:
     void render1(SDL_Renderer* GameRender,SDL_Texture* texture,SDL_Rect* type);
 };
 
+
+/*
+ * SLUT PÅ FILEN asteroids.h
+ */
 #endif

@@ -1,3 +1,24 @@
+/*
+ * IDA Programvaruproduktion AB (u.p.a.)
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    setup.h
+ * Enhetsnamn:  setup
+ * Typ:        Moduldeklaration
+ * Revision:
+ * Skriven av:
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul ...
+ */
+
+/*
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
+
 #ifndef _SETUP_H_
 #define _SETUP_H_
 #include <iostream>
@@ -47,5 +68,9 @@ public:
     void SetInstruction(SDL_Renderer* GameRenderer, SDL_Texture* tex);
     void GameOver();
 };
+
+/*
+ * SLUT PÅ FILEN setup.h
+ */
 
 #endif

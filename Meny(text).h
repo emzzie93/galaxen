@@ -1,3 +1,24 @@
+/*
+ * IDA Programvaruproduktion AB (u.p.a.)
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    Meny(text).h
+ * Enhetsnamn:  Meny(text)
+ * Typ:        Moduldeklaration
+ * Revision:
+ * Skriven av:
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul ...
+ */
+
+/*
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
+
 #ifndef _MENY(TEXT)_H_
 #define _MENY(TEXT)_H_
 #include <SDL.h>
@@ -21,5 +42,9 @@ private:
     int x;
     int y;
 };
+
+/*
+ * SLUT PÅ FILEN Meny(text).h
+ */
 
 #endif // _MENY(TEXT)_H_

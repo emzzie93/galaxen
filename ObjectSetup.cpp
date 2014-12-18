@@ -1,6 +1,25 @@
-#include "ObjectSetup.h"
-#include "ObjectSetup.h"
+/*
+ * IDA Programvaruproduktion AB (u.p.a.)
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    ObjectSetup.cpp
+ * Enhetsnamn:  ObjectSetup
+ * Typ:        Moduldeklaration
+ * Revision:
+ * Skriven av:
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul ...
+ */
 
+/*
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
+
+#include "ObjectSetup.h"
 
 void ObjectSetup::CreateObjects(GameSetup World)
  {
@@ -68,3 +87,7 @@ bullet1 = SDL_CreateTextureFromSurface(World.GameRender, Bullet);
 SDL_FreeSurface(Bullet);
 
 }
+
+/*
+ * SLUT PÅ FILEN ObjectSetup.cpp
+ */
