@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1418835748 source:c:\users\emma\desktop\galaxen\gameobject.cpp
+1418860824 source:c:\users\emma\desktop\galaxen\gameobject.cpp
 	<random>
+	"setup.h"
 	"gameobject.h"
 	"ObjectSetup.h"
 
-1418831806 c:\users\emma\desktop\galaxen\gameobject.h
+1418860301 c:\users\emma\desktop\galaxen\gameobject.h
 	<SDL.h>
 	"setup.h"
 	"ObjectSetup.h"
@@ -700,14 +701,14 @@
 1418297459 source:c:\users\hugo\desktop\galaxen\setup.cpp
 	"setup.h"
 
-1418827364 c:\users\emma\desktop\galaxen\setup.h
+1418835851 c:\users\emma\desktop\galaxen\setup.h
 	<iostream>
 	<string>
 	<SDL.h>
 	<SDL_ttf.h>
 	<SDL_mixer.h>
 
-1418835026 source:c:\users\emma\desktop\galaxen\setup.cpp
+1418855168 source:c:\users\emma\desktop\galaxen\setup.cpp
 	"setup.h"
 
 1418723177 source:c:\users\emma\desktop\galaxen\main(new).cpp
@@ -1102,7 +1103,7 @@
 	"ObjectSetup.h"
 	"ObjectSetup.h"
 
-1418834204 source:c:\users\emma\desktop\galaxen\asteroids.cpp
+1418861126 source:c:\users\emma\desktop\galaxen\asteroids.cpp
 	"ObjectSetup.h"
 	"gameobject.h"
 	"asteroids.h"
@@ -1136,7 +1137,7 @@
 	<SDL.h>
 	"setup.h"
 
-1418835026 source:c:\users\emma\desktop\galaxen\main1.cpp
+1418855103 source:c:\users\emma\desktop\galaxen\main1.cpp
 	<iostream>
 	<string>
 	<sstream>
@@ -1207,10 +1208,10 @@
 
 1418808325 source:c:\users\demo\desktop\galaxen\textsetup.cpp
 
-1418835219 source:c:\users\emma\desktop\galaxen\textsetup.cpp
+1418861816 source:c:\users\emma\desktop\galaxen\textsetup.cpp
 	"TextSetup.h"
 
-1418834196 c:\users\emma\desktop\galaxen\textsetup.h
+1418861453 c:\users\emma\desktop\galaxen\textsetup.h
 	<SDL_ttf.h>
 	<SDL.h>
 	<string>

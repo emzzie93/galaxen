@@ -34,15 +34,16 @@ public:
 
 };
 
-class theStone : public Obstacle
+class theStone// : public Obstacle
 {
 public:
     theStone();
 
+    SDL_Rect position;
     void getStone(int i);
-    virtual  void movement() override;
+    void movement(long level);
     void add();
-    virtual void init() override;
+    /*virtual*/ void init() /*override*/;
     void collision(GameSetup* soundsoptions);
     bool isActive;
 
@@ -87,6 +88,8 @@ public:
     void ship_movement();
     void level_up();
 
+    long levelcount;
+    long level;
     long life;
     long point;
     bool lostLife = false;

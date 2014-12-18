@@ -10,6 +10,7 @@ void Asteroids::Play(int argc, char *argv[])
 
     int time_point = 0;
     int time_level = 0;
+    long currlevel = 1;
 
     GameSetup World;
     ObjectSetup Objects;
@@ -36,14 +37,6 @@ void Asteroids::Play(int argc, char *argv[])
     myStar.init();
     myBullet.init();
 
-//Text
-
-//SDL_Rect ScoreRect;
-
-
-
-//Texten.ScoreInit();
-
 //Text.ScoreInit
     Objects.CreateObjects(World);
 
@@ -56,8 +49,6 @@ void Asteroids::Play(int argc, char *argv[])
     {
         //ritar ut bakgrund
         World.render();
-
-
 
         //Flyttar skepp och kollar kollision med hjärta eller stjärna
         myShip.ship_movement();
@@ -82,7 +73,7 @@ void Asteroids::Play(int argc, char *argv[])
 
         //lägger till sten, flyttar sten, målar upp sten, kollision skepp/sten
         myStone.add();
-        myStone.movement();
+        myStone.movement(myShip.level);
         for (int i = 0; i<20; i++)
         {
             myStone.getStone(i);
@@ -120,10 +111,6 @@ void Asteroids::Play(int argc, char *argv[])
 
         }
 
-        Texten.TextOnScreen(World.GameRender, myShip.point);
-        Texten.SetLives(World.GameRender, myShip.life);
-
-
         while (SDL_PollEvent(&Event))
         {
             switch( Event.type )
@@ -151,10 +138,6 @@ void Asteroids::Play(int argc, char *argv[])
             }
         }
 
-
-        SDL_RenderPresent(World.GameRender);
-        SDL_Delay(20);
-
         if(myShip.lostLife)
         {
             SDL_Delay(1500);
@@ -167,9 +150,15 @@ void Asteroids::Play(int argc, char *argv[])
         }
 
         time_level++;
-        if(time_level == 5000 || time_level == 10000)
+        if(time_level == 500 || time_level == 1000)
         {
             myShip.level_up();
+            currlevel +=1;
+
+            if (time_level == 10000){
+                time_level = 0;
+            }
+
         }
 
         time_point++;
@@ -179,12 +168,20 @@ void Asteroids::Play(int argc, char *argv[])
             time_point = 0;
         }
 
+        Texten.TextOnScreen();
+        Texten.SetPoints(World.GameRender, myShip.point, Texten.font);
+        Texten.SetLives(World.GameRender, myShip.life, Texten.font);
+        Texten.SetLevel(World.GameRender,currlevel, Texten.font);
+        SDL_RenderPresent(World.GameRender);
+        SDL_Delay(20);
+
+
     }
 
     World.GameOver();
     SDL_DestroyWindow(World.GameWindow);
-      World.playgame = false;
-     World.playmeny = true;
+    World.playgame = false;
+    World.playmeny = true;
     World.PlaySound();
 }
 

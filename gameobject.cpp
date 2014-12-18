@@ -5,7 +5,7 @@
 
 theStone arrayofStones[20];
 theBullet arrayofBullet[20];
-int level=1;
+
 
 const Uint8* keystate = SDL_GetKeyboardState(NULL);
 
@@ -71,10 +71,10 @@ theStone::theStone()
     position.h = 50;
 }
 
-void theStone::movement()
+void theStone::movement(long level)
 {
     if(level == 1)
-    {
+   {
         for(int i=0; i<20; i++)
         {
 
@@ -86,34 +86,34 @@ void theStone::movement()
                 }
                 else if (arrayofStones[i].move_type == 1)
                 {
-                    arrayofStones[i].position.y += 2;
+                    arrayofStones[i].position.y += 2 ;
                 }
                 else if (arrayofStones[i].move_type == 2)
                 {
                     if(arrayofStones[i].position.x < 0)
                     {
-                        arrayofStones[i].position.y += 1;
-                        arrayofStones[i].position.x += 2;
+                        arrayofStones[i].position.y += 1  ;
+                        arrayofStones[i].position.x += 2  ;
                         arrayofStones[i].move_type = 3;
                     }
                     else
                     {
-                        arrayofStones[i].position.y += 1;
-                        arrayofStones[i].position.x -= 2;
+                        arrayofStones[i].position.y += 1  ;
+                        arrayofStones[i].position.x -= 2  ;
                     }
                 }
                 else if(arrayofStones[i].move_type == 3)
                 {
                     if(arrayofStones[i].position.x + arrayofStones[i].position.w > 640)
                     {
-                        arrayofStones[i].position.y += 1;
-                        arrayofStones[i].position.x -= 2;
+                        arrayofStones[i].position.y += 1  ;
+                        arrayofStones[i].position.x -= 2  ;
                         arrayofStones[i].move_type = 2;
                     }
                     else
                     {
-                        arrayofStones[i].position.y += 1;
-                        arrayofStones[i].position.x += 2;
+                        arrayofStones[i].position.y += 1  ;
+                        arrayofStones[i].position.x += 2  ;
                     }
                 }
             }
@@ -167,7 +167,7 @@ void theStone::movement()
         }
     }
 
-    if(level == 3)
+    if(level >= 3)
     {
         for(int i=0; i<20; i++)
         {
@@ -213,9 +213,9 @@ void theStone::movement()
             }
         }
     }
-
-
 }
+
+
 
 void theStone::add()
 {
@@ -272,6 +272,7 @@ void theStone::add()
     }
 }
 
+
 void theStone::init()
 {
     for(int i=0; i<20; i++)
@@ -316,8 +317,9 @@ void theStone::collision(GameSetup* soundsoptions)
 
                             arrayofStones[i].type = 2;
                         }
-soundsoptions->playeffect2 = true;
-soundsoptions->PlaySound();
+
+                        soundsoptions->playeffect2 = true;
+                        soundsoptions->PlaySound();
                         arrayofBullet[j].isActive = false;
                         arrayofBullet[j].position.x = 0;
                         arrayofBullet[j].position.y = 0;
@@ -491,7 +493,6 @@ void theShip :: collision(theHeart* heart, theStar* star)
         heart->position.x = 0;
         heart->position.y = 0;
         this->add_life();
-        std ::cout<<"liv: "<<this->life<< std::endl;
     }
     if((this->position.x<=(star->position.x+star->position.w) &&
             (this->position.x + this->position.w) >= star->position.x) &&
@@ -502,7 +503,6 @@ void theShip :: collision(theHeart* heart, theStar* star)
         star->position.x = 0;
         star->position.y = 0;
         this->add_point(100);
-        std::cout<<"Points: "<<this->point<< std::endl;
     }
 }
 void theShip :: collisionWstone()
@@ -521,7 +521,6 @@ void theShip :: collisionWstone()
 
 
             this->delete_life();
-            std ::cout<<"Liv: "<<this->life<< std::endl;
         }
     }
 }
