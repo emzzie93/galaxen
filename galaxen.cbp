@@ -61,6 +61,8 @@
 		<Unit filename="Menysetup.h" />
 		<Unit filename="ObjectSetup.cpp" />
 		<Unit filename="ObjectSetup.h" />
+		<Unit filename="TextSetup.cpp" />
+		<Unit filename="TextSetup.h" />
 		<Unit filename="asteroids.cpp" />
 		<Unit filename="asteroids.h" />
 		<Unit filename="fighter4.png" />

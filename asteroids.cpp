@@ -19,9 +19,14 @@ void Asteroids::Play(int argc, char *argv[])
 //Initierar World och laddar upp bakgrund
     World.setup();
     World.LoadMedia();
-    World.playgame = true;
+//    World.playgame = true;
     World.playmeny = false;
     World.PlaySound();
+
+    Mix_Music* gamemusik = NULL;
+    Mix_OpenAudio(22050,MIX_DEFAULT_FORMAT, 2, 2048);
+    gamemusik = Mix_LoadMUS("Game.ogg");
+    Mix_PlayMusic(gamemusik,-1);
 
 
 //Create  stuff
