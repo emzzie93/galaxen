@@ -5,18 +5,15 @@
  *
  * Filnamn:    ObjectSetup.h
  * Enhetsnamn:  ObjectSetup
- * Typ:        Moduldeklaration
- * Revision:
- * Skriven av:
+ * Typ:        Klassdeklaration
+ * Skriven av: Emma Söderström
+ *             Hugo Johansson
+ *             Matilda Wreth
  *
  *
  * BESKRIVNING
  *
- * Denna modul ...
- */
-
-/*
- * REFERERADE BIBLIOTEK OCH MODULER
+ * Deklarerar textures och surfaces för att kunna ladda upp bilderna.
  */
 
 #ifndef _OBJECTSETUP_H_
@@ -26,6 +23,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "setup.h"
+
 class ObjectSetup
 {
 public:

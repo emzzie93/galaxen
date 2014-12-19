@@ -4,19 +4,16 @@
  * IDENTIFIERING
  *
  * Filnamn:    TextSetup.cpp
- * Enhetsnamn:  TextSetup
- * Typ:        Moduldeklaration
- * Revision:
- * Skriven av:
+ * Enhetsnamn: TextSetup
+ * Typ:        Klassdefinition
+ * Skriven av: Emma Söderström
+ *             Jessica Fritzen
+ *             Matilda Östlund
  *
  *
  * BESKRIVNING
  *
- * Denna modul ...
- */
-
-/*
- * REFERERADE BIBLIOTEK OCH MODULER
+ * Skriver ut text på skärmen.
  */
 
 #include "TextSetup.h"
@@ -39,7 +36,6 @@ void TextSetup::TextOnScreen()
     {
         std::cerr << "TTF_Init() Failed: " << TTF_GetError() << std::endl;
         SDL_Quit();
-        //exit(1);
     }
 
     font = TTF_OpenFont("LucidaTypewriterBold.ttf",14);
@@ -49,8 +45,6 @@ void TextSetup::TextOnScreen()
         TTF_Quit();
         SDL_Quit();
     }
-
-   // SDL_Color text_color = {250, 250, 250};
 }
 
 void TextSetup::SetPoints(SDL_Renderer* GameRender, long poang, TTF_Font* font)
@@ -65,7 +59,6 @@ void TextSetup::SetPoints(SDL_Renderer* GameRender, long poang, TTF_Font* font)
     pointSur = TTF_RenderText_Solid(font, point ,text_color);
     pointTex = SDL_CreateTextureFromSurface(GameRender, pointSur);
     SDL_FreeSurface(pointSur);
-   // TTF_CloseFont(font);
 
     SDL_RenderCopy(GameRender, pointTex, NULL, &ScoreRect);
     SDL_RenderPresent(GameRender);
@@ -74,34 +67,15 @@ void TextSetup::SetPoints(SDL_Renderer* GameRender, long poang, TTF_Font* font)
 
 void TextSetup::SetLives(SDL_Renderer* GameRender, long lives,TTF_Font* font)
 {
-//    if (TTF_Init() != 0)
-//    {
-//        std::cerr << "TTF_Init() Failed: " << TTF_GetError() << std::endl;
-//        SDL_Quit();
-//        //exit(1);
-//    }
-//
-//    font = TTF_OpenFont("LucidaTypewriterBold.ttf",14);
-//    if (font == NULL)
-//    {
-//        std::cerr << "TTF_OpenFont() Failed: " << TTF_GetError() << std::endl;
-//        TTF_Quit();
-//        SDL_Quit();
-//        // exit(1);
-//    }
-
    SDL_Color text_color = {250, 250, 250};
 
     std::ostringstream ss;
-    // std::ostringstream
     ss << lives;
 
     const char* live = ss.str().c_str();
     lifeSur = TTF_RenderText_Solid(font, live ,text_color);
     lifeTex = SDL_CreateTextureFromSurface(GameRender, lifeSur);
     SDL_FreeSurface(lifeSur);
-   // TTF_CloseFont( font );
-
 
     LiveRect.y =17;
     LiveRect.x=550;
@@ -115,12 +89,9 @@ void TextSetup::SetLives(SDL_Renderer* GameRender, long lives,TTF_Font* font)
 
 void TextSetup::SetLevel(SDL_Renderer* GameRender, long level, TTF_Font* font)
 {
-
-
     SDL_Color text_color = {250, 250, 250};
 
     std::ostringstream ss;
-    // std::ostringstream
     ss << level;
 
     const char* levelStr = ss.str().c_str();
@@ -133,7 +104,6 @@ void TextSetup::SetLevel(SDL_Renderer* GameRender, long level, TTF_Font* font)
 
     SDL_FreeSurface(levelSur);
     SDL_FreeSurface(stringSur);
-   // TTF_CloseFont( font );
 
     LevelRect.y =10;
     LevelRect.x=340;

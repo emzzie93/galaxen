@@ -4,20 +4,15 @@
  * IDENTIFIERING
  *
  * Filnamn:    asteroids.h
- * Enhetsnamn:  asteroids
- * Typ:        Moduldeklaration
- * Revision:
- * Skriven av:
+ * Enhetsnamn: asteroids
+ * Typ:        Klassdeklaration
+ * Skriven av: Emma Söderström
  *
  *
  * BESKRIVNING
  *
- * Denna modul ...
+ * Denna klass utgör själva spelet.
  *
- */
-
-/*
- * REFERERADE BIBLIOTEK OCH MODULER
  */
 
 #ifndef _ASTEROIDS_H_

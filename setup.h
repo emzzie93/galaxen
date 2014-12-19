@@ -5,19 +5,15 @@
  *
  * Filnamn:    setup.h
  * Enhetsnamn:  setup
- * Typ:        Moduldeklaration
- * Revision:
- * Skriven av:
- *
+ * Typ:        klassdekleration
+ * Skriven av: Emma Södertröm
+ *             Matilda Wreth
  *
  * BESKRIVNING
  *
- * Denna modul ...
+ * Deklarerar klassen GameSetup och dess parametrar och funktioner.
  */
 
-/*
- * REFERERADE BIBLIOTEK OCH MODULER
- */
 
 #ifndef _SETUP_H_
 #define _SETUP_H_
@@ -32,21 +28,21 @@ class GameSetup
 {
 
 public:
-
     SDL_Window *GameWindow = nullptr;
     SDL_Renderer *GameRender  = nullptr;
+
     SDL_Surface *background = nullptr;
-    SDL_Texture* Instructions = nullptr;
-    SDL_Texture *tex = nullptr;
-
-    SDL_Texture *Gameover = nullptr;
     SDL_Surface *gameover = nullptr;
+    SDL_Surface *instructions = nullptr;
 
-    Mix_Music* effect1 = nullptr;
-    Mix_Music* menymusik = nullptr;
-    Mix_Music* gamemusik = nullptr;
-    Mix_Music* effect2 = nullptr;
-    SDL_Surface* instructions = nullptr;
+    SDL_Texture *Instructions = nullptr;
+    SDL_Texture *tex = nullptr;
+    SDL_Texture *Gameover = nullptr;
+
+    Mix_Music *effect1 = nullptr;
+    Mix_Music *menymusik = nullptr;
+    Mix_Music *gamemusik = nullptr;
+    Mix_Music *effect2 = nullptr;
 
     long counter = 0;
 
@@ -58,8 +54,8 @@ public:
     bool playmeny;
     bool playgame;
     bool playeffect2;
-    bool fullscreen;
 
+//functions
     void setup();
     void close();
     void render();

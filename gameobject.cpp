@@ -5,19 +5,16 @@
  *
  * Filnamn:    gameobject.cpp
  * Enhetsnamn:  gameobject
- * Typ:
- * Revision:
- * Skriven av:
+ * Typ:         klassdefinitioner
+ * Skriven av: Hugo Johansson
+ *             Emma Söderström
+ *             Matilda Wreth
  *
  *
  * BESKRIVNING
  *
- * Denna modul ...
- *
- */
-
-/*
- * REFERERADE BIBLIOTEK OCH MODULER
+ * Funktioner som används av objekten som rör sig på skärmen. Rörelsemönster, kollisionshantering,
+ * lägga till objekt.
  */
 
 #include <random>

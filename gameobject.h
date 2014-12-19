@@ -5,18 +5,13 @@
  *
  * Filnamn:    gameobject.h
  * Enhetsnamn:  gameobject
- * Typ:        Moduldeklaration
- * Revision:
- * Skriven av:
+ * Typ:        Klassdeklarationer
+ * Skriven av: Hugo Johansson
  *
  *
  * BESKRIVNING
- *
- * Denna modul ...
- */
-
-/*
- * REFERERADE BIBLIOTEK OCH MODULER
+ * deklarerar de klasser som ärver av GameObject, alla saker som rör sig på skärmen
+ * har en egen klass som deklareras här.
  */
 
 #ifndef _GAMEOBJECT_H_
@@ -53,7 +48,7 @@ public:
 
 };
 
-class theStone// : public Obstacle
+class theStone
 {
 public:
     theStone();
@@ -62,7 +57,7 @@ public:
     void getStone(int i);
     void movement(long level);
     void add();
-    /*virtual*/ void init() /*override*/;
+    void init();
     void collision(GameSetup* soundsoptions);
     bool isActive;
 

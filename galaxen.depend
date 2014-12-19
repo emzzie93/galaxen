@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1418860824 source:c:\users\emma\desktop\galaxen\gameobject.cpp
+1418975873 source:c:\users\emma\desktop\galaxen\gameobject.cpp
 	<random>
 	"setup.h"
 	"gameobject.h"
 	"ObjectSetup.h"
 
-1418860301 c:\users\emma\desktop\galaxen\gameobject.h
+1418978929 c:\users\emma\desktop\galaxen\gameobject.h
 	<SDL.h>
 	"setup.h"
 	"ObjectSetup.h"
@@ -704,14 +704,14 @@
 1418885499 source:c:\users\hugo\desktop\galaxen\setup.cpp
 	"setup.h"
 
-1418835851 c:\users\emma\desktop\galaxen\setup.h
+1418978350 c:\users\emma\desktop\galaxen\setup.h
 	<iostream>
 	<string>
 	<SDL.h>
 	<SDL_ttf.h>
 	<SDL_mixer.h>
 
-1418855168 source:c:\users\emma\desktop\galaxen\setup.cpp
+1418978053 source:c:\users\emma\desktop\galaxen\setup.cpp
 	"setup.h"
 
 1418723177 source:c:\users\emma\desktop\galaxen\main(new).cpp
@@ -721,7 +721,7 @@
 	<SDL_image.h>
 	"gameobject.h"
 
-1418731143 c:\users\emma\desktop\galaxen\objectsetup.h
+1418975873 c:\users\emma\desktop\galaxen\objectsetup.h
 	<iostream>
 	<string>
 	<SDL.h>
@@ -739,8 +739,7 @@
 	<SDL_image.h>
 	"setup.h"
 
-1418827105 source:c:\users\emma\desktop\galaxen\objectsetup.cpp
-	"ObjectSetup.h"
+1418975873 source:c:\users\emma\desktop\galaxen\objectsetup.cpp
 	"ObjectSetup.h"
 
 1418813488 source:c:\users\demo\desktop\galaxen\setup.cpp
@@ -1106,7 +1105,7 @@
 	"ObjectSetup.h"
 	"ObjectSetup.h"
 
-1418861126 source:c:\users\emma\desktop\galaxen\asteroids.cpp
+1418975873 source:c:\users\emma\desktop\galaxen\asteroids.cpp
 	"ObjectSetup.h"
 	"gameobject.h"
 	"asteroids.h"
@@ -1126,7 +1125,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1418771233 c:\users\emma\desktop\galaxen\asteroids.h
+1418979473 c:\users\emma\desktop\galaxen\asteroids.h
 	<iostream>
 	<string>
 	<SDL.h>
@@ -1140,7 +1139,7 @@
 	<SDL.h>
 	"setup.h"
 
-1418855103 source:c:\users\emma\desktop\galaxen\main1.cpp
+1418975873 source:c:\users\emma\desktop\galaxen\main1.cpp
 	<iostream>
 	<string>
 	<sstream>
@@ -1152,14 +1151,14 @@
 	"Menysetup.h"
 	"asteroids.h"
 
-1418770695 c:\users\emma\desktop\galaxen\menysetup.h
+1418975873 c:\users\emma\desktop\galaxen\menysetup.h
 	<iostream>
 	<string>
 	<SDL.h>
 	<SDL_image.h>
 	"setup.h"
 
-1418770695 source:c:\users\emma\desktop\galaxen\menysetup.cpp
+1418975873 source:c:\users\emma\desktop\galaxen\menysetup.cpp
 	"Menysetup.h"
 
 1376152944 c:\users\demo\documents\tddc76\c++\sdl2_ttf-2.0.12\i686-w64-mingw32\include\sdl2\sdl_ttf.h
@@ -1211,10 +1210,10 @@
 
 1418808325 source:c:\users\demo\desktop\galaxen\textsetup.cpp
 
-1418861816 source:c:\users\emma\desktop\galaxen\textsetup.cpp
+1418975873 source:c:\users\emma\desktop\galaxen\textsetup.cpp
 	"TextSetup.h"
 
-1418861453 c:\users\emma\desktop\galaxen\textsetup.h
+1418975873 c:\users\emma\desktop\galaxen\textsetup.h
 	<SDL_ttf.h>
 	<SDL.h>
 	<string>

@@ -4,21 +4,18 @@
  * IDENTIFIERING
  *
  * Filnamn:    asteroids.cpp
- * Enhetsnamn:  asteroids
- * Typ:        Moduldeklaration
- * Revision:
- * Skriven av:
+ * Enhetsnamn: asteroids
+ * Typ:        Klassdefinitioner
+ * Skriven av: Emma Söderström
+               Hugo Johansson
+               Matilda Wreth
  *
  *
  * BESKRIVNING
  *
- * Denna modul ...
+ * Spelet initieras och körs.
  *
  *
- */
-
-/*
- * REFERERADE BIBLIOTEK OCH MODULER
  */
 
 #include "ObjectSetup.h"
@@ -37,10 +34,9 @@ void Asteroids::Play(int argc, char *argv[])
     ObjectSetup Objects;
     TextSetup Texten;
 
-//Initierar World och laddar upp bakgrund
+//Initilizes "World" and loads media and sound.
     World.setup();
     World.LoadMedia();
-//    World.playgame = true;
     World.playmeny = false;
     World.PlaySound();
 
@@ -56,39 +52,37 @@ void Asteroids::Play(int argc, char *argv[])
     theStar myStar;
     theBullet myBullet;
 
-//Initierar stuff
+//Initilize stuff
     myStone.init();
     myHeart.init();
     myStar.init();
     myBullet.init();
 
-//Text.ScoreInit
     Objects.CreateObjects(World);
 
-//Skapar en bool och en Event struktur
+//creates a bool and event structure
     bool quit = false;
     SDL_Event Event;
 
-//loop som testar om användaren vill avsluta
+//loop that tests if the player wants to quit.
     while (!quit)
     {
-        //ritar ut bakgrund
+        //renders background
         World.render();
 
-        //Flyttar skepp och kollar kollision med hjärta eller stjärna
+        //Moves ship and checks for collision with heart or star.
         myShip.ship_movement();
         myShip.collision(&myHeart,&myStar);
         SDL_RenderCopy(World.GameRender, Objects.ship1, NULL, &myShip.position);
 
-        //lägger till hjärta, flyttar hjärta, målar upp hjärta
+        //Add heart, move heart, render heart.
         myHeart.add();
         myHeart.movement();
         if(myHeart.isActive==true)
         {
             SDL_RenderCopy(World.GameRender, Objects.heart1, NULL, &myHeart.position);
         }
-
-        //lägger till stjärna, flyttar stjärna, målar upp stjärna
+        //Add star, move star, render star.
         myStar.add();
         myStar.movement();
         if(myStar.isActive==true)
@@ -96,7 +90,7 @@ void Asteroids::Play(int argc, char *argv[])
             SDL_RenderCopy(World.GameRender, Objects.star1, NULL, &myStar.position);
         }
 
-        //lägger till sten, flyttar sten, målar upp sten, kollision skepp/sten
+        //Add stone, move stone, render stone, check for collision ship/stone
         myStone.add();
         myStone.movement(myShip.level);
         for (int i = 0; i<20; i++)
@@ -120,9 +114,9 @@ void Asteroids::Play(int argc, char *argv[])
             }
         }
 
-        //flyttar skott, målar upp skott,kollision skott/sten
+        //Add bullet, move bullet, render bullet, collision bullet/stone.
         myBullet.movement();
-        for (int i = 0; i<20; i++) //ritar ut bullet
+        for (int i = 0; i<20; i++) //renders bullet
         {
             myBullet.getBullet(i);
             myStone.collision(&World);
@@ -137,6 +131,7 @@ void Asteroids::Play(int argc, char *argv[])
         {
             switch( Event.type )
             {
+
             /* Look for a keypress */
             case SDL_QUIT:
                 quit = true;
@@ -146,7 +141,7 @@ void Asteroids::Play(int argc, char *argv[])
                 switch( Event.key.keysym.sym )
                 {
                 case SDLK_SPACE:
-                    //Skapar skott vid mellanslag
+                    //creates a bullet when space it hit.
                     myBullet.add(myShip.position.x,myShip.position.y,myShip.position.w);
                     World.playeffect = true;
                     World.PlaySound();

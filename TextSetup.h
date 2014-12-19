@@ -5,17 +5,15 @@
  *
  * Filnamn:    TextSetup.h
  * Enhetsnamn: TextSetup
- * Typ:        Moduldeklaration
- * Revision:
- * Skriven av:
+ * Typ:        Klassdeklaration
+ * Skriven av: Emma Söderström
+ *             Matilda Wreth
+ *             Jessica Fritzen
  *
  *
  * BESKRIVNING
  *
- * Denna modul ...
- */
- /*
- * REFERERADE BIBLIOTEK OCH MODULER
+ * Deklarerar text, font etc.
  */
 
 #ifndef _TEXTSETUP_H_
